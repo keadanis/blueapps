@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <record id="menus_hide_form_view" model="ir.ui.view">
+    <field name="name">menus.hide.form</field>
+    <field name="model">menus.hide</field>
+    <field name="arch" type="xml">
+      <form string="Groups Assign to Menu">
+        <h3>Are you sure you want to 'Menus set Groups'.</h3>
+        <newline/>
+	        <group>
+		        <field name="menus_hide_ids" required="1">
+		        	<field name="name" required="1" options="{'no_create':True,'no_open':True}"/>
+		        </field>
+	        </group>
+	        <group>
+		        <field name="groups" required="1" >
+		        	<field name="name" required="1" options="{'no_create':True,'no_open':True}"/>
+                    
+		        </field>
+	        </group>
+        <footer>
+          <button name="groups_assign_to_menus" string="Assign Groups" class="btn btn-sm btn-default fa fa-envelope" type="object" />
+          <button special="cancel" string="Cancel" />
+        </footer>
+      </form>
+    </field>
+  </record>
+  <record id="menus_hide_action" model="ir.actions.act_window">
+    <field name="name">Groups Assign to Menus</field>
+    <field name="res_model">menus.hide</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="view_id" ref="menus_hide_form_view" />
+    <field name="target">new</field>
+  </record>
+  
+   <menuitem name="Groups Assign to Menus" id="menu_action_groups_assign_to_menu" action="menus_hide_action"
+              sequence="800" 
+              groups="base.group_no_one"/>
+		
+  
+  
+</odoo>

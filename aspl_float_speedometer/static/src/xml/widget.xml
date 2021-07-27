@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <t t-name="FieldSpeed">
+        <span t-att-class="'oe_form_field '+widget.widget_class" id="oe_hide" t-att-style="widget.attrs.style">
+
+            <input class="o_form_input"
+                   t-att-id="widget.id_for_label"
+                   type="speedometer"
+                   t-att-style="widget.attrs.style"
+                   t-att-max="widget.attrs.max"/>
+        </span>
+        <span class="oe_form_field" id="oe_radio_gauge" t-att-style="widget.attrs.style">
+            <div id="radialgauge"></div>
+        </span>
+
+    </t>
+
+</templates>

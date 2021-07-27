@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <odoo>
+        <data>
+          <record model="ir.ui.view" id="split_lead_view">
+                <field name="name">split.lead.view</field>
+                <field name="model">split.lead</field>
+                <field name="arch" type="xml">
+                    <form string="Split lead">
+                        <sheet>
+                            <group>
+                                <group>
+                                    <field name="comercial_id"/>
+                                    <field name="percentaje"/>
+                                    <field name="amount_percent"/>
+                                </group>
+                            </group>
+                        </sheet>
+                    </form>
+                </field>
+            </record>
+            <record id="action_split_lead_view" model="ir.actions.act_window">
+                <field name="name">action.split.lead.view</field>
+                <field name="res_model">split.lead</field>
+                <field name="view_mode">form</field>
+                <field name="help" type="html">
+                  <p class="oe_view_nocontent_create">
+                    List split lead
+                  </p>
+                </field>
+            </record>
+        </data>
+    </odoo>

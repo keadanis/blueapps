@@ -1,0 +1,58 @@
+<?xml  version="1.0" encoding="utf-8" ?>
+<odoo>
+
+ <template id="cash_transfer_template" name="Transfer Cash">
+    <t t-call="website.layout">
+        <div class="oe_structure">
+          <div class="container form-top">
+              <form id="transferCash"  data-model_name="account.money.transfer" data-success_page="/cash_transfer" method="POST">
+                  <div class="form-row">
+                      <div class="form-group col-md-6 col-12 o_website_form_required_custom">
+                          <label class="col-form-label" id="date" for="date"> Date</label>
+                          <input  class="form-control o_website_form_input" type="date" name="date" t-att-value="request.params.get('date', '')" required=""/>
+                      </div>
+                      <div class="form-group col-md-6 col-12">
+                          <label class="col-form-label" for="note">Note</label>
+                          <input type="text" class="form-control" id="note" name="note" placeholder="Note" />
+                      </div>
+                      <div class="form-group col-md-4 col-12 o_website_form_required_custom">
+                          <label class="col-form-label" for="source_account">Source Account</label>
+                            <select  class="form-control select2" id="source_account_id" name="source_account" required="required">
+                                    <option value="">Select</option>
+                                     <t t-foreach="accounts" t-as="account">
+                                          <option required="" t-att-value="int(account.id)" ><t t-esc="account.name"/></option>
+                                     </t>
+                                 </select>
+                      </div>
+                      <div class="form-group col-md-4 col-12">
+                          <label class="col-form-label" style="margin-left: 54px;" for="note">Amount</label>
+                          <div >
+                            <div style="margin-left: 43px;margin-top: 4px;" >$</div>
+                                <input style="width: 75%;margin-left: 55px;margin-top: -25px;" type="text" class="form-control" id="amount" name="amount" placeholder="Amount" />
+                            </div>
+                      </div>
+                      <div class="form-group col-md-4 col-12 o_website_form_required_custom">
+                          <label class="col-form-label" for="destination_account">Destination Account</label>
+                          <select name="destination_account" id="dest_account_id"  class="select2 form-control" required="required">
+                               <option value="">Select</option>
+                               <t t-foreach="accounts or []" t-as="account">
+                                   <option  t-att-value="int(account.id)">
+                                       <t t-esc="account.name"/>
+                                   </option>
+                               </t>
+                          </select>
+                      </div>
+                       <div class="form-group row ">
+                           <button type="submit" style="margin-left: 500px;margin-top: 40px;" class="btn btn-primary menu_button">Transfer</button>
+                        </div>
+                   </div>
+                     <div id="transfer_success" class="alert alert-success alert-dismissable">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">&amp;times;</button>
+                        Transaction from <span id="src_account" ></span> account to <span id="dest_account" ></span> account is successful.
+                    </div>
+             </form >
+          </div>
+         </div>
+     </t>
+ </template>
+ </odoo>

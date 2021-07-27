@@ -1,0 +1,9 @@
+<odoo>
+    <menuitem id="kw_address_menu_main"
+              web_icon="kw_address,static/description/icon.png"
+              name="Address" sequence="200"/>
+
+    <menuitem id="kw_address_settings_main_menu"
+              parent="kw_address_menu_main"
+              name="Settings" sequence="9999"/>
+</odoo>

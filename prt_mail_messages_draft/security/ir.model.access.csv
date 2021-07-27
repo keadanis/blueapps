@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+prt_mall_draft_all,Draft Messages,prt_mail_messages_draft.model_prt_mail_message_draft,base.group_user,1,1,1,1

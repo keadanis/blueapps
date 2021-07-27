@@ -1,0 +1,49 @@
+<odoo>
+    <record id="contract_template_view_tree" model="ir.ui.view">
+        <field name="name">contract_template_view_tree</field>
+        <field name="model">vv.contract.template</field>
+        <field name="arch" type="xml">
+            <tree string="contract_template_tree">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="contract_template_view_form" model="ir.ui.view">
+        <field name="name">contract_template_view_form</field>
+        <field name="model">vv.contract.template</field>
+        <field name="arch" type="xml">
+            <form string="contract_template_form">
+                <header>
+                    <button name="%(contract_creator_wizard_action)d" string="Create Contract" type="action"
+                            context="{'default_contract_template_id': active_id}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <div style="margin: 20px 0px 0px 0px;">
+                        <label for="template" class="oe_edit_only"/>
+                        <field name="template"/>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_contract_template" model="ir.actions.act_window">
+        <field name="name">Contract Templates</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">vv.contract.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_contract_template"
+              name="Contract Templates"
+              parent="sale.menu_sale_config"
+              action="action_contract_template"
+              sequence="3"/>
+</odoo>

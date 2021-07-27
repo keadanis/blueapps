@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record id="mrp_production_workorder_tree_view_inherit" model="ir.ui.view">
+        <field name="name">mrp.workorder.view.tree.inherit</field>
+        <field name="model">mrp.workorder</field>
+        <field name="inherit_id" ref="mrp.mrp_production_workorder_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='production_id']" position="after">
+				<field name="mrp_deadline_start_date" readonly="1" />
+			</xpath>
+        </field>
+    </record>
+
+	<record model="ir.ui.view"
+		id="workcenter_line_kanban_inherit_deadline">
+		<field name="name">mrp.work.order.form.inherit.deadline</field>
+		<field name="model">mrp.workorder</field>
+		<field name="inherit_id" ref="mrp.workcenter_line_kanban" />
+		<field name="arch" type="xml">
+			<xpath expr="//kanban/field[@name='production_id']" position="after">
+				<field name="mrp_deadline_start_date" />
+				<field name="kanban_color" />
+			</xpath>
+
+			<xpath expr="//div[hasclass('o_kanban_record_bottom')]" position="after">
+				<span>
+					<t t-esc="record.mrp_deadline_start_date.value" />
+				</span>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_filter" model="ir.ui.view">
+        <field name="name">view.res.partner.filter.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <filter name="inactive" position="before">
+                <filter name="partner_has_tags" string="Has tags" domain="[('category_id', '!=', False)]"></filter>
+            </filter>
+        </field>
+    </record>
+</odoo>

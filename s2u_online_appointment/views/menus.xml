@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="menu_appointment"
+            name="Appointment"
+            sequence="100"
+            parent="website.menu_website_global_configuration"/>
+
+    </data>
+</odoo>

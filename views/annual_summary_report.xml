@@ -1,0 +1,273 @@
+<?xml  version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template id="annual_summary_report_template" name="Annual Summary">
+    <t t-call="website.layout">
+            <div class="oe_structure">
+            <input type="hidden" t-att-value="current_year" id="c_year"/>
+               <select id="change_annual_year" class="annual_year_dp" >
+                     <t t-foreach='year' t-as='y'>
+                         <option t-att-value="(y)" t-att-selected="int(y) == int(current_year)">
+                             <t t-esc='(y)' />
+                         </option>
+                     </t>
+               </select>
+                <div class="networth_box box1" >
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:left; font-size:16px; ">Net Worth: </td>
+                                <td style="text-align:right; font-size:16px;font-style:italic ">$<t t-esc="net_worth" /></td>
+                                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                 <div class="networth_box box2" >
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="text-align:left; font-size:16px;">Total Investments: </td>
+                                <td style="text-align:right; font-size:16px; font-style:italic">$<t t-esc="investment_total" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="networth_box box3" >
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style=" font-size:16px;">Total Savings: </td>
+                                <td style=" font-size:16px; font-style:italic">$<t t-esc="savings_total" /></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="section" >
+                    <div class="row" style="padding: 50px;">
+                        <h4 style="width: 10.2%; background-color:#875A7B;" class="card-header bar text-center">Summary</h4>
+                        <div class="table-responsive ">
+                            <table class="table" border="1" style="border:1px solid #dee2e6;">
+                                 <thead>
+                                    <tr >
+                                        <th ></th>
+                                        <th style="border:1px solid #dee2e6;">January</th>
+                                        <th style="border:1px solid #dee2e6;">February</th>
+                                        <th style="border:1px solid #dee2e6;">March</th>
+                                        <th style="border:1px solid #dee2e6;">April</th>
+                                        <th style="border:1px solid #dee2e6;">May</th>
+                                        <th style="border:1px solid #dee2e6;">June</th>
+                                        <th style="border:1px solid #dee2e6;">July</th>
+                                        <th style="border:1px solid #dee2e6;">August</th>
+                                        <th style="border:1px solid #dee2e6;">September</th>
+                                        <th style="border:1px solid #dee2e6;">October</th>
+                                        <th style="border:1px solid #dee2e6;">November</th>
+                                        <th style="border:1px solid #dee2e6;">December</th>
+                                        <th style="border:1px solid #dee2e6;">Total</th>
+                                        <th style="border:1px solid #dee2e6;">Average</th>
+                                    </tr>
+                                  </thead>
+                                    <tbody>
+                                          <tr t-foreach='summary.keys()' t-as='key' >
+                                            <td style="border-right:1px solid #dee2e6;"><t t-esc="key" /></td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][0] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][0]"/></span></t>
+                                                <t t-if="summary[key][0][0] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][0])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][1] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][1]"/></span></t>
+                                                <t t-if="summary[key][0][1] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][1])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][2] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][2]"/></span></t>
+                                                <t t-if="summary[key][0][2] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][2])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][3] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][3]"/></span></t>
+                                                <t t-if="summary[key][0][3] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][3])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][4] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][4]"/></span></t>
+                                                <t t-if="summary[key][0][4] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][4])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][5] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][5]"/></span></t>
+                                                <t t-if="summary[key][0][5] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][5])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][6] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][6]"/></span></t>
+                                                <t t-if="summary[key][0][6] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][6])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][7] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][7]"/></span></t>
+                                                <t t-if="summary[key][0][7] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][7])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][8] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][8]"/></span></t>
+                                                <t t-if="summary[key][0][8] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][8])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][9] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][9]"/></span></t>
+                                                <t t-if="summary[key][0][9] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][9])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][10] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][10]"/></span></t>
+                                                <t t-if="summary[key][0][10] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][10])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6;" >
+                                                <t t-if="summary[key][0][11] &gt;= 0"><span  style="color:#26b18b;">$<t t-esc="summary[key][0][11]"/></span></t>
+                                                <t t-if="summary[key][0][11] &lt; 0"><span  style="color:red;">-$<t t-esc="abs(summary[key][0][11])"/></span></t>
+                                            </td>
+                                            <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #26b18b;" >$<t t-esc="summary[key][1]" /></td>
+                                            <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #0094ff;" ><span t-esc="currency.symbol" /><t t-esc="summary[key][2]" />
+                                            </td>
+                                         </tr>
+                                    </tbody>
+                                </table>
+                      </div>
+                </div>
+            </div>
+            <div class="section" >
+                    <div class="row" style="padding: 50px;margin-top: -64px;">
+                        <h4 style="width: 10.2%; background-color:#a0783bd1;" class="card-header bar text-center">Investment</h4>
+                        <div class="table-responsive ">
+                            <table class="table" border="1" style="border:1px solid #dee2e6;">
+                                 <thead>
+                                    <tr >
+                                        <th ></th>
+                                        <th style="border:1px solid #dee2e6;">January</th>
+                                        <th style="border:1px solid #dee2e6;">February</th>
+                                        <th style="border:1px solid #dee2e6;">March</th>
+                                        <th style="border:1px solid #dee2e6;">April</th>
+                                        <th style="border:1px solid #dee2e6;">May</th>
+                                        <th style="border:1px solid #dee2e6;">June</th>
+                                        <th style="border:1px solid #dee2e6;">July</th>
+                                        <th style="border:1px solid #dee2e6;">August</th>
+                                        <th style="border:1px solid #dee2e6;">September</th>
+                                        <th style="border:1px solid #dee2e6;">October</th>
+                                        <th style="border:1px solid #dee2e6;">November</th>
+                                        <th style="border:1px solid #dee2e6;">December</th>
+                                        <th style="border:1px solid #dee2e6;">Total</th>
+                                        <th style="border:1px solid #dee2e6;">Average</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                          <tr t-foreach='investment_summary.keys()' t-as='category' >
+                                                <td style="border-right:1px solid #dee2e6; "><t t-esc="category"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][0]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][1]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][2]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][3]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][4]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][5]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][6]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][7]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][8]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][9]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][10]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="investment_summary[category][0][11]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #26b18b;">$<t t-esc="investment_summary[category][1]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #0094ff;">$<t t-esc="investment_summary[category][2]"/></td>
+                                           </tr>
+                                    </tbody>
+                                </table>
+                      </div>
+                </div>
+            </div>
+            <div class="section" >
+                    <div class="row" style="padding: 50px;margin-top: -50px;margin-top: -62px;">
+                        <h4  style="width: 10.2%; background-color:#38538ed1;" class="card-header bar text-center">Income</h4>
+                        <div class="table-responsive ">
+                            <table class="table" border="1" style="border:1px solid #dee2e6;">
+                                 <thead>
+                                    <tr >
+                                        <th ></th>
+                                        <th style="border:1px solid #dee2e6;">January</th>
+                                        <th style="border:1px solid #dee2e6;">February</th>
+                                        <th style="border:1px solid #dee2e6;">March</th>
+                                        <th style="border:1px solid #dee2e6;">April</th>
+                                        <th style="border:1px solid #dee2e6;">May</th>
+                                        <th style="border:1px solid #dee2e6;">June</th>
+                                        <th style="border:1px solid #dee2e6;">July</th>
+                                        <th style="border:1px solid #dee2e6;">August</th>
+                                        <th style="border:1px solid #dee2e6;">September</th>
+                                        <th style="border:1px solid #dee2e6;">October</th>
+                                        <th style="border:1px solid #dee2e6;">November</th>
+                                        <th style="border:1px solid #dee2e6;">December</th>
+                                        <th style="border:1px solid #dee2e6;">Total</th>
+                                        <th style="border:1px solid #dee2e6;">Average</th>
+                                    </tr>
+                                  </thead>
+                                    <tbody>
+                                          <tr t-foreach='income_summary.keys()' t-as='category' >
+                                                <td style="border-right:1px solid #dee2e6;"><t t-esc="category"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][0]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][1]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][2]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][3]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][4]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][5]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][6]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][7]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][8]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][9]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][10]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; color: #26b18b;">$<t t-esc="income_summary[category][0][11]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #26b18b;">$<t t-esc="income_summary[category][1]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #0094ff;">$<t t-esc="income_summary[category][2]"/></td>
+                                           </tr>
+                                    </tbody>
+                                </table>
+                      </div>
+                </div>
+            </div>
+              <div class="section" >
+                    <div class="row" style="padding: 50px;margin-top: -50px;">
+                        <h4 style="width: 10.2%;" class="card-header bar text-center">Expense</h4>
+                        <div class="table-responsive ">
+                            <table class="table" border="1" style="border:1px solid #dee2e6;">
+                                 <thead>
+                                    <tr >
+                                        <th ></th>
+                                        <th style="border:1px solid #dee2e6;">January</th>
+                                        <th style="border:1px solid #dee2e6;">February</th>
+                                        <th style="border:1px solid #dee2e6;">March</th>
+                                        <th style="border:1px solid #dee2e6;">April</th>
+                                        <th style="border:1px solid #dee2e6;">May</th>
+                                        <th style="border:1px solid #dee2e6;">June</th>
+                                        <th style="border:1px solid #dee2e6;">July</th>
+                                        <th style="border:1px solid #dee2e6;">August</th>
+                                        <th style="border:1px solid #dee2e6;">September</th>
+                                        <th style="border:1px solid #dee2e6;">October</th>
+                                        <th style="border:1px solid #dee2e6;">November</th>
+                                        <th style="border:1px solid #dee2e6;">December</th>
+                                        <th style="border:1px solid #dee2e6;">Total</th>
+                                        <th style="border:1px solid #dee2e6;">Average</th>
+                                    </tr>
+                                  </thead>
+                                    <tbody>
+                                          <tr t-foreach='expense_summary.keys()' t-as='category' >
+                                                <td style="border-right:1px solid #dee2e6;"><t t-esc="category"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][0]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][1]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][2]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][3]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][4]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][5]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][6]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][7]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][8]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][9]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][10]"/></td>
+                                                <td style="border-right:1px solid #dee2e6;">$<t t-esc="expense_summary[category][0][11]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #26b18b;">$<t t-esc="expense_summary[category][1]"/></td>
+                                                <td style="border-right:1px solid #dee2e6; font-weight:bold; color: #0094ff;">$<t t-esc="expense_summary[category][2]"/></td>
+                                           </tr>
+                                    </tbody>
+                                </table>
+                      </div>
+                </div>
+            </div>
+          </div>
+    </t>
+    </template>
+</odoo>

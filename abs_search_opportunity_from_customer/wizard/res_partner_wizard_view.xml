@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="search_salesperson_opportunity_leand_wizard_view" model="ir.ui.view">
+        <field name="name">search.salesperson</field>
+        <field name="model">search.salesperson</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name='filter_id' options='{"no_open": True, "no_create": True}'/>
+                        <field name='salesperson_ids' widget="many2many_tags" options='{"no_open": True, "no_create": True}'/>
+                    </group>
+                    <group string = "Opportunity">
+                        <field name='team_ids' widget="many2many_tags" options='{"no_open": True, "no_create": True}'/>
+                        <field name='not_team_ids' widget="many2many_tags" options='{"no_open": True, "no_create": True}'/>
+                        <field name='tags_ids' widget="many2many_tags" options='{"no_open": True, "no_create": True}'/>
+                        <field name='not_tags_ids' widget="many2many_tags" options='{"no_open": True, "no_create": True}'/>
+                    </group>
+                    <group string = "Save Current Filter">
+                        <group>
+                            <field name='save_filter'/>
+                        </group>
+                        <group>
+                            <field name='filer_name' attrs="{'invisible' : [('save_filter','=',False)],'required' : [('save_filter','=',True)]}"/>
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="Search Opportunity" name="search_opportunity" type="object" class="oe_highlight"/>
+                    <button string="Search Lead" name="search_lead" type="object" class="oe_highlight"/>
+                    <button string="Search Opportunity and Lead" name="search_opportunity_and_lead" type="object" class="oe_highlight"/>
+                    <button string="Save Filter" name="button_save_filter" type="object" class="oe_highlight" attrs="{'invisible': [('save_filter', '=',False)]}"/>
+                    <button string="Cancel" special="cancel" class="btn-default"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+        <record id="search_salesperson_opportunity_leand_action" model="ir.actions.act_window">
+            <field name="name">Search Opportunity/Lead</field>
+            <field name="res_model">search.salesperson</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_model_id" ref="base.model_res_partner"/>
+        </record>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="team_meet_form_id" model="ir.ui.view">
+            <field name="name">Team Meet View</field>
+            <field name="model">calendar.event</field>
+            <field name="inherit_id" ref="calendar.view_calendar_event_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <group class="oe_subtotal_footer oe_right">
+                        <button string='Join Team Meeting' style="width:95px;" type="object" name="redirect_team_meet"
+                                attrs="{'invisible':[('team_url','=',False)]}"
+                                class="btn btn-primary"
+                                icon="fa-phone-square"
+                                />
+
+                    </group>
+                </xpath>
+
+                <xpath expr="//field[@name='start']" position="after">
+                    <field name="end_date_time" attrs="{'required':[('team_flag','=',True)]}"/>
+                </xpath>
+
+                <xpath expr="//form/sheet/div/h1" position="after">
+                    <h1>
+                        <label for="team_flag" string="Add Team Meeting" placeholder="Add Team Meeting" /><br/>
+                        <field name="team_flag" />
+                    </h1>
+                </xpath>
+
+                <xpath expr="//field[@name='partner_ids']" position="replace">
+                    <field name="partner_ids" attrs="{'required':[('team_flag', '==', True)]}" widget="many2manyattendee"
+                        placeholder="Select attendees..." context="{'force_email':True}" class="oe_inline"/>
+                </xpath>
+
+                <xpath expr="//page[1]" position="after">
+                    <page string="Team Meeting" attrs="{'invisible':[('team_flag','=',False)]}">
+                        <group>
+                            <group>
+                                <field name="team_id" readonly="True"/>
+                                <field name="team_url" readonly="1"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

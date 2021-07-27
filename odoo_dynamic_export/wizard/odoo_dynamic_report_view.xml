@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- odoo_dynamic_report_view.xml -->
+
+<odoo>
+    <data noupdate="0">
+
+        <record id="view_odoo_dynamic_report_form" model="ir.ui.view">
+            <field name="name">odoo.dynamic.report.form</field>
+            <field name="model">odoo.dynamic.report</field>
+            <field name="arch" type="xml">
+                <form string="Filter Report">
+                        <group>
+                            <group>
+                                <field name="name" required="1"/>
+                                <field name="model_id" options="{&quot;no_open&quot;: False,'no_quick_create':False,'no_create_edit':True}"/>
+                                <field name="filter_type"/>
+                                <field name="start_date" attrs="{'required': [('filter_type', 'not in', ['none'])], 'invisible': [('filter_type', 'in', ['none'])]}"/>
+                                <field name="end_date" attrs="{'required': [('filter_type', 'not in', ['none'])], 'invisible': [('filter_type', 'in', ['none'])]}"/>
+                            </group>
+                            <group>
+                                <field name="excel_file" nolabel="0" filename="filename"/>
+                                <field name="filename" invisible="1"/>
+                            </group>
+                            <notebook colspan="4">
+
+                                <page string="Fields Setup Line">
+                                    <field name="model_fields" required="1" string="Fields Setup" context="{'default_model_id': model_id}" >
+                                        <tree string="Fields Setup " editable="bottom"> 
+                                            <field name="model_id" invisible="1"/>
+                                            <field name="field_id" required="1" options="{&quot;no_open&quot;: False,'no_quick_create':False,'no_create_edit':True}"/>
+                                            <field name="label" required="1"/> 
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    <footer>
+                        <button name="export_data" type='object' string="Export Records" class="oe_highlight"/>
+                        or                        
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_odoo_dynamic_report_tree" model="ir.ui.view">
+            <field name="name">odoo.dynamic.report tree</field>
+            <field name="model">odoo.dynamic.report</field>
+            <field name="arch" type="xml">
+                <tree string="Odoo dynamic report">
+                        <field name="name"/>
+                        <field name="model_id"/>
+                        <field name="filter_type"/>
+                         <field name="start_date" attrs="{'invisible': [('filter_type', 'in', ['none'])]}"/>
+                        <field name="end_date" attrs="{'invisible': [('filter_type', 'in', ['none'])]}"/>
+                        <field name="filename" string="Filenam"/>
+                        <field name="write_uid" string="Created By"/>
+                        <field name="create_date" string="Create Date"/>
+
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_odoo_dynamic_report">
+            <field name="name">Odoo dynamic Report</field>
+            <field name="res_model">odoo.dynamic.report</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="view_id" ref="view_odoo_dynamic_report_form"/>
+        </record>
+        <menuitem id="menu_odoo_dynamic_report" name="Odoo Dynamic report" web_icon="odoo_dynamic_export,static/description/icon.png" sequence="18"/>
+        <menuitem id="menu_generate_odoo_dynamic_report" name="Generate Report" parent="menu_odoo_dynamic_report" sequence="1" action="action_odoo_dynamic_report"/>
+    </data>
+</odoo>

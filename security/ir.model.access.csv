@@ -1,0 +1,15 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_budgeted_expense,budgeted.expense,model_budgeted_expense,,1,1,1,1
+access_budget_expense_lines,budget.expense.lines,model_budget_expense_lines,,1,1,1,1
+access_expense_category,expense.category,model_expense_category,,1,1,1,1
+access_expected_income,expected.income,model_expected_income,,1,1,1,1
+access_expected_income_line,expected.income.line,model_expected_income_line,,1,1,1,1
+access_income_category,income.category,model_income_category,,1,1,1,1
+access_budget_year,budget.year,model_budget_year,,1,1,1,1
+access_expense_summary,expense.summary,model_expense_summary,,1,1,1,1
+access_income_summary,income.summary,model_income_summary,,1,1,1,1
+access_account_money_transfer,account.money.transfer,model_account_money_transfer,,1,1,1,1
+access_bank_account,bank.account,model_bank_account,,1,1,1,1
+access_bank_account_line,bank.account.line,model_bank_account_line,,1,1,1,1
+access_investment_interest,investment.interest,model_investment_interest,,1,1,1,1
+

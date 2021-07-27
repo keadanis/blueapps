@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates >
+    <t t-extend ="mail.chatter.Buttons" >
+        <t t-jquery=".o_chatter_button_new_message" t-operation="replace">	
+        	<t t-if="cu_model and cu_model =='expense.summary'" > 
+	        	
+	        </t>
+	        <t t-if="cu_model and cu_model !='expense.summary'" > 
+		    	<button t-if="newMessageButton" type="button" class="btn btn-link o_chatter_button_new_message" title="Send a message" disabled="disabled">
+            		Send message
+        		</button>
+	        </t>  
+        </t>
+       
+	    <t t-jquery=".o_chatter_button_log_note" t-operation="replace">
+	    	<t t-if="cu_model and cu_model =='expense.summary'" > 
+	        	   
+	        </t>
+	        <t t-if="cu_model and cu_model !='expense.summary'" > 
+		         <button t-if="logNoteButton" class="btn btn-link o_chatter_button_log_note" title="Log a note. Followers will not be notified." disabled="disabled">
+	           			 Log note
+	        	</button>
+	        </t>
+        </t>
+	</t>
+	
+	<t t-extend ="mail.chatter.Attachment.Button">
+        <t t-jquery=".o_chatter_button_attachment" t-operation="replace">
+        	<t t-if="cu_model and cu_model =='expense.summary'" > 
+	        	 
+	        </t>
+	        <t t-if="cu_model and cu_model !='expense.summary'" > 
+		    	<button class="btn btn-link o_chatter_button_attachment" title="View all the attachments of the current record" t-attf-aria-label="#{attachment_button_aria_label} #{count}">
+            <span>
+                <i class="fa fa-paperclip"/>
+                <span t-if="displayCounter" class="o_chatter_attachment_button_count">
+                    <t t-esc="count"/>
+                </span>
+            </span>
+        </button>
+	        </t>
+        	  
+        </t>
+       
+	</t>
+</templates>

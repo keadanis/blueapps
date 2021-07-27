@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Standard categories professional -->
+        <record id="category_professional_0" model="formation.category.professional">
+            <field name="name">Engineers and Graduates. Senior management staff</field>
+            <field name="description">Engineers and Graduates. Senior management staff</field>
+        </record>
+        <record id="category_professional_1" model="formation.category.professional">
+            <field name="name">Technical Engineers, Experts and Certified Assistants</field>
+            <field name="description">Technical Engineers, Experts and Certified Assistants</field>
+        </record>
+        <record id="category_professional_2" model="formation.category.professional">
+            <field name="name">Administrative and Workshop Chiefs</field>
+            <field name="description">Administrative and Workshop Chiefs</field>
+        </record>
+        <record id="category_professional_3" model="formation.category.professional">
+            <field name="name">Untitled Assistants</field>
+            <field name="description">Untitled Assistants</field>
+        </record>
+        <record id="category_professional_4" model="formation.category.professional">
+            <field name="name">Administrative Officers</field>
+            <field name="description">Administrative Officers</field>
+        </record>
+        <record id="category_professional_5" model="formation.category.professional">
+            <field name="name">Juniors</field>
+            <field name="description">Juniors</field>
+        </record>
+        <record id="category_professional_6" model="formation.category.professional">
+            <field name="name">Administrative Assistants</field>
+            <field name="description">Administrative Assistants</field>
+        </record>
+        <record id="category_professional_7" model="formation.category.professional">
+            <field name="name">First and Second Officers</field>
+            <field name="description">First and Second Officers</field>
+        </record>
+        <record id="category_professional_8" model="formation.category.professional">
+            <field name="name">Third Officers and Specialists</field>
+            <field name="description">Third Officers and Specialists</field>
+        </record>
+        <record id="category_professional_9" model="formation.category.professional">
+            <field name="name">Pawns</field>
+            <field name="description">Pawns</field>
+        </record>
+        <record id="category_professional_10" model="formation.category.professional">
+            <field name="name">Workers under eighteen, whatever their professional category</field>
+            <field name="description">Workers under eighteen, whatever their professional category</field>
+        </record>
+         <record id="category_professional_11" model="formation.category.professional">
+            <field name="name">Others</field>
+            <field name="description">Others</field>
+        </record>
+
+        <!-- Standard groups cotiz -->
+        <record id="cotization_group_0" model="formation.cotization.group">
+            <field name="name">Engineers and Graduates</field>
+            <field name="description">Engineers and Graduates</field>
+        </record>
+            <record id="cotization_group_1" model="formation.cotization.group">
+            <field name="name">Technical Engineers, Experts and Certified Assistants</field>
+            <field name="description">Technical Engineers, Experts and Certified Assistants</field>
+        </record>
+        <record id="cotization_group_2" model="formation.cotization.group">
+            <field name="name">Administrative and Workshop Heads</field>
+            <field name="description">Administrative and Workshop Heads</field>
+        </record>
+        <record id="cotization_group_3" model="formation.cotization.group">
+            <field name="name">Untitled assistants</field>
+            <field name="description">Untitled assistants</field>
+        </record>
+        <record id="cotization_group_4" model="formation.cotization.group">
+            <field name="name">Administrative Officers</field>
+            <field name="description">Administrative Officers</field>
+        </record>
+        <record id="cotization_group_5" model="formation.cotization.group">
+            <field name="name">Juniors</field>
+            <field name="description">Juniors</field>
+        </record>
+        <record id="cotization_group_6" model="formation.cotization.group">
+            <field name="name">Administrative Assistant</field>
+            <field name="description">Administrative Assistant</field>
+        </record>
+        <record id="cotization_group_7" model="formation.cotization.group">
+            <field name="name">1st and 2nd officers</field>
+            <field name="description">1st and 2nd officers</field>
+        </record>
+        <record id="cotization_group_8" model="formation.cotization.group">
+            <field name="name">3rd officers and specialists</field>
+            <field name="description">3rd officers and specialists</field>
+        </record>
+        <record id="cotization_group_9" model="formation.cotization.group">
+            <field name="name">Unskilled workers over 18 years of age</field>
+            <field name="description">Unskilled workers over 18 years of age</field>
+        </record>
+        <record id="cotization_group_10" model="formation.cotization.group">
+            <field name="name">Workers under the age of 18</field>
+            <field name="description">Workers under the age of 18</field>
+        </record>
+        <record id="cotization_group_11" model="formation.cotization.group">
+            <field name="name">Others</field>
+            <field name="description">Others</field>
+        </record>
+            <!-- - Standard levels studies -->
+        <record id="educational_level_0" model="formation.educational.level">
+            <field name="name">Primary education</field>
+            <field name="description">Primary education</field>
+        </record>
+        <record id="educational_level_1" model="formation.educational.level">
+            <field name="name">First stage of secondary education</field>
+            <field name="description">First stage of secondary education</field>
+        </record>
+        <record id="educational_level_2" model="formation.educational.level">
+            <field name="name">Second stage of secondary education</field>
+            <field name="description">Second stage of secondary education</field>
+        </record>
+        <record id="educational_level_3" model="formation.educational.level">
+            <field name="name">Third stage of secondary education</field>
+            <field name="description">Third stage of secondary education</field>
+        </record>
+        <record id = "educational_level_4" model="formation.educational.level">
+            <field name="name">Postsecondary Non-Higher Education</field>
+            <field name="description">Postsecondary Non-Higher Education</field>
+        </record>
+        <record id="educational_level_5" model="formation.educational.level">
+            <field name="name">Higher Technician / Higher FP and equivalents</field>
+            <field name="description">Higher Technician / Higher FP and equivalents</field>
+        </record>
+        <record id="educational_level_6" model="formation.educational.level">
+            <field name="name">1st cycle university students (Diploma-Degrees)</field>
+            <field name="description">1st cycle university students (Diploma-Degrees)</field>
+        </record>
+        <record id="educational_level_7" model="formation.educational.level">
+            <field name="name">2nd cycle university students (Bachelor-Master)</field>
+            <field name="description">2nd cycle university students (Bachelor-Master)</field>
+        </record>
+        <record id="educational_level_8" model="formation.educational.level">
+            <field name="name">Undergraduate</field>
+            <field name="description">Undergraduate</field>
+        </record>
+    </data>
+</odoo>

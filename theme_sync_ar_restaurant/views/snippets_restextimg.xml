@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="snippet_resteximg" name="Welcome">
+        <section class="s_text_image pt32 pb32 o_colored_level welcome_blocks" data-snippet="s_text_image" data-name="Text - Image">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 pt16 pb16 o_colored_level">
+                        <h2 class="o_default_snippet_text">Welcome our Restaurant</h2>
+                        <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley </p>
+                        <div class="btn-blocks clearfix">
+                            <a href="/about-us" class="btn btn-primary mb-2 o_default_snippet_text">Read more</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt16 pb16 o_colored_level">
+                        <img src="/theme_sync_ar_restaurant/static/src/images/img_004.png" class="img img-fluid mx-auto" alt=""/>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_resteximg_bar" inherit_id="website.snippets" name="Welcome">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_resteximg"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/welcome_icon.png"/>
+        </xpath>
+    </template>
+</odoo>

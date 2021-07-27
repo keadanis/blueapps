@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_save_filter,access_save_filter,model_save_filter,base.group_user,1,1,1,1
+access_search_salesperson,access_search_salesperson,model_search_salesperson,base.group_user,1,1,1,1

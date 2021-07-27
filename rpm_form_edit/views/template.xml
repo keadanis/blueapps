@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_backend_inherit" inherit_id="web.assets_backend" name="Web backend assets">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/rpm_form_edit/static/src/js/web_form.js"/>
+                <script type="text/javascript" src="/rpm_form_edit/static/src/js/edit_form.js"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

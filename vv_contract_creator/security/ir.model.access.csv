@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+contract_template,contract_template,model_vv_contract_template,,1,1,1,1
+contract_creator,contract_creator,model_vv_contract_creator,,1,1,1,1
+contract_creator_line,contract_creator_line,model_contract_creator_line,,1,1,1,1

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Rules -->
+    <record id="management_bug_rule_all_user" model="ir.rule">
+        <field name="name">Management bug all user</field>
+        <field name="model_id" ref="model_management_bug"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('project.group_project_manager'))]"/>
+    </record>
+    <record id="configuration_bug_rule_all_user" model="ir.rule">
+        <field name="name">Configuration bug all user</field>
+        <field name="model_id" ref="model_configuration_bug"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('project.group_project_manager'))]"/>
+    </record>
+     <record id="team_support_rule_all_user" model="ir.rule">
+        <field name="name">Team Support all user</field>
+        <field name="model_id" ref="model_team_support"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('project.group_project_manager'))]"/>
+    </record>
+    <record id="model_management_bug_assign_all_user" model="ir.rule">
+        <field name="name">Management Bug Assign all user</field>
+        <field name="model_id" ref="model_management_bug_assign"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('project.group_project_manager'))]"/>
+    </record>
+</odoo>

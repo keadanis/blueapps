@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!-- Copyright 2021 ilya ilchenko
+     Copyright 2021 Ivan Yelizariev <https://twitter.com/yelizariev>
+     License MIT (https://opensource.org/licenses/MIT). -->
+<odoo>
+    <record id="telegram_task_odoo2tele" model="sync.task">
+        <field name="name">Send response via Odoo</field>
+        <field name="active" eval="True" />
+        <field name="project_id" ref="telegram_project" />
+        <field
+            name="code"
+        ><![CDATA[
+def handle_db(records):
+    # records are instances of mail.message
+    for mail_message in records:
+        for channel in mail_message.channel_ids:
+            if channel.channel_type != 'telegram':
+                continue
+            log("MESSAGE data: channel_id %s - author_id %s - message_text: %s " % (mail_message.res_id, mail_message.author_id.id, mail_message.body), LOG_DEBUG)
+
+            if not html2plaintext(mail_message.body or ""):
+                continue
+
+            channel_link = channel.search_links(TG_CHAT_CHANNEL_REL)
+            if not channel_link:
+                continue
+            telegram_user_ref = channel_link.external
+
+            if mail_message.author_id.id in operators_partner_list or mail_message.model != 'mail.channel':
+              telegram_message_html = "%s\n\n<i>%s</i>" % (html_sanitize_telegram(mail_message.body), mail_message.author_id.name.split()[0])
+              telegram.sendMessage(telegram_user_ref, telegram_message_html, parse_mode='HTML')
+
+        ]]></field>
+    </record>
+    <record id="telegram_trigger_automation" model="sync.trigger.automation">
+        <field name="trigger_name">ON_MESSAGE_POSTED</field>
+        <field name="active" eval="True" />
+        <field name="sync_task_id" ref="telegram_task_odoo2tele" />
+        <field name="model_id" ref="mail.model_mail_message" />
+        <field name="trigger">on_write</field>
+        <field name="filter_pre_domain">[["channel_ids","=",False]]</field>
+        <field name="filter_domain">[["channel_ids","!=",False]]</field>
+    </record>
+</odoo>

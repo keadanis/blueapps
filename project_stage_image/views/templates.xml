@@ -1,0 +1,7 @@
+<odoo>
+    <template id="assets_backend" name="company logo assets" inherit_id="web.assets_backend">
+        <xpath expr="//script[last()]" position="after">
+            <script type="text/javascript" src="/project_stage_image/static/src/js/kanban_column.js"></script>
+        </xpath>
+    </template>
+</odoo>

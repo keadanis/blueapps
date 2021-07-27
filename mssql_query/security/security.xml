@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="group_mssql_query" model="res.groups">
+        <field name="name">Access MSSQL Query</field>
+    </record>
+</odoo>

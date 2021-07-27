@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <menuitem id="ni_menu_document" name="Document Storage" sequence="0" />
+
+        <menuitem id="ni_menu_document_storage" name="Storage" parent="ni_menu_document"  action="ni_document_storage_location.ni_action_document_storage" sequence="1" />
+        <menuitem id="ni_menu_document_type" name="Document Type" parent="ni_menu_document"  action="ni_document_storage_location.ni_action_document_type" sequence="2" />
+        <menuitem id="ni_menu_document_storage_location" name="Location" parent="ni_menu_document"  action="ni_document_storage_location.ni_action_document_storage_location" sequence="3" />
+    </data>
+</odoo>

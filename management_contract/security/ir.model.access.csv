@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_formation_category_professional,access_formation_category_professional,model_formation_category_professional,base.group_user,1,1,1,1
+access_formation_educational_level,access_formation_educational_level,model_formation_educational_level,base.group_user,1,1,1,1
+access_formation_cotization_group,access_formation_cotization_group,model_formation_cotization_group,base.group_user,1,1,1,1
+access_formation_job,access_formation_job,model_formation_job,base.group_user,1,1,1,1
+access_collective_agreement,access_collective_agreement,model_collective_agreement,base.group_user,1,1,1,1
+access_tag_cnae_category,access_tag_cnae_category,model_tag_cnae_category,base.group_user,1,1,1,1
+access_tag_ine_category,access_tag_ine_category,model_tag_ine_category,base.group_user,1,1,1,1
+access_agreement_type,access_agreement_type,model_agreement_type,base.group_user,1,1,1,1

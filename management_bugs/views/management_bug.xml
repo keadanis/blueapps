@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--Project form inherit-->
+    <record id="project_project_inherit_form" model="ir.ui.view">
+        <field name="name">project.project.inherit.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <!--task form inherit-->
+    <record id="project_task_inherit_form" model="ir.ui.view">
+        <field name="name">project.task.inherit.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="support_id" options='{"no_create": True}'/>
+            </xpath>
+        </field>
+    </record>
+
+
+    <!-- View Form management.bug -->
+    <record model="ir.ui.view" id="management_bug_form">
+      <field name="name">management.bug.form</field>
+      <field name="model">management.bug</field>
+      <field name="arch" type="xml">
+        <form string="Bugs">
+            <header>
+                <button name="action_to_assign_bug" string="TRANSFER / ASIGN" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state','=','resolved'), ('project_id', '=', False)]}"/>
+                <button name="action_claim_bug" string="CLAIM" type="object" attrs="{'invisible': ['|', ('state','=','resolved'), ('project_id', '=', False)]}"/>
+                <field name="state" widget="statusbar"/>
+            </header>
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                    </button>
+                </div>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name" placeholder="Document Name" required="True"/></h1>
+                </div>
+                <group name="group_general">
+                    <group name="group_f">
+                        <field name="code"/>
+                        <field name="type_bug"/>
+                        <field name="project_id" options='{"no_create": True}' required="True"/>
+                    </group>
+                    <group name="group_s">
+                        <field name="date_error"/>
+                        <field name="hour_error"/>
+                        <field name="line"/>
+                    </group>
+                    <field name="description" readonly="True"/>
+                </group>
+                <notebook>
+                    <page string="Other data">
+                        <field name="note" readonly="True"/>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- View Tree management.bug -->
+    <record model="ir.ui.view" id="management_bug_tree">
+      <field name="name">management.bug.tree</field>
+      <field name="model">management.bug</field>
+      <field name="arch" type="xml">
+        <tree string="Bugs" decoration-primary="state=='unresolved'" decoration-danger="state=='unresolved' and project_id==False">
+            <field name="name"/>
+            <field name="code"/>
+            <field name="type_bug"/>
+            <field name="project_id"/>
+            <field name="date_error"/>
+            <field name="hour_error"/>
+            <field name="line"/>
+            <field name="state"/>
+            <field name="create_date"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- View search management.bug -->
+    <record model="ir.ui.view" id="management_bug_search">
+      <field name="name">management.bug.search</field>
+      <field name="model">management.bug</field>
+      <field name="arch" type="xml">
+        <search string="Bugs">
+            <field name="name"/>
+            <field name="code"/>
+            <field name="type_bug"/>
+            <field name="project_id"/>
+            <field name="date_error"/>
+            <field name="hour_error"/>
+            <field name="line"/>
+            <filter string="Unresolved" domain="[('state', '=', 'unresolved')]" name="unresolved"/>
+            <filter string="Resolved" domain="[('state', '=', 'resolved')]" name="resolved"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_management_bug" model="ir.actions.act_window">
+        <field name="name">All bugs</field>
+        <field name="res_model">management.bug</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="management_bug_search"/>
+        <field name="context">{'search_default_unresolved': 1}</field>
+    </record>
+
+    <!-- View Form configuration.bug -->
+    <record model="ir.ui.view" id="configuration_bug_form">
+      <field name="name">configuration.bug.form</field>
+      <field name="model">configuration.bug</field>
+      <field name="arch" type="xml">
+        <form string="Configuration bug">
+            <sheet>
+              <group>
+                  <group>
+                      <field name="name"/>
+                      <field name="route"/>
+                  </group>
+                  <group>
+                      <field name="active"/>
+                  </group>
+              </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- View Tree configuration.bug -->
+    <record model="ir.ui.view" id="configuration_bug_tree">
+      <field name="name">configuration.bug.tree</field>
+      <field name="model">configuration.bug</field>
+      <field name="arch" type="xml">
+        <tree string="Configuration bug">
+            <field name="name"/>
+            <field name="route"/>
+            <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- View search configuration.bug -->
+    <record model="ir.ui.view" id="configuration_bug_search">
+      <field name="name">configuration.bug.search</field>
+      <field name="model">configuration.bug</field>
+      <field name="arch" type="xml">
+        <search string="Configuration bug">
+            <field name="name"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_configuration_bug" model="ir.actions.act_window">
+        <field name="name">Setting</field>
+        <field name="res_model">configuration.bug</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="configuration_bug_search"/>
+    </record>
+
+
+    <!-- View Form management.bug.assign -->
+    <record model="ir.ui.view" id="management_bug_assign_form">
+      <field name="name">management.bug.assign.form</field>
+      <field name="model">management.bug.assign</field>
+      <field name="arch" type="xml">
+        <form string="Management bug assign">
+            <sheet>
+              <group>
+                  <group>
+                      <field name="type_assign"/>
+                      <field name="user_id" options='{"no_create": True}' attrs="{'invisible': [('type_assign', '=', 'team')], 'required': [('type_assign', '=', 'agent')]}"/>
+                      <field name="support_id" options='{"no_create": True}' attrs="{'invisible': [('type_assign', '=', 'agent')], 'required': [('type_assign', '=', 'team')]}"/>
+                  </group>
+                  <group>
+                      <field name="project_id" required="True" options='{"no_create": True}'/>
+                  </group>
+                  <field name="note"/>
+              </group>
+            </sheet>
+            <footer>
+                <button type="object" name="action_do_transfer" string="Accept" class="oe_highlight o_wow"/>
+                <button special="cancel" string="Cancel"/>
+            </footer>
+        </form>
+      </field>
+    </record>
+
+    <!-- View Form management.bug.assign me  -->
+    <record model="ir.ui.view" id="management_bug_assign_form_me">
+      <field name="name">management.bug.assign.me.form</field>
+      <field name="model">management.bug.assign</field>
+      <field name="arch" type="xml">
+        <form string="Management bug assign">
+            <sheet>
+              <group>
+                  <group>
+                      <field name="project_id" required="True" options='{"no_create": True}'/>
+                  </group>
+                  <group>
+                  </group>
+                  <field name="note"/>
+              </group>
+            </sheet>
+            <footer>
+                <button type="object" name="action_do_claim" string="Accept" class="oe_highlight o_wow"/>
+                <button special="cancel" string="Cancel"/>
+            </footer>
+        </form>
+      </field>
+    </record>
+
+
+
+    <!-- View Tree management.bug.assign -->
+    <record model="ir.ui.view" id="management_bug_assign_tree">
+      <field name="name">management.bug.assign.tree</field>
+      <field name="model">management.bug.assign</field>
+      <field name="arch" type="xml">
+        <tree string="Management bug assign">
+            <field name="type_assign"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- View Form team support -->
+    <record model="ir.ui.view" id="team_support_form">
+      <field name="name">team.support.form</field>
+      <field name="model">team.support</field>
+      <field name="arch" type="xml">
+        <form string="Team support">
+            <sheet>
+                <group>
+                  <group>
+                      <field name="name"/>
+                  </group>
+                  <group>
+                      <field name="leader_id" options="{'no_create': True}"/>
+                  </group>
+                </group>
+                <notebook>
+                    <page name="members" string="Team Members">
+                        <field name="member_ids" widget="many2many_kanban" options="{'not_delete': True}">
+                            <kanban quick_create="false" create="true" delete="true">
+                                <field name="name"/>
+                                <templates>
+                                    <t t-name="kanban-box">
+                                        <div class="oe_kanban_global_click" style="position: relative">
+                                            <a t-if="! read_only_mode" type="delete" style="position: absolute; right: 0; padding: 4px; diplay: inline-block">X</a>
+                                            <div class="oe_module_vignette">
+                                                <!--<img t-att-src="kanban_image('res.users', 'image_small', record.id.value)" class="oe_avatar oe_kanban_avatar_smallbox"/>-->
+                                                <div class="oe_module_desc">
+                                                    <field name="name"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </templates>
+                            </kanban>
+                        </field>
+                    </page>
+                </notebook>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- View Tree team support -->
+    <record model="ir.ui.view" id="team_support_tree">
+      <field name="name">team.support.tree</field>
+      <field name="model">team.support</field>
+      <field name="arch" type="xml">
+        <tree string="Team support">
+            <field name="name"/>
+            <field name="leader_id"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- View search team support -->
+    <record model="ir.ui.view" id="team_support_search">
+      <field name="name">team.support.search</field>
+      <field name="model">team.support</field>
+      <field name="arch" type="xml">
+        <search string="Team support">
+            <field name="name"/>
+            <field name="leader_id"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_team_support" model="ir.actions.act_window">
+        <field name="name">Team support</field>
+        <field name="res_model">team.support</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="team_support_search"/>
+    </record>
+
+
+
+    <!--menu-->
+    <menuitem id="menu_projects_all_bugs" name="Management Bugs" parent="project.menu_main_pm" sequence="10"/>
+    <menuitem id="menu_projects_management_bug"  sequence="1" name="All Bugs" parent="menu_projects_all_bugs" action="action_management_bug"/>
+    <menuitem id="menu_projects_team_support"  sequence="2" name="Team support" parent="menu_projects_all_bugs" action="action_team_support"/>
+    <menuitem id="menu_projects_configuration_bug" sequence="3" name="Setting" parent="menu_projects_all_bugs" action="action_configuration_bug"/>
+</odoo>

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="snippet_resmenu" name="Menu">
+        <section class="s_product_catalog oe_custom_bg pt48 pb32 o_colored_level oe_img_bg"
+                 style="background-image: url(&quot;/theme_sync_ar_restaurant/static/src/images/bgmenu.jpg&quot;);"
+                 data-vcss="001" data-snippet="s_product_catalog" data-name="Pricelist">
+            <div class="container">
+                <div class="title-bar">
+                    <h2>Our Main Meals</h2>
+                    <p class="o_default_snippet_text">Sedolorm reminusto doeiusmod tempor inmo condorico consectetur
+                        adipiscing elitut aliquip
+                    </p>
+                </div>
+                <div class="row">
+                    <div class="pt16 pb16 o_colored_level col-lg-6">
+                        <h3>Starter</h3>
+                        <ul class="list-unstyled my-3">
+                            <li class="s_product_catalog_dish" data-name="Product">
+                                <p class="s_product_catalog_dish_title d-flex align-items-baseline pb-2">
+                                    <span class="s_product_catalog_dish_name o_default_snippet_text">
+                                        <img src="/theme_sync_ar_restaurant/static/src/images/img-001.jpg"
+                                             alt="preview"/>
+                                        Mussels Soup
+                                    </span>
+                                    <span class="s_product_catalog_dish_price ml-auto pl-2 o_default_snippet_text">
+                                        $10.00
+                                    </span>
+                                </p>
+                                <p class="s_product_catalog_dish_description border-top text-muted pt-1">
+                                    <i class="o_default_snippet_text">Fusce hendrerit sagittis metus commodo tempus</i>
+                                </p>
+                            </li>
+                            <li class="s_product_catalog_dish" data-name="Product">
+                                <p class="s_product_catalog_dish_title d-flex align-items-baseline pb-2">
+                                    <span class="s_product_catalog_dish_name o_default_snippet_text">
+                                        <img src="/theme_sync_ar_restaurant/static/src/images/img-000.jpg"
+                                             alt="preview"/> Italian Spaghetti
+                                    </span>
+                                    <span class="s_product_catalog_dish_price ml-auto pl-2 o_default_snippet_text">
+                                        $27.75
+                                    </span>
+                                </p>
+                                <p class="s_product_catalog_dish_description border-top text-muted pt-1">
+                                    <i class="o_default_snippet_text">Integer in imperdiet dolor</i>
+                                </p>
+                            </li>
+                            <li class="s_product_catalog_dish" data-name="Product">
+                                <p class="s_product_catalog_dish_title d-flex align-items-baseline pb-2">
+                                    <span class="s_product_catalog_dish_name o_default_snippet_text">
+                                        <img src="/theme_sync_ar_restaurant/static/src/images/img-002.jpg"
+                                             alt="preview"/>
+                                        Beef Burger
+                                    </span>
+                                    <span class="s_product_catalog_dish_price ml-auto pl-2 o_default_snippet_text">
+                                        $20.50
+                                    </span>
+                                </p>
+                                <p class="s_product_catalog_dish_description border-top text-muted pt-1">
+                                    <i class="o_default_snippet_text">Aget tincidunt ante vehicula</i>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="pt16 pb16 o_colored_level col-lg-6">
+                        <h3>Main Meals</h3>
+                        <ul class="list-unstyled my-3">
+                            <li class="s_product_catalog_dish" data-name="Product">
+                                <p class="s_product_catalog_dish_title d-flex align-items-baseline pb-2">
+                                    <span class="s_product_catalog_dish_name o_default_snippet_text">
+                                        <img src="/theme_sync_ar_restaurant/static/src/images/img-003.jpg"
+                                             alt="preview"/>
+                                        Grilled Fish
+                                    </span>
+                                    <span class="s_product_catalog_dish_price ml-auto pl-2 o_default_snippet_text">
+                                        $29.00
+                                    </span>
+                                </p>
+                                <p class="s_product_catalog_dish_description border-top text-muted pt-1">
+                                    <i class="o_default_snippet_text">Maecenas blandit, libero a semper sollicitudin
+                                    </i>
+                                </p>
+                            </li>
+                            <li class="s_product_catalog_dish" data-name="Product">
+                                <p class="s_product_catalog_dish_title d-flex align-items-baseline pb-2">
+                                    <span class="s_product_catalog_dish_name o_default_snippet_text">
+                                        <img src="/theme_sync_ar_restaurant/static/src/images/img-005.jpg"
+                                             alt="preview"/>
+                                        Roast Chicken
+                                    </span>
+                                    <span class="s_product_catalog_dish_price ml-auto pl-2 o_default_snippet_text">
+                                        $27.50
+                                    </span>
+                                </p>
+                                <p class="s_product_catalog_dish_description border-top text-muted pt-1">
+                                    <i class="o_default_snippet_text">Phasellus in nisi faucibus, tincidunt nulla et</i>
+                                </p>
+                            </li>
+                            <li class="s_product_catalog_dish" data-name="Product">
+                                <p class="s_product_catalog_dish_title d-flex align-items-baseline pb-2">
+                                    <span class="s_product_catalog_dish_name o_default_snippet_text">
+                                        <img src="/theme_sync_ar_restaurant/static/src/images/img-004.jpg"
+                                             alt="preview"/>
+                                        Seafood Salad
+                                    </span>
+                                    <span class="s_product_catalog_dish_price ml-auto pl-2 o_default_snippet_text">
+                                        $20.50
+                                    </span>
+                                </p>
+                                <p class="s_product_catalog_dish_description border-top text-muted pt-1">
+                                    <i class="o_default_snippet_text">Nunc ullamcorper consequat magna sed faucibus</i>
+                                </p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_resmenu_bar" inherit_id="website.snippets" name="Menu">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_resmenu"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/welcome_icon.png"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="snippet_hotsales" name="Hot Sales">
+        <section class="s_three_columns pt32 pb32 o_colored_level column_blocks" data-vcss="001" data-snippet="s_three_columns" data-name="Columns" style="">
+            <div class="container">
+                <div class="title-bar">
+                    <h2>Hot Sales</h2>
+                    <p>Lorem Ipsum is simply dummy text of the prining and typesetting industry. Lorem Ipsum</p>
+                </div>
+                <div class="container">
+                    <div class="row d-flex align-items-stretch">
+                        <div class="s_col_no_bgcolor pt16 pb16 col-lg-3">
+                            <div class="card bg-white h-100">
+                                <img class="card-img-top" src="/theme_sync_ar_restaurant/static/src/images/img_005.png" alt="preview"/>
+                                <div class="card-body">
+                                    <h3 class="card-title o_default_snippet_text">Neapolitan Pizza</h3>
+                                    <p class="card-text o_default_snippet_text">Phasellus vel feugiat erat, quis lobortis mi. Sed porta eleifend egestas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s_col_no_bgcolor pt16 pb16 col-lg-3">
+                            <div class="card bg-white h-100">
+                                <img class="card-img-top" src="/theme_sync_ar_restaurant/static/src/images/img_007.png" alt="preview"/>
+                                <div class="card-body">
+                                    <h3 class="card-title o_default_snippet_text">Greek Salad</h3>
+                                    <p class="card-text o_default_snippet_text">Pellentesque ac ipsum accumsan, posuere libero in, congue sapien</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s_col_no_bgcolor pt16 pb16 col-lg-3">
+                            <div class="card bg-white h-100">
+                                <img class="card-img-top" src="/theme_sync_ar_restaurant/static/src/images/img_006.png" alt="preview"/>
+                                <div class="card-body">
+                                    <h3 class="card-title o_default_snippet_text">Chicken &amp; Ribs</h3>
+                                    <p class="card-text o_default_snippet_text">Nullam facilisis nisi quis diam egestas hendrerit</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="s_col_no_bgcolor pt16 pb16 col-lg-3">
+                            <div class="card bg-white h-100">
+                                <img class="card-img-top" src="/theme_sync_ar_restaurant/static/src/images/img_013.png" alt="preview"/>
+                                <div class="card-body">
+                                    <h3 class="card-title o_default_snippet_text">Chicken Souvlaki</h3>
+                                    <p class="card-text o_default_snippet_text">Maecenas tincidunt ed vel augue varius mi feugiat luctus</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </template>
+    <template id="snippet_hotsales_bar" inherit_id="website.snippets" name="Hot Sales">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_hotsales"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/offers.png"/>
+        </xpath>
+    </template>
+</odoo>

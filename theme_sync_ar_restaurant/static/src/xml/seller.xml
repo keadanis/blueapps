@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <templates id="template" xml:space="preserve">
+            <t t-name="snippet_seller_template">
+                <t t-set="category" t-value="env['product.public.category'].browse(category_id)" />
+                <div class="title-bar clearfix">
+                    <h2>
+                        <t t-esc="category.name" />
+                    </h2>
+                    <div class="nav-sellers">
+                        <ul>
+                            <t t-set="count" t-value="0" />
+                            <t t-foreach="category.child_id" t-as="child">
+                                <li t-attf-class="#{count? 'active' : ''}">
+                                    <a href="#">
+                                        <t t-esc="child.name" />
+                                    </a>
+                                </li>
+                                <t t-set="count" t-value="count+1" />
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div class="half-product-blocks clearfix">
+                    <div class="slider custom-slider">
+                        <t t-set="products" t-value="env[product.template].search([('public_categ_ids','=',category.id)])" />
+                        <t t-set="product_count" t-value="len(product)" />
+                        <t t-set="range(0,product_count,tile_size)" t-value="index" />
+                        <div t-foreach="zip(index,index[1:])" t-value="start,end">
+                            <div class="row" t-foreach="range(start,end)" t-value="pos">
+                                <t t-set="product" t-value="products[pos]" />
+                                <div class="col-xs-12 col-sm-6 col-md-6">
+                                    <div class="product-box clearfix">
+                                        <div class="product-preview-box">
+                                            <a href="#">
+                                                <img src="/theme_syncoria_fashion/static/src/images/preview7.png" alt="preview" />
+                                            </a>
+                                        </div>
+                                        <div class="product-info">
+                                            <h4>
+                                                <a href="#">
+                                                    <t t-esc="product.name" />
+                                                </a>
+                                            </h4>
+                                            <div class="product-cat-name">-                                                <a href="#">Categories</a>
+                                            </div>
+                                            <div class="product-bottom-blocks clearfix">
+                                                <div class="price-list">
+                                                    <div class="new-price">$ 2 364,00</div>
+                                                </div>
+                                                <div class="add-cart-box">
+                                                    <a href="#">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </templates>
+    </data>
+</odoo>

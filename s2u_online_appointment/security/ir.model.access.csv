@@ -1,0 +1,8 @@
+"id","group_id:id","name","model_id","perm_create","perm_unlink","perm_write","perm_read"
+"r20200215001","website.group_website_designer","Default","s2u.appointment.slot",1,1,1,1
+"r20200215002","website.group_website_designer","Default","s2u.appointment.option",1,1,1,1
+"r20200215003","base.group_portal","Default","s2u.appointment.slot",0,0,0,1
+"r20200215004","base.group_portal","Default","s2u.appointment.option",0,0,0,1
+"r20200217001","base.group_portal","Default","s2u.appointment.registration",1,1,1,1
+"r20200217002","base.group_user","Default","s2u.appointment.registration",1,1,1,1
+

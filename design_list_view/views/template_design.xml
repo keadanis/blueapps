@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets" name="design_list_view assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <script type="text/javascript" src="/design_list_view/static/src/js/web.js"></script>
+                <script type="text/javascript" src="/design_list_view/static/src/js/design_headers.js"></script>
+                <script type="application/javascript" src="/design_list_view/static/src/lib/designtableheaders/jquery.designtableheaders.js"/>
+            </xpath>
+        </template>
+        <template id="assets_common" name="design_list_view assets" inherit_id="web.assets_common">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" type="text/css" href="/design_list_view/static/src/css/style.css"/>
+            </xpath>
+        </template>
+    </data>
+</odoo>

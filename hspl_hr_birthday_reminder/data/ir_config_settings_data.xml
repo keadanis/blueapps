@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data noupdate="1">
+
+        <record model="ir.config_parameter" id="emp_wish_template_id_record">
+            <field name="key">employee.emp_wish_template_id</field>
+            <field
+                name="value"
+                ref="hspl_hr_birthday_reminder.email_birthday_wishes_employee_template"
+            />
+        </record>
+
+        <record model="ir.config_parameter" id="manager_wish_template_id_record">
+            <field name="key">employee.manager_wish_template_id</field>
+            <field
+                name="value"
+                ref="hspl_hr_birthday_reminder.email_birthday_reminder_template"
+            />
+        </record>
+
+        <record model="ir.config_parameter" id="reminder_before_day_record">
+            <field name="key">employee.reminder_before_day</field>
+            <field name="value">1</field>
+        </record>
+
+    </data>
+</odoo>

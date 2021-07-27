@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_employee_view_form_inherit_performance_rating" model="ir.ui.view">
+            <field name="name">hr.employee.form.performance.rating</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='hr_settings']" position="inside">
+                    <group>
+                        <group string="Performance Rating">                           
+                            <div>
+                                <field name="performance_rating" />                              
+                            </div>
+                        </group>
+                    </group>
+                </xpath>           
+            </field>
+        </record>
+        <record model="ir.ui.view" id="hr_employee_kanban_performance_rating_inherit">
+                <field name="name">hr.employee.kanban.performance.rating.status</field>
+                <field name="model">hr.employee</field>
+                <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+                <field name="arch" type="xml">
+                    <xpath expr="//div[hasclass('oe_kanban_details')]" position="after">
+                        <field name="performance_rating" invisible="1"/>                        
+                        <div t-if="record.performance_rating.raw_value=='outstanding'">                                                                          
+                            <img src='/employee_performance_rating/static/src/img/Meters05.png' style="width:60px;height:20px"/>                        
+                        </div>
+                        <div t-if="record.performance_rating.raw_value=='verysatisfactory'">                                                                          
+                            <img src='/employee_performance_rating/static/src/img/Meters04.png' style="width:60px;height:20px"/>                        
+                        </div>
+                        <div t-if="record.performance_rating.raw_value=='satisfactory'">                                                                          
+                            <img src='/employee_performance_rating/static/src/img/Meters03.png' style="width:60px;height:20px"/>                        
+                        </div>
+                        <div t-if="record.performance_rating.raw_value=='unsatisfactory'">                                                                          
+                            <img src='/employee_performance_rating/static/src/img/Meters02.png' style="width:60px;height:20px"/>                        
+                        </div>
+                        <div t-if="record.performance_rating.raw_value=='poor'">                                                                          
+                            <img src='/employee_performance_rating/static/src/img/Meters01.png' style="width:60px;height:20px"/>                        
+                        </div>
+                    </xpath>
+                </field>
+            </record> 
+    </data>
+</odoo>

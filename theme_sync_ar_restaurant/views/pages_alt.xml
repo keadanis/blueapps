@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <!-- === Products Page === -->
+    <record id="products_page" model="website.page">
+        <field name="name">Products page</field>
+        <field name="website_published">True</field>
+        <field name="url">/products</field>
+        <field name="type">qweb</field>
+        <field name="key">theme_sync_ar_restaurant.products_page</field>
+        <field name="arch" type="xml">
+            <t t-name="theme_sync_ar_restaurant.products_page_template">
+                <t t-call="website.layout">
+                    <div id="wrap">
+                        <div class="container">
+                            <h1>Our Products</h1>
+                            <ul class="products">
+                                <li>Product 1</li>
+                                <li>Product 2</li>
+                                <li>Product 3</li>
+                            </ul>
+
+                            <!-- === Snippets' area === -->
+                            <div class="oe_structure" />
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </field>
+    </record>
+
+</odoo>

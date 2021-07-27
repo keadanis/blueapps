@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="snippet_reservation" name="Reservation">
+
+        <section class="s_call_to_action o_cc o_colored_level reservation-blocks" data-snippet="s_call_to_action"
+                 data-name="Call to Action"
+                 style="background-image: url(/theme_sync_ar_restaurant/static/src/images/img_003.jpg);">
+
+            <div class="col-shade">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-9 pb16 o_colored_level">
+                            <h3 class="o_default_snippet_text">
+                                <strong class="o_default_snippet_text">Reservations or home delivery?</strong>
+                                Book your table or delivery today
+                            </h3>
+                            <p class="o_default_snippet_text">Enjoy your food at home right now,
+                                call us for delivery today
+                            </p>
+                        </div>
+                        <div class="col-lg-3 pt8 o_colored_level">
+                            <div class="btn-right-box">
+                                <a href="/contactus"
+                                   class="btn btn-primary btn-lg o_default_snippet_text">Contact Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_reservation_bar" inherit_id="website.snippets" name="Reservation">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_reservation"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/topfeatures.png"/>
+        </xpath>
+    </template>
+</odoo>

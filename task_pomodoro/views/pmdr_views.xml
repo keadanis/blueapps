@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- explicit list view definition -->
+    <record id="view_task_pmdr_form2" model="ir.ui.view">
+        <field name="name">project.task_pomodoro.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_assign_to_me']" position="after">
+                <!-- https://www.odoo.com/documentation/master/reference/orm.html#reference-orm-domains -->
+                <button name="action_start_pomodoro" string="Start Pomodoro" type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible' : [('pmdr_status', '!=', 'Stop')]}"/>
+                <button name="action_update_pomodoro" string="Update Pomodoro" type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible' : [('pmdr_status', 'not in', ['Focus', 'Short', 'Long'])]}"/>
+                <button name="action_pause_pomodoro" string="Pause" type="object"
+                    attrs="{'invisible' : [('pmdr_status', 'not in', ['Focus', 'Short', 'Long'])]}"/>
+                <button name="action_pause_pomodoro" string="Resume Pomodoro" type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible' : [('pmdr_status', 'not in', ['PFocus', 'PShort', 'PLong'])]}"/>
+                <button name="action_stop_pomodoro" string="Stop" type="object"
+                    attrs="{'invisible' : [('pmdr_status', '==', 'Stop')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='date_deadline']" position="before">
+                <field name="pmdr_count" />
+                <field name="pmdr_subtask_count" attrs="{'invisible' : [('subtask_count', '=', 0)]}" />
+                <field name="total_pmdr" attrs="{'invisible' : [('subtask_count', '=', 0)]}"/>
+            </xpath>
+            <xpath expr="//page[@name='extra_info']/group/group[1]" position="after">
+                <group>
+                    <field name="pmdr_status" />
+                    <field name="pmdr_running" />
+                    <field name="pmdr_start" />
+                    <field name="pmdr_pause" />
+                    <!-- web/static/src/js/views/form/form_renderer.js -->
+                    <field name="pmdr_remaining_secs" attrs="{'invisible': [('pmdr_timestamp', '!=', '0')]}"/>
+                    <field name="pmdr_timestamp" attrs="{'invisible': [('pmdr_timestamp', '!=', '0')]}"/>
+                    <script>
+                        set_remaining('pmdr_timestamp', 'pmdr_remaining_secs',
+                                $("[name='pmdr_status']")[0].innerHTML + ' ',
+                                'Update Pomodoro',
+                                'Count down finished. Please Update Pomodoro in task.'
+                                );
+                    </script>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_task_pmdr_kanban">
+        <field name="name">project.task.kanban</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div/div/field[@name='activity_ids']" position="after">
+                <t t-if="record.pmdr_status_emoji.raw_value == ''">
+                    <field name="total_pmdr" attrs="{'invisible' : [('total_pmdr', '=', 0)]}"/>
+                    <emoji attrs="{'invisible' : [('total_pmdr', '=', 0)]}">🍅</emoji>
+                </t>
+                <t t-else="">
+                    <field name="total_pmdr"/> 🍅
+                </t>
+                <field name="pmdr_status_emoji"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_users_form_simple_modif" model="ir.ui.view">
+        <field name="name">res.users.preferences.task_pomodoro.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='preferences']" position="after">
+                <group name="task_pomodoro" string="Pomodoro length in minutes" col="4" >
+                    <field name="pmdr_focus_length" readonly="0"/>
+                    <field name="pmdr_short_length" readonly="0"/>
+                    <field name="pmdr_long_length" readonly="0"/>
+                    <field name="pmdr_max_running" readonly="0"/>
+                    <button name="reset_default_pmdr" type="object"
+                        string="Reset default"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

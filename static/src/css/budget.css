@@ -1,0 +1,223 @@
+
+.tree_field_progress .o_list_view thead > tr >th.o_list_number_th {
+	text-align: left ;
+}
+
+.tree_field_progress .o_list_view .o_list_number{
+    text-align: left !important;
+}
+
+.o_main_navbar {
+	background-color: #417c8a;
+ }
+
+.menu_button {
+	background-color: #417c8a;
+}
+
+.brand {
+	font-size:1.3rem;
+}
+
+.savings_summary_box {
+	background:#ccf3d6;
+	text-align:center;
+	padding: 27px;
+	margin-top: 20px;
+}
+
+a {
+	color:white;
+}
+
+a:hover {
+    color: white;
+}
+
+.summary_box_text {
+	margin-top:-40px;
+}
+
+.form-top {
+	margin-top:60px;
+}
+
+a.portal_ref {
+	color:black;
+}
+
+.marked{
+	background-color:#eeeeea;color:#000000;font-weight:500;
+}
+	
+.td_marked {
+    border:  #d63e3e;
+    background-color: #eeeeea;
+}
+
+[contenteditable="true"]:focus {
+    outline: 1px solid #d63e3e;
+}
+
+[contenteditable="true"] {
+  outline: 0px solid transparent;
+  border: 0px solid transparent;
+}
+
+.alert{
+  display:none;
+}
+
+.bar {
+	background-color: #4da4c5;
+ 	color: white;
+}
+
+.o_main_navbar > ul > li > a:hover, .o_main_navbar > ul > li > label:hover {
+	background-color: #345762;
+}
+
+.btn-primary:hover {
+	color: #FFFFFF;
+	background-color: #345762;
+	border-color: #345762;
+}
+
+.o_main_navbar .show .dropdown-toggle {
+	background-color: #345762;
+}
+
+.table th, .table td {
+    padding: 0.30rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: .5rem;
+}
+
+select {
+    border: 1px solid #c5c3b875;
+    outline: none;
+    appearance: none;
+    background: #89e7c873;
+    background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='34' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+    background-repeat: no-repeat;
+    background-position-x: 100%;
+    background-position-y: -5px;
+    height: 27px;
+    -ms-word-break: normal;
+    word-break: normal;
+    padding: 1px 15px 0px 20px;
+}
+
+select.annual_year_dp
+{
+    margin-top: 25px;
+    height: 40px;
+    text-align-last: center;
+    background-position-x: 97%;
+    background-position-y: 2px;
+    font-size: 1.2rem;
+    width:12%;
+    margin-bottom:5px;
+    margin-left: 78px;
+}
+
+.networth_box {
+	background: #c5607373;
+    padding: 10px;
+    margin-left: 1240px;
+    width: 17%;
+    justify-content: center;
+    display: flex;
+}
+
+.box1 {
+	margin-left: 400px;
+	margin-top: -46px;
+}
+
+.box2 {
+	margin-left: 816px;
+	margin-top: -43px;
+}
+
+.box3 {
+	margin-left: 1238px;
+	margin-top: -43px;
+}
+
+.o_portal_pager.top {
+    margin-left: 600px;
+    margin-top: -35px;
+    margin-bottom: 10px;
+}
+.o_portal_pager.bottom {
+    margin-left: 600px;
+    margin-top: 10px;
+}
+.o_main_navbar .show .dropdown-toggle {
+	
+	background-color:#417c8a;
+}
+
+@media
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	#change_month {
+	 width: 33%!important;
+	 padding-left: 5px;
+    }
+
+	select {
+       background-position-y: -4px;
+    }
+
+	#change_year {
+	   padding-left: 9px;
+       width: 27%!important;
+    }
+
+	select.annual_year_dp {
+		width: 45%;
+	    margin-bottom: 5px;
+	    margin-left: 17px;
+	    padding-left: 0px;
+    }
+
+	.box1 {
+		margin-left: 17px;
+	    margin-top: 23px;
+	    width: 58%;
+	}
+
+	.box2 {
+		margin-left: 17px;
+	    margin-top: 23px;
+	    width: 75%;
+	}
+
+	.box3 {
+		margin-left: 17px;
+	    margin-top: 23px;
+	    width: 85%;
+	}
+
+	row {
+        padding:20px !important;}
+	}
+
+	.savings_summary_box.invest {
+		background: #8db3e2b5;
+	}

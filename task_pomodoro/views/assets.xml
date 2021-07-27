@@ -1,0 +1,12 @@
+<odoo>
+    <template id="task_pmdr_assets_backend" name="Task Pomodoro assets" inherit_id="web.assets_backend">
+        <xpath expr="//script[last()]" position="after">
+            <!-- https://www.odoo.com/documentation/master/reference/javascript_reference.html
+                 -->
+            <!-- jQuery is available so no need here.
+            <script src="https://intercoolerreleases-leaddynocom.netdna-ssl.com/intercooler-1.2.1.min.js"></script>
+            -->
+            <script type="text/javascript" src="/task_pomodoro/static/js/task_pmdr.js"></script>
+        </xpath>
+    </template>
+</odoo>

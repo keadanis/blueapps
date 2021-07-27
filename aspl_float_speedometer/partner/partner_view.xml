@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="aspl_speedometer_view_vehicle_form">
+        <field name="name">aspl.speedometer.vehicle.form</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="inherit_id" ref="fleet.fleet_vehicle_view_form"/>
+        <field name="arch" type="xml">
+            <field name="residual_value" position="after">
+                <field name="max_speed" string="Max Speed"
+                       widget="speedometer" max="200"/>
+            </field>
+        </field>
+    </record>
+</odoo>

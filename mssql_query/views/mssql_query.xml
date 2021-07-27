@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <record id="mssql_query_tree_view" model="ir.ui.view">
+            <field name="name">mssql.query.form.tree</field>
+            <field name="model">mssql.query</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name='name'/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="mssql_query_form_view" model="ir.ui.view">
+            <field name="name">mssql.query.form</field>
+            <field name="model">mssql.query</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+<!--					<button name="print_result" string="Print PDF" type="object" attrs="{'invisible':[('raw_output','in',['',[],False])]}" style="color: blue !important"/>-->
+				</header>
+                    <sheet>
+                        <group>
+                            <field name="connection_id"/>
+
+                        </group>
+                        <group string="Type a query">
+                            <field name="name" nolabel="1"/>
+                        </group>
+                    <group>
+                        <button name="execute_query" string="Execute" type="object"
+                                class="oe_highlight"/>
+                    </group>
+                        <group>
+                            <div style="overflow:visible !important;">
+						<group>
+							<group colspan="4">
+								<field name="rowcount" readonly="1" nolabel="1"/>
+							</group>
+
+							<group>
+                                    <field name="html" readonly="1" nolabel="1"/>
+							</group>
+						</group>
+					</div>
+                        </group>
+                        <group>
+						<field name="show_raw_output"/>
+						<field name="raw_output" attrs="{'invisible':[('show_raw_output','=',False)]}"/>
+					</group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="sql_connection_tree_view" model="ir.ui.view">
+            <field name="name">sql.server.connection.view.tree</field>
+            <field name="model">mssql.connection</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name='name'/>
+                    <field name='server_ip'/>
+                    <field name='server_db'/>
+                    <field name='server_login'/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="sql_connection_form_view" model="ir.ui.view">
+            <field name="name">sql.server.connection.view.form</field>
+            <field name="model">mssql.connection</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="server_ip"/>
+                            </group>
+                            <group>
+                                <field name="server_db"/>
+                                <field name="server_login"/>
+                                <field name="server_password" password="True"/>
+                            </group>
+                            <button width="50%" name="test_sync" string="Test Connection" type="object"
+                                    class="oe_highlight" icon="fa-television"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sql_query_form_view" model="ir.actions.act_window">
+            <field name="name">SQL Query</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mssql.query</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create MS SQL Query
+                </p>
+            </field>
+        </record>
+
+        <record id="action_sql_connection_form_view" model="ir.actions.act_window">
+            <field name="name">Connect SQL Server</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mssql.connection</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" eval="False"/>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create Connection
+                </p>
+            </field>
+        </record>
+        <menuitem id="menu_mssql_query" name="SQL Query" sequence="0" groups="group_mssql_query" action="action_sql_query_form_view"/>
+        <menuitem id="sub_menu_mssql_query_settings" name="Settings" parent="menu_mssql_query" sequence="-10" groups="group_mssql_query"/>
+        <menuitem id="sub_menu_mssql_connection" name="SQL Connection" parent="sub_menu_mssql_query_settings" sequence="-10" groups="group_mssql_query" action="action_sql_connection_form_view"/>
+    </data>
+</odoo>

@@ -1,0 +1,182 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* w_split_lead
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-23 22:50+0000\n"
+"PO-Revision-Date: 2021-03-23 22:50+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: w_split_lead
+#: model_terms:ir.ui.view,arch_db:w_split_lead.w_inherit_crm_lead_view_add_page_split_lead
+msgid ""
+"<strong>NOTE: </strong>The sum of the percentages of the lines must be equal"
+" to the percentage probabilty of the opportunity, please equal the total "
+"percentage of the lines with the one established in the opportunity, in "
+"order to save it."
+msgstr ""
+"<strong>NOTE: </strong>La suma de los porcentajes de las líneas debe ser igual"
+" al porcentaje de probabilidad de la oportunidad, por favor iguala  el porcentaje "
+"total de las líneas con el establecido en la oportunidad, para poder guardarla."
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__amount_percent
+msgid "Amount Percent"
+msgstr "Importe de porcentaje"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__comercial_id
+msgid "Commercial"
+msgstr "Vendedor"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_crm_lead__display_name
+#: model:ir.model.fields,field_description:w_split_lead.field_sale_order__display_name
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: w_split_lead
+#: model:ir.model.fields,help:w_split_lead.field_split_lead__sequence
+msgid "Gives the sequence of this line when displaying."
+msgstr "Da la secuencia de la línea"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_crm_lead__id
+#: model:ir.model.fields,field_description:w_split_lead.field_sale_order__id
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__id
+msgid "ID"
+msgstr ""
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_crm_lead____last_update
+#: model:ir.model.fields,field_description:w_split_lead.field_sale_order____last_update
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__lead_id
+msgid "Lead"
+msgstr "Oportunidad"
+
+#. module: w_split_lead
+#: model:ir.model,name:w_split_lead.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Iniciativa/Oportunidad"
+
+#. module: w_split_lead
+#: model_terms:ir.actions.act_window,help:w_split_lead.action_split_lead_view
+msgid "List split lead"
+msgstr "Lista de líneas"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__percentaje
+msgid "Percentage"
+msgstr "Porcentaje"
+
+#. module: w_split_lead
+#: model:ir.model,name:w_split_lead.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_split_lead__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_crm_lead__show_note
+msgid "Show Note"
+msgstr "Mostrar nota"
+
+#. module: w_split_lead
+#: model:ir.model.fields,field_description:w_split_lead.field_crm_lead__show_split
+msgid "Show Split"
+msgstr "Mostrar split"
+
+#. module: w_split_lead
+#: model:ir.actions.act_window,name:w_split_lead.split_lead_pivot_action
+#: model:ir.model.fields,field_description:w_split_lead.field_crm_lead__split_lead_ids
+#: model:ir.ui.menu,name:w_split_lead.split_lead_pivot_menu_report
+#: model_terms:ir.ui.view,arch_db:w_split_lead.split_lead_pivot_view
+msgid "Split Lead"
+msgstr "Dividir oportunidad"
+
+#. module: w_split_lead
+#: model_terms:ir.ui.view,arch_db:w_split_lead.split_lead_view
+#: model_terms:ir.ui.view,arch_db:w_split_lead.w_inherit_crm_lead_view_add_page_split_lead
+msgid "Split lead"
+msgstr "Dividir oportunidad"
+
+#. module: w_split_lead
+#: model:ir.model.fields,help:w_split_lead.field_split_lead__comercial_id
+msgid "The commercial that participated in the opportunity"
+msgstr "El vendedor que participo en la oportunidad"
+
+#. module: w_split_lead
+#: model:ir.model.fields,help:w_split_lead.field_split_lead__percentaje
+msgid "The percentage that the commercial won in this opportunity"
+msgstr "El porcentaje que el vendedor obtuvo en esta oportunidad"
+
+#. module: w_split_lead
+#: code:addons/w_split_lead/models/inherit_crm_lead.py:0
+#, python-format
+msgid ""
+"The total amount of the splits lines must be equal to the probability "
+"percent of the opportunity!"
+msgstr ""
+"El porcentaje total de las líneas divididas debe ser igual al porcentaje de "
+"probabilidad de la oportunidad!"
+
+#. module: w_split_lead
+#: model:ir.actions.act_window,name:w_split_lead.action_split_lead_view
+msgid "action.split.lead.view"
+msgstr ""
+
+#. module: w_split_lead
+#: model:ir.model.fields,help:w_split_lead.field_split_lead__amount_percent
+msgid ""
+"amount corresponding to the percentage according to the total of the "
+"opportunity"
+msgstr ""
+"Importe correspondiente al porcentaje de acuerdo al porcentaje total de la "
+"oportunidad"
+
+#. module: w_split_lead
+#: model:ir.model,name:w_split_lead.model_split_lead
+msgid "split.lead"
+msgstr ""
+
+#. module: w_split_lead
+#: model_terms:ir.ui.view,arch_db:w_split_lead.w_inherit_crm_lead_view_add_page_split_lead
+msgid "total"
+msgstr "Total"

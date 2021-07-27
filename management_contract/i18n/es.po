@@ -1,0 +1,859 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* management_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20190207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-26 16:54+0000\n"
+"PO-Revision-Date: 2020-03-26 16:54+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.sale_view_order_form_inherit
+msgid "<strong>The contracts associated with this sales order have been generated:</strong>"
+msgstr "<strong>Se han generado los contratos asociados con este pedido de venta:</strong>"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Abandonment"
+msgstr "Abandono"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_accom
+msgid "Accommodation"
+msgstr "Alojamiento"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_active
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_active
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: management_contract
+#: selection:hr.contract,ctt_assumption:0
+msgid "Acumulation"
+msgstr "Acumulación"
+
+#. module: management_contract
+#: model:ir.ui.menu,name:management_contract.menu_qa_agreement_type
+#: model:ir.ui.view,arch_db:management_contract.agreement_type_form_view
+#: model:ir.ui.view,arch_db:management_contract.agreement_type_search
+msgid "Agreement Type"
+msgstr "Tipo de Acuerdo"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.agreement_type_action
+#: model:ir.model,name:management_contract.model_agreement_type
+#: model:ir.ui.view,arch_db:management_contract.agreement_type_list_view
+msgid "Agreement Types"
+msgstr "Tipos de Acuerdo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_type_id
+msgid "Agreement type"
+msgstr "Tipo de Acuerdo"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.agreement_type_search
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_search
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_ctt_assumption
+msgid "Assumption"
+msgstr "Supuesto"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_attachment_ids
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_termination_cause
+msgid "Baja/Cause termination"
+msgstr "Baja/Causa terminación"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_irpf_base
+#: model:ir.model.fields,help:management_contract.field_hr_employee_irpf_base
+msgid "Base IRPF"
+msgstr "Base IRPF"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_cif_client
+msgid "CIF"
+msgstr "CIF"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_tag_cnae_id
+msgid "CNAE"
+msgstr "CNAE"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "Cancelled"
+msgstr "Cancelado"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_tag_cnae_category
+#: model:ir.model,name:management_contract.model_tag_cnae_category
+#: model:ir.ui.menu,name:management_contract.menu_qa_cnae_tag
+#: model:ir.ui.view,arch_db:management_contract.tag_category_cnae_form
+#: model:ir.ui.view,arch_db:management_contract.tag_cnae_category_search
+#: model:ir.ui.view,arch_db:management_contract.tag_cnae_category_tree
+#: model:ir.ui.view,arch_db:management_contract.tag_ine_category_search
+msgid "Categories CNAE"
+msgstr "Categories CNAE"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_tag_ine_category
+#: model:ir.model,name:management_contract.model_tag_ine_category
+#: model:ir.ui.menu,name:management_contract.menu_qa_ine_tag
+#: model:ir.ui.view,arch_db:management_contract.tag_ine_category_form
+#: model:ir.ui.view,arch_db:management_contract.tag_ine_category_tree
+msgid "Categories INE"
+msgstr "Categorías CNAE"
+
+#. module: management_contract
+#: model:ir.model,name:management_contract.model_formation_category_professional
+msgid "Category Professional"
+msgstr "Categoría Profesional"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_code_inem
+msgid "Category SEPE"
+msgstr "Categoría SEPE"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_formation_category_professional
+#: model:ir.ui.menu,name:management_contract.menulist_category_professional
+#: model:ir.ui.view,arch_db:management_contract.formation_category_professional_form
+#: model:ir.ui.view,arch_db:management_contract.formation_category_professional_tree
+msgid "Category professional"
+msgstr "Categoría Profesional"
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_res_partner_is_employee
+#: model:ir.model.fields,help:management_contract.field_res_users_is_employee
+msgid "Check this box if this contact is a Employee."
+msgstr "Marque esta casilla si este contacto es un empleado."
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_partner_id
+msgid "Client"
+msgstr "Cliente"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_code
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_code_cnae
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_code_ine
+msgid "Code"
+msgstr "Código"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_abred_code
+msgid "Code ABRED"
+msgstr "Código ABRED"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_cc_nass_code
+msgid "Code NASS"
+msgstr "Código NASS"
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_hr_contract_code_inem
+msgid "Code number of SEPE job category"
+msgstr "código de la categoría de trabajo SEPE"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_collective_agreement
+#: model:ir.model,name:management_contract.model_collective_agreement
+#: model:ir.model.fields,field_description:management_contract.field_sale_order_agreement_id
+#: model:ir.ui.menu,name:management_contract.menulist_collective_agreement
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_form
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_search
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_tree
+msgid "Collective Agreement"
+msgstr "Convenio colectivo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_agreement_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_agreement_id
+msgid "Collective agreement"
+msgstr "Convenio colectivo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_company_id
+msgid "Company"
+msgstr "Compañía"
+
+#. module: management_contract
+#: model:ir.model,name:management_contract.model_hr_contract
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: management_contract
+#: selection:hr.contract,type_doc:0
+msgid "Contract Employee"
+msgstr "Contrato Empleado"
+
+#. module: management_contract
+#: selection:hr.contract,type_doc:0
+msgid "Contract Ett"
+msgstr "Contrato Empleado ETT"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Contract end"
+msgstr "Fin contrato"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_contract_hours
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_contract_hours
+msgid "Contract hours"
+msgstr "Horas contrato"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Contract variation"
+msgstr "Terminación contrato"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.act_hr_management_contract
+#: model:ir.ui.menu,name:management_contract.management_contract_menu_contract
+#: model:ir.ui.menu,name:management_contract.management_contract_menu_root
+#: model:ir.ui.menu,name:management_contract.management_contract_menu_root_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_graph
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_pivot
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_tree
+msgid "Contracts"
+msgstr "Contratos"
+
+#. module: management_contract
+#: model:ir.model,name:management_contract.model_formation_cotization_group
+msgid "Cotization Group"
+msgstr "Grupo de cotización"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_formation_cotization_group
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_cotization_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_cotization_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_cotization_id
+#: model:ir.ui.menu,name:management_contract.menulist_cotization_group
+#: model:ir.ui.view,arch_db:management_contract.formation_cotization_group_form
+#: model:ir.ui.view,arch_db:management_contract.formation_cotization_group_tree
+msgid "Cotization group"
+msgstr "Grupo de cotización"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.sale_view_order_form_inherit
+msgid "Create Contract"
+msgstr "Crear Contrato"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_sale_order_count_create
+msgid "Created"
+msgstr "Creado"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_create_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_create_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_create_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_create_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_create_uid
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_create_uid
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_create_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_create_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_create_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_create_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_create_date
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_create_date
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_hr_contract_time_execution
+msgid "Creation/ Update registers"
+msgstr "Creación / Actualización de registros"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_fv_nie
+msgid "DNI/NIE Caduc."
+msgstr "DNI/NIE Caduc."
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_doc_ident
+msgid "DNI/NIE/Pas."
+msgstr "DNI/NIE/Pas."
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_hr_contract_registration_date
+msgid "Date of registration of the contract"
+msgstr "Fecha de registro del contrato."
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_hr_contract_termination_date
+msgid "Date of termination of the contract"
+msgstr "Fecha de terminación del contrato."
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_job_seeker
+msgid "Demandante Empleo"
+msgstr "Demandante Empleo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_description
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_description
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_description
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_description
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_display_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_display_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_display_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_display_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_display_name
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_display_name
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_form
+msgid "Document Name"
+msgstr "Nombre Documento"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "Done"
+msgstr "Finalizado"
+
+#. module: management_contract
+#: model:ir.model,name:management_contract.model_formation_educational_level
+#: model:ir.ui.view,arch_db:management_contract.formation_educational_level_form
+msgid "Educational Level"
+msgstr "Nivel educacional"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_formation_educational_level
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_educational_level_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_educational_level_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_educational_level_id
+#: model:ir.ui.menu,name:management_contract.menulist_educational_level
+#: model:ir.ui.view,arch_db:management_contract.formation_educational_level_tree
+msgid "Educational level"
+msgstr "Nivel educacional"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.act_hr_employee_management_contract
+#: model:ir.model,name:management_contract.model_hr_employee
+#: model:ir.model.fields,field_description:management_contract.field_res_partner_is_employee
+#: model:ir.model.fields,field_description:management_contract.field_res_users_is_employee
+msgid "Employee"
+msgstr "Empleado"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_empl_ett
+msgid "Employee ETT"
+msgstr "Employee ETT"
+
+#. module: management_contract
+#: model:ir.ui.menu,name:management_contract.management_contract_employee_menu_contract
+msgid "Employees"
+msgstr "Empleados"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_end_date
+msgid "End date"
+msgstr "Fecha fin"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_date_last_b
+msgid "Feha baja"
+msgstr "Fecha baja"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_food
+msgid "Food"
+msgstr "Ticket comida"
+
+#. module: management_contract
+#: selection:hr.contract,ctt_assumption:0
+msgid "Formation"
+msgstr "Formación"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_code_general
+msgid "General"
+msgstr "General"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "Group by..."
+msgstr "Agrupar por..."
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_collective_agreement_tag_cnae_id
+msgid "Groups CNAE."
+msgstr "Grupos CNAE."
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_is_hired
+msgid "Hired"
+msgstr "Contratado"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_id
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_id
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_id
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_id
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_id
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_id
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_id
+msgid "ID"
+msgstr "ID"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_category_ine_id
+msgid "INE"
+msgstr "INE"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.tag_category_cnae_form
+#: model:ir.ui.view,arch_db:management_contract.tag_ine_category_form
+msgid "Internal note..."
+msgstr "Nota Interna..."
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_is_template
+msgid "Is a Template?"
+msgstr "Es una plantilla?"
+
+#. module: management_contract
+#: model:ir.actions.act_window,name:management_contract.action_formation_job
+#: model:ir.model,name:management_contract.model_formation_job
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_formation_job_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_formation_job_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_formation_job_id
+#: model:ir.ui.menu,name:management_contract.menulist_formation_job
+#: model:ir.ui.view,arch_db:management_contract.formation_job_form
+#: model:ir.ui.view,arch_db:management_contract.formation_job_tree
+msgid "Job"
+msgstr "Puesto"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Labor strike"
+msgstr "Huelga laboral"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement___last_update
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional___last_update
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group___last_update
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level___last_update
+#: model:ir.model.fields,field_description:management_contract.field_formation_job___last_update
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category___last_update
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_write_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_write_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_write_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_write_uid
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_write_uid
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_write_uid
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_write_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_write_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_write_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_write_date
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_write_date
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_write_date
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_hr_employee_date_last_b
+msgid "Last date"
+msgstr "Última contratación"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_time_execution
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Management SS"
+msgstr "Gestión SS"
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_hr_employee_irpf_personal
+msgid "Min personal IRPF"
+msgstr "Min personal IRPF"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_mobi
+msgid "Mobile"
+msgstr "Móvil"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Monthly Allowance in Cash"
+msgstr "Subsidio mensual en efectivo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_nafss
+msgid "NAFSS"
+msgstr "NAFSS"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_formation_category_professional_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_cotization_group_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_educational_level_name
+#: model:ir.model.fields,field_description:management_contract.field_formation_job_name
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_name
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_search
+msgid "Name or Number"
+msgstr "Nombre o Codigo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_nature
+msgid "Nature Of Work"
+msgstr "Naturaleza del trabajo"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "New"
+msgstr "Nuevo"
+
+#. module: management_contract
+#: selection:hr.contract,job_seeker:0
+#: selection:hr.contract,notification_inem:0
+msgid "No"
+msgstr "No"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_cc_nass_number
+msgid "No. NASS"
+msgstr "No. NASS"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_note
+#: model:ir.model.fields,field_description:management_contract.field_tag_ine_category_note
+msgid "Notes"
+msgstr "Notas"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_notification_inem
+msgid "Notification INEM"
+msgstr "Notificación INEM"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_name
+msgid "Number"
+msgstr "Número"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_obj_control_ctto
+msgid "Object ctto"
+msgstr "Objecto contrato"
+
+#. module: management_contract
+#: selection:hr.contract,ctt_assumption:0
+msgid "Obre"
+msgstr "Obra"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_pnafss
+msgid "PNAFSS"
+msgstr "PNAFSS"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_tag_cnae_category_parent_id
+msgid "Parent"
+msgstr "Padre"
+
+#. module: management_contract
+#: model:ir.model,name:management_contract.model_res_partner
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_partner_id
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_search
+msgid "Partner"
+msgstr "Empresa"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_sale_order_count_pending
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_irpf_personal
+msgid "Personal IRPF"
+msgstr "Personal IRPF"
+
+#. module: management_contract
+#: selection:hr.contract,ctt_assumption:0
+msgid "Practics"
+msgstr "Prácticas"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_sale_order_check_process
+msgid "Process"
+msgstr "Procesado"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_category_professional_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_category_professional_id
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_category_professional_id
+msgid "Professional category"
+msgstr "Categoría profesional"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_employee_irpf_cuote
+#: model:ir.model.fields,help:management_contract.field_hr_employee_irpf_cuote
+msgid "Quote IRPF"
+msgstr "Cuota IRPF"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Recess voluntary"
+msgstr "Baja voluntario"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_quotation_id
+msgid "Ref order"
+msgstr "Ref pedido"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Register data"
+msgstr "Datos de registro"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Register discharge SS"
+msgstr "Registrar alta SS"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Register withdrawal SS"
+msgstr "Registrar baja SS"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_registration_date
+msgid "Registration"
+msgstr "Registro"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_registration_finger
+msgid "Registration finger"
+msgstr "Huella alta"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_brut_salary
+msgid "Salary brut"
+msgstr "Salario bruto"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_net_salary
+msgid "Salary net"
+msgstr "Salario neto"
+
+#. module: management_contract
+#: model:ir.model,name:management_contract.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venta"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_sector_cnae
+msgid "Sector"
+msgstr "Sector"
+
+#. module: management_contract
+#: selection:hr.contract,ctt_assumption:0
+msgid "Selection"
+msgstr "Selección"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Set draft"
+msgstr "Poner en borrador"
+
+#. module: management_contract
+#: model:ir.model.fields,help:management_contract.field_collective_agreement_is_template
+msgid "Set if the agreement is a template. Template agreements don't require a partner."
+msgstr "Establecer si el acuerdo es una plantilla. Los acuerdos de plantilla no requieren un partner"
+
+#. module: management_contract
+#: model:ir.ui.menu,name:management_contract.management_contract_menu_root_settings
+msgid "Settings"
+msgstr "Configuración"
+
+#. module: management_contract
+#: model:ir.ui.menu,name:management_contract.menulist_menu_settings
+msgid "Settings (Premium)"
+msgstr "Configuración (Premium)"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_search
+msgid "Signature Date"
+msgstr "Fecha firma"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_signature_date
+msgid "Signature date"
+msgstr "Fecha firma"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_start_date
+msgid "Start date"
+msgstr "Fecha inicio"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "State"
+msgstr "Estado"
+
+#. module: management_contract
+#: selection:hr.contract,ctt_assumption:0
+msgid "Sustitution"
+msgstr "Sustitution"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_team_id
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "Team"
+msgstr "Equipo"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_collective_agreement_term_description
+msgid "Term description"
+msgstr "Description terminos"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_termination_date
+msgid "Termination"
+msgstr "Terminación"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_termination_finger
+msgid "Termination finger"
+msgstr "Huella baja"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.collective_agreement_form
+msgid "Terms & Condition"
+msgstr "Terminos & Condiciones"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Test not superated for company"
+msgstr "Prueba no superada por empresa"
+
+#. module: management_contract
+#: selection:hr.contract,termination_cause:0
+msgid "Test not superated for employee"
+msgstr "Prueba no superada por empleado"
+
+#. module: management_contract
+#: code:addons/management_contract/models/management_contract.py:91
+#, python-format
+msgid "The date registration date the contract or incorporation cannot be empty."
+msgstr "La fecha de registro del contrato o incorporación no puede estar vacía."
+
+#. module: management_contract
+#: code:addons/management_contract/models/management_contract.py:103
+#, python-format
+msgid "The termination date the contract or finish cannot be empty."
+msgstr "La fecha de finalización del contrato o finalización no puede estar vacía"
+
+#. module: management_contract
+#: code:addons/management_contract/models/management_contract.py:402
+#, python-format
+msgid "There are no employees available to hire. You can contact your manager or open a new recruitment process."
+msgstr "No hay empleados disponibles para contratar. Puede contactar a su gerente o abrir un nuevo proceso de contratación."
+
+#. module: management_contract
+#: sql_constraint:collective.agreement:0
+msgid "This agreement code already exists for this partner!"
+msgstr "¡Este código de acuerdo ya existe para este socio!"
+
+#. module: management_contract
+#: code:addons/management_contract/models/management_contract.py:363
+#, python-format
+msgid "To create a contract you must review the delivered quantity of your order lines."
+msgstr "Para crear un contrato, debe revisar la cantidad entregada de sus líneas de pedido."
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_trans
+msgid "Transportation"
+msgstr "Transporte"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_type_doc
+msgid "Type Document"
+msgstr "Tipo documento"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.agreement_type_list_view
+msgid "Type Name"
+msgstr "Tipo"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_form
+msgid "Type document"
+msgstr "Tipo documento"
+
+#. module: management_contract
+#: model:ir.model.fields,field_description:management_contract.field_hr_contract_type_retribution
+msgid "Type retribution"
+msgstr "Tipo retribución"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.hr_management_contract_view_search
+msgid "Valid"
+msgstr "Válido"
+
+#. module: management_contract
+#: selection:hr.contract,job_seeker:0
+#: selection:hr.contract,notification_inem:0
+msgid "Yes"
+msgstr "Si"
+
+#. module: management_contract
+#: model:ir.ui.view,arch_db:management_contract.sale_view_order_form_inherit
+msgid "contract(s) pending of"
+msgstr "contrato (s) pendiente de"
+

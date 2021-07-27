@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="snippet_resspeciality" name="Specialty">
+        <section
+                class="s_cover bg-black-50 pt96 pb96 o_colored_level s_parallax_no_overflow_hidden oe_img_bg cover_blocks"
+                data-scroll-background-ratio="0" data-snippet="s_cover" data-name="Cover"
+                style="background-image: url(/theme_sync_ar_restaurant/static/src/images/img_002.jpg);">
+            <div class="o_we_bg_filter bg-black-50"></div>
+            <div class="container s_allow_columns">
+                <h2>Today’s Specialty</h2>
+                <p class="lead o_default_snippet_text">Lorem Ipsum is simply dummy text of the prining and
+                    typesetting
+                    industry.
+                </p>
+                <div class="btn-blocks">
+                    <a href="#" class="btn btn-primary mb-2 o_default_snippet_text">Read More</a>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_resspeciality_bar" inherit_id="website.snippets" name="Specialty">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_resspeciality"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/res_icon.png"/>
+        </xpath>
+    </template>
+</odoo>

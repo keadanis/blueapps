@@ -1,0 +1,219 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* prt_mail_messages_draft
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0-20180613\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-09 08:00+0000\n"
+"PO-Revision-Date: 2018-07-09 11:00+0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_form
+msgid ""
+"<b>\n"
+"                  Related record: </b>"
+msgstr ""
+"<b>\n"
+"                  Относится к: </b>"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_attachment_ids
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_form
+msgid "Attachments"
+msgstr "Вложения"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_author_id
+msgid "Author"
+msgstr "Автор"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_form
+msgid "Body"
+msgstr "Содержимое"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_body
+msgid "Contents"
+msgstr "Содержание"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_create_uid
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_create_uid
+msgid "Created by"
+msgstr "Создано"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_create_date
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_create_date
+msgid "Created on"
+msgstr "Создан"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_search
+msgid "Day"
+msgstr "День"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_display_name
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_display_name
+msgid "Display Name"
+msgstr "Отображаемое Имя"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model,name:prt_mail_messages_draft.model_prt_mail_message_draft
+msgid "Draft Message"
+msgstr "Черновик сообщения"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_form
+msgid "Draft message"
+msgstr "Черновик сообщения"
+
+#. module: prt_mail_messages_draft
+#: model:ir.actions.act_window,name:prt_mail_messages_draft.action_prt_mail_messages_draft
+#: model:ir.ui.menu,name:prt_mail_messages_draft.prt_messages_messages
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_tree
+msgid "Drafts"
+msgstr "Черновики"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model,name:prt_mail_messages_draft.model_mail_thread
+msgid "Email Thread"
+msgstr "Цепочка эл.почты"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model,name:prt_mail_messages_draft.model_mail_compose_message
+msgid "Email composition wizard"
+msgstr "Мастер составления эл. писем"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_ref_partner_count
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_ref_partner_ids
+msgid "Followers"
+msgstr "Подписчики"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_search
+msgid "Group By"
+msgstr "Группировать по"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_id
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_id
+msgid "ID"
+msgstr "Номер"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft___last_update
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref___last_update
+msgid "Last Modified on"
+msgstr "Последнее изменение"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_write_uid
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_write_uid
+msgid "Last Updated by"
+msgstr "Последний раз обновил"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_write_date
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_write_date
+msgid "Last Updated on"
+msgstr "Последнее обновление"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_draft_id
+msgid "Message"
+msgstr "Сообщение"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_record_ref
+msgid "Message Record"
+msgstr "Объект сообщения"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_subtype_id
+msgid "Message Type"
+msgstr "Тип сообщения"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_search
+msgid "Messages Search"
+msgstr "Поиск сообщений"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_model
+msgid "Model"
+msgstr "Модель"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_search
+msgid "Month"
+msgstr "Месяц"
+
+#. module: prt_mail_messages_draft
+#: code:addons/prt_mail_messages_draft/models/prt_mail_draft.py:11
+#, python-format
+msgid "New message"
+msgstr "Новое сообщение"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_parent_id
+msgid "Parent Message"
+msgstr "Родительское сообщение"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_partner_ids
+msgid "Recipients"
+msgstr "Получатели"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_res_id
+msgid "Related Document ID"
+msgstr "ID связанного документа"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_compose_message_view_form
+msgid "Save"
+msgstr "Сохранить"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_compose_message_view_form
+msgid "Save & Close"
+msgstr "Сохранить и закрыть"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model,name:prt_mail_messages_draft.model_prt_message_draft_ref
+msgid "Select Record Ref for Draft Message"
+msgstr "Выберите запись к которой относится черновик"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_message_draft_ref_record_ref
+msgid "Select record"
+msgstr "Выберите запись"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_form
+msgid "Send"
+msgstr "Отправить"
+
+#. module: prt_mail_messages_draft
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_subject
+#: model:ir.model.fields,field_description:prt_mail_messages_draft.field_prt_mail_message_draft_subject_display
+msgid "Subject"
+msgstr "Тема"
+
+#. module: prt_mail_messages_draft
+#: model:ir.ui.view,arch_db:prt_mail_messages_draft.prt_mail_message_draft_search
+msgid "Week"
+msgstr "Неделя"

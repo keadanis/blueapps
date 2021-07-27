@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+ 		<record id="action_budget_account_report" model="ir.actions.act_window">
+            <field name="name">Account Transaction</field>
+            <field name="res_model">account.bank.statement.line</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem
+            id="budget_account_report"
+            name="Transactions"
+            parent="budget"
+            action="action_budget_account_report"
+            sequence="1"/>
+
+
+
+
+
+</odoo>

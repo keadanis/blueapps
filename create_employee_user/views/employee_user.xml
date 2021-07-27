@@ -1,0 +1,26 @@
+<odoo>
+  <data>
+
+    <!-- View Form Inherit Employee-->
+    <record model="ir.ui.view" id="view_contract_hr_employee_validate_form_inherit">
+        <field name="name">contract.hr.employee.validate.form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="management_contract.view_contract_hr_employee_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_ids']" position="after">
+                <field name="empl_ett" invisible="True"/>
+                <field name="user_check_tick" invisible="True"/>
+            </xpath>
+            <xpath expr="//field[@name='address_home_id']" position="attributes">
+                <attribute name="attrs">{'required': [('user_check_tick', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="attrs">{'required': [('user_check_tick', '=', True)]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='work_email']" position="attributes">
+                <attribute name="attrs">{'required': [('empl_ett', '=', True)]}</attribute>
+            </xpath>
+         </field>
+    </record>
+  </data>
+</odoo>

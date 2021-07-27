@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="save_filter_tree_view" model="ir.ui.view">
+        <field name="name">save.filter.tree</field>
+        <field name="model">save.filter</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="filer_name"/>
+                <field name="salesperson_ids" widget="many2many_tags"/>
+                <field name="team_ids" widget="many2many_tags"/>
+                <field name="not_team_ids" widget="many2many_tags"/>
+                <field name="tags_ids" widget="many2many_tags"/>
+                <field name="not_tags_ids" widget="many2many_tags"/>
+            </tree>         
+        </field>
+    </record>
+
+    <record id="save_filter_form_view" model="ir.ui.view">
+        <field name="name">save.filter.form</field>
+        <field name="model">save.filter</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name='filer_name' required="1"/>
+                        </group>
+                    </group>
+                    <group string = "Opportunity/Lead">
+                        <field name='salesperson_ids' widget="many2many_tags"/>
+                        <field name='team_ids' widget="many2many_tags"/>
+                        <field name='not_team_ids' widget="many2many_tags"/>
+                        <field name='tags_ids' widget="many2many_tags"/>
+                        <field name='not_tags_ids' widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>         
+        </field>
+    </record>
+
+    <record id="action_save_filter" model="ir.actions.act_window">
+        <field name="name">Search Opportunity/Lead</field>
+        <field name="res_model">save.filter</field>
+        <field name="view_mode">form,tree</field>
+        <field name="view_id" ref="save_filter_tree_view"/>
+    </record>
+
+    <menuitem id="menu_save_filter"
+              name="Search Opportunity/Lead"
+              parent='crm.crm_menu_config'
+              action='action_save_filter'/>
+</odoo>

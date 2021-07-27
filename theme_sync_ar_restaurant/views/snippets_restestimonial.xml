@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="snippet_restestimonial" name="Testimonials">
+        <section class="s_quotes_carousel_wrapper o_colored_level testimonial-blocks" data-vxml="001" data-vcss="001"
+                 data-snippet="s_quotes_carousel" data-name="Quotes">
+            <div class="title-bar">
+                <h2>Testimonials</h2>
+            </div>
+            <div id="myCarousel1616391399578" class="s_quotes_carousel s_carousel_default carousel slide"
+                 data-interval="10000">
+                <ol class="carousel-indicators o_we_no_overlay">
+                    <li data-target="#myCarousel1616391399578" data-slide-to="0" class=""></li>
+                    <li data-target="#myCarousel1616391399578" data-slide-to="1" class="active"></li>
+                    <li data-target="#myCarousel1616391399578" data-slide-to="2" class=""></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item pt80 pb80 o_colored_level" data-name="Slide">
+                        <div class="container">
+                            <blockquote class="s_blockquote s_blockquote_classic blockquote mx-auto w-75"
+                                        data-name="Blockquote">
+                                <div class="clearfix">
+                                    <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the printing
+                                        and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                        text ever since the 1500s
+                                    </p>
+                                    <footer class="blockquote-footer">
+                                        <span class="s_blockquote_author o_default_snippet_text">
+                                            <b class="o_default_snippet_text">Jane DOE</b>
+                                            - CEO of Company Name
+                                        </span>
+                                    </footer>
+                                </div>
+                                <i class="fa fa-1x fa-quote-right"></i>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="carousel-item pt80 pb80 o_colored_level active">
+                        <div class="container">
+                            <blockquote class="s_blockquote s_blockquote_classic blockquote mx-auto w-75"
+                                        data-name="Blockquote">
+
+                                <div class="clearfix">
+                                    <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the printing
+                                        and typesetting industry. Lorem Ipsum has been the industry's standard dummy
+                                        text ever since the 1500s, when an unknown printer took a galley
+                                    </p>
+                                    <footer class="blockquote-footer">
+                                        <span class="s_blockquote_author o_default_snippet_text">
+                                            <b class="o_default_snippet_text">John DOE</b>
+                                            - MD of Company Name
+                                        </span>
+                                    </footer>
+                                </div>
+                                <i class="fa fa-1x fa-quote-right"></i>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <div class="carousel-item pt80 pb80 o_colored_level">
+                        <div class="container">
+                            <blockquote class="s_blockquote s_blockquote_classic blockquote mx-auto w-75"
+                                        data-name="Blockquote">
+                                <div class="clearfix">
+                                    <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the printing
+                                        and typesetting industry. When an unknown printer took a galley
+                                    </p>
+                                    <footer class="blockquote-footer">
+                                        <span class="s_blockquote_author o_default_snippet_text">
+                                            <b class="o_default_snippet_text">Iris DOE</b>
+                                            - CEO of Company Name
+                                        </span>
+                                    </footer>
+                                </div>
+                                <i class="fa fa-1x fa-quote-right"></i>
+                            </blockquote>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-control-prev o_we_no_overlay" data-target="#myCarousel1616391399578"
+                     data-slide="prev" role="img" aria-label="Previous" title="Previous">
+                    <span class="carousel-control-prev-icon"></span>
+                    <span class="sr-only o_default_snippet_text">Previous</span>
+                </div>
+                <div class="carousel-control-next o_we_no_overlay" data-target="#myCarousel1616391399578"
+                     data-slide="next" role="img" aria-label="Next" title="Next">
+                    <span class="carousel-control-next-icon"></span>
+                    <span class="sr-only o_default_snippet_text">Next</span>
+                </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_restestimonial_bar" inherit_id="website.snippets" name="Testimonials">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_restestimonial"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/res_testimonial.png"/>
+        </xpath>
+    </template>
+</odoo>

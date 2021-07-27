@@ -1,0 +1,219 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sinerkia_jitsi_meet
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-03-17 18:27+0000\n"
+"PO-Revision-Date: 2020-03-17 19:29+0100\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.2.4\n"
+
+#. module: sinerkia_jitsi_meet
+#: model:mail.template,subject:sinerkia_jitsi_meet.email_template_edi_jitsi_meet
+msgid "${object.meeting_name}"
+msgstr "${object.meeting_name}"
+
+#. module: sinerkia_jitsi_meet
+#: model:mail.template,body_html:sinerkia_jitsi_meet.email_template_edi_jitsi_meet
+msgid ""
+"<div><p>You have been invited to a meeting</p>\n"
+"                    <p>Please join us on ${object.date_formated} by clicking on the followin link: </p>\n"
+"                    <p>\n"
+"                        <a href=\"${object.meeting_url}\">JOIN MEETING</a>\n"
+"                    </p>\n"
+"                    <p>Thank you,</p></div>\n"
+"            "
+msgstr ""
+"<div><p>Ha sido invitado a una videoconferencia</p>\n"
+"                    <p>Por favor únase el ${object.date_formated} clicando en el siguiente enlace: </p>\n"
+"                    <p>\n"
+"                        <a href=\"${object.meeting_url}\">UNIRSE A LA REUNIÓN</a>\n"
+"                    </p>\n"
+"                    <p>Gracias,</p></div>\n"
+"            "
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_form_sinerkia_jitsi_meet
+msgid "Close Meeting"
+msgstr "Cerrar Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_closed
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_create_uid
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_create_date
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_current_user
+msgid "Current User"
+msgstr "Usuario Actual"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_date
+msgid "Date"
+msgstr "Fecha"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_date_formated
+msgid "Date Formated"
+msgstr "Date Formated"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_display_name
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_date_delay
+msgid "Duration"
+msgstr "Duración"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_name
+msgid "Email"
+msgstr "Email"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_external_participants
+msgid "External Participant"
+msgstr "Participante Externo"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_hash
+msgid "Hash"
+msgstr "Hash"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_id
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_mail_sent
+msgid "Invitation Sent"
+msgstr "Invitación Enviada"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model,name:sinerkia_jitsi_meet.model_sinerkia_jitsi_meet_jitsi_meet
+msgid "Jitsi Meeting"
+msgstr "Jitsi Meeting"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model,name:sinerkia_jitsi_meet.model_sinerkia_jitsi_meet_external_user
+msgid "Jitsi Meeting External Participant"
+msgstr "Jitsi Meeting External Participant"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_form_sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_tree_sinerkia_jitsi_meet
+msgid "Join Meeting"
+msgstr "Unirse a la Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user___last_update
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_write_uid
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_write_date
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_form_sinerkia_jitsi_meet
+msgid "Meeting"
+msgstr "Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_meeting_date
+msgid "Meeting Date"
+msgstr "Fecha Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_meeting_name
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_name
+msgid "Meeting Name"
+msgstr "Nombre Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_meeting_url
+msgid "Meeting URL"
+msgstr "URL Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_form_sinerkia_jitsi_meet
+msgid "Meeting subject"
+msgstr "Tema/Nombre de la reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_participants
+msgid "Participant"
+msgstr "Participante"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,help:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_partner_id
+msgid "Partner-related data of the user"
+msgstr "Datos del usuario relativos a la empresa"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_partner_id
+msgid "Related Partner"
+msgstr "Empresa relacionada"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_form_sinerkia_jitsi_meet
+msgid "Reopen Meeting"
+msgstr "Reabrir Reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_external_user_send_mail
+msgid "Send Invitation"
+msgstr "Enviar Invitación"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_form_sinerkia_jitsi_meet
+#: model:ir.ui.view,arch_db:sinerkia_jitsi_meet.view_tree_sinerkia_jitsi_meet
+msgid "Share Link"
+msgstr "Enlace para compartir"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.model.fields,field_description:sinerkia_jitsi_meet.field_sinerkia_jitsi_meet_jitsi_meet_url
+msgid "URL to Meeting"
+msgstr "URL a la reunión"
+
+#. module: sinerkia_jitsi_meet
+#: model:ir.actions.act_window,name:sinerkia_jitsi_meet.action_meeting
+#: model:ir.ui.menu,name:sinerkia_jitsi_meet.menu_meeting
+msgid "Video Conferences"
+msgstr "Videoconferencias"

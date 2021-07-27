@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_odoo_dynamic_report_id,access_odoo_dynamic_report_name,model_odoo_dynamic_report,,1,1,1,1
+access_dynamic_report_line_id,access_dynamic_report_line_name,model_dynamic_report_line,,1,1,1,1

@@ -1,0 +1,44 @@
+/*$primary-color: #fcd005;
+$primary-color: #143256;
+$link-color: #f85718;
+*/
+$primary-color: #1953b4;
+$default-color: #272727;
+$grey-color: #8a8a8a;
+$red-color: #ff4545;
+$white: #fff;
+$link-color: #f85718;
+$dark-grey-color: #464646;
+$light-bg: #f3f3f3;
+$google-font: 'Poppins', Arial, Helvetica, sans-serif;
+%ul-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+%center-box {
+  text-align: center;
+  margin: auto;
+  display: block;
+}
+
+%font-14 {
+  font-size: 14px;
+  line-height: 20px;
+}
+
+%font-16 {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+%font-18 {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+%font-20 {
+  font-size: 20px;
+  line-height: 28px;
+}

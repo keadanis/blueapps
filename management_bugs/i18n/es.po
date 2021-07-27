@@ -1,0 +1,330 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* management_bugs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0-20190207\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-06 17:31+0000\n"
+"PO-Revision-Date: 2020-04-06 17:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_form
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_form_me
+msgid "Accept"
+msgstr "Aceptar"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_active
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_active
+msgid "Active"
+msgstr "Activo"
+
+#. module: management_bugs
+#: selection:management.bug.assign,type_assign:0
+msgid "Agent"
+msgstr "Agente"
+
+#. module: management_bugs
+#: model:ir.ui.menu,name:management_bugs.menu_projects_management_bug
+msgid "All Bugs"
+msgstr "Listado Bugs"
+
+#. module: management_bugs
+#: model:ir.actions.act_window,name:management_bugs.action_management_bug
+msgid "All bugs"
+msgstr "Listado bugs"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_type_assign
+msgid "Assign"
+msgstr "Asignar"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_form
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_search
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_tree
+msgid "Bugs"
+msgstr "Bugs"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_form
+msgid "CLAIM"
+msgstr "RECLAMAR"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_form
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_form_me
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_code
+msgid "Code"
+msgstr "Código"
+
+#. module: management_bugs
+#: model:ir.model,name:management_bugs.model_configuration_bug
+msgid "Configuration Bug"
+msgstr "Configuracion Bug"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.configuration_bug_form
+#: model:ir.ui.view,arch_db:management_bugs.configuration_bug_search
+#: model:ir.ui.view,arch_db:management_bugs.configuration_bug_tree
+msgid "Configuration bug"
+msgstr "Configuracion bug"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_create_uid
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_create_uid
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_create_uid
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_create_date
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_create_date
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_create_date
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_date_error
+msgid "Date error"
+msgstr "Fecha error"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_display_name
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_display_name
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_display_name
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_display_name
+msgid "Display Name"
+msgstr "Nombre a mostrar"
+
+#. module: management_bugs
+#: code:addons/management_bugs/models/bug_digest.py:16
+#, python-format
+msgid "Do not have access, skip this data for user's digest email"
+msgstr "No tiene acceso, omita estos datos para el correo electrónico de resumen del usuario
+"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_form
+msgid "Document Name"
+msgstr "Nombre documento"
+
+#. module: management_bugs
+#: selection:management.bug,type_bug:0
+msgid "Error"
+msgstr "Error"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_hour_error
+msgid "Hours"
+msgstr "Horas"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_id
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_id
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_id
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_id
+msgid "ID"
+msgstr "ID"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug___last_update
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug___last_update
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign___last_update
+#: model:ir.model.fields,field_description:management_bugs.field_team_support___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_write_uid
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_write_uid
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_write_uid
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_write_date
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_write_date
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_write_date
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_leader_id
+msgid "Leader"
+msgstr "Jefe de equipo"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_line
+msgid "Line"
+msgstr "Linea"
+
+#. module: management_bugs
+#: model:ir.ui.menu,name:management_bugs.menu_projects_all_bugs
+msgid "Management Bugs"
+msgstr "Administrar Bugs"
+
+#. module: management_bugs
+#: model:ir.model,name:management_bugs.model_management_bug
+msgid "Management bug"
+msgstr "Administrar bug"
+
+#. module: management_bugs
+#: model:ir.model,name:management_bugs.model_management_bug_assign
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_form
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_form_me
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_assign_tree
+msgid "Management bug assign"
+msgstr "Administrar asignacion bug"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_member_ids
+msgid "Members"
+msgstr "Socios"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_name
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_name
+#: model:ir.model.fields,field_description:management_bugs.field_team_support_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_note
+msgid "Note"
+msgstr "Nota"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_note
+msgid "Notes"
+msgstr "Notas"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_form
+msgid "Other data"
+msgstr "Otros datos"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_project_id
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_project_id
+msgid "Projects"
+msgstr "Proyectos"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_search
+#: selection:management.bug,state:0
+msgid "Resolved"
+msgstr "Resuelta"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_configuration_bug_route
+msgid "Route"
+msgstr "Ruta"
+
+#. module: management_bugs
+#: model:configuration.bug,name:management_bugs.configuration01
+msgid "Route log odoo"
+msgstr "Ruta log odoo"
+
+#. module: management_bugs
+#: model:ir.actions.act_window,name:management_bugs.action_configuration_bug
+#: model:ir.ui.menu,name:management_bugs.menu_projects_configuration_bug
+msgid "Setting"
+msgstr "Configracion"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_state
+msgid "Status"
+msgstr "Estado"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_form
+msgid "TRANSFER / ASIGN"
+msgstr "TRANSFERIR / ASIGNAR"
+
+#. module: management_bugs
+#: model:ir.model,name:management_bugs.model_project_task
+msgid "Task"
+msgstr "Tarea"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.team_support_form
+msgid "Team Members"
+msgstr "Miembros equipo"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_support_id
+#: model:ir.model.fields,field_description:management_bugs.field_project_task_support_id
+#: selection:management.bug.assign,type_assign:0
+msgid "Team Support"
+msgstr "Equipo soporte"
+
+#. module: management_bugs
+#: model:ir.actions.act_window,name:management_bugs.action_team_support
+#: model:ir.model,name:management_bugs.model_team_support
+#: model:ir.ui.menu,name:management_bugs.menu_projects_team_support
+#: model:ir.ui.view,arch_db:management_bugs.team_support_form
+#: model:ir.ui.view,arch_db:management_bugs.team_support_search
+#: model:ir.ui.view,arch_db:management_bugs.team_support_tree
+msgid "Team support"
+msgstr "Equipo soporte"
+
+#. module: management_bugs
+#: model:ir.model.fields,help:management_bugs.field_configuration_bug_route
+msgid "The path to the file should contain the container folders, Ex: /var/log/.."
+msgstr "La ruta al archivo debe contener las carpetas del contenedor, Ej: / var / log / .."
+
+#. module: management_bugs
+#: code:addons/management_bugs/models/management_bug.py:230
+#, python-format
+msgid "The support team does not has a members"
+msgstr "El equipo de soporte no tiene miembros"
+
+#. module: management_bugs
+#: code:addons/management_bugs/models/management_bug.py:228
+#, python-format
+msgid "The support team does not has a team leader"
+msgstr "El equipo de soporte no tiene una líder de equipo"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_type_bug
+msgid "Type Bug"
+msgstr "Tipo Bug"
+
+#. module: management_bugs
+#: model:ir.ui.view,arch_db:management_bugs.management_bug_search
+#: selection:management.bug,state:0
+msgid "Unresolved"
+msgstr "No resuelta"
+
+#. module: management_bugs
+#: model:ir.model.fields,field_description:management_bugs.field_management_bug_assign_user_id
+msgid "User"
+msgstr "Usuario"
+
+#. module: management_bugs
+#: selection:management.bug,type_bug:0
+msgid "Warning"
+msgstr "Warning"
+

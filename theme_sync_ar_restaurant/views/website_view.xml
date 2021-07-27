@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="website_footer_menu" model="ir.ui.view">
+            <field name="name">website_footer_menu</field>
+            <field name="model">website.menu</field>
+            <field name="inherit_id" ref="website.website_menus_form_view" />
+            <field name="type">form</field>
+            <field name="mode">extension</field>
+            <field name="priority" eval="16" />
+            <field name="active" eval="True" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[last()]" position="after">
+                    <field name="website_footer" widget="many2many_tags" />
+                </xpath>
+            </field>
+        </record>
+        <record id="view_website_form_copyright" model="ir.ui.view">
+            <field name="name">view_website_form_copyright</field>
+            <field name="model">website</field>
+            <field name="inherit_id" ref="website.view_website_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//field[last()]" position="after">
+                    <field name="copyright_text" />
+                    <field name="store_location" />
+                    <!-- todo store location -->
+                    <field name="track_order" />
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

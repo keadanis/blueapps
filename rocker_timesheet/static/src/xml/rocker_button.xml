@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates id="template" xml:space="preserve">
+
+    <t t-name="rocker_timesheet.button">
+        <p> </p><b>Filter tasks:</b>
+        <button class="btn btn-secondary btn-all" type="button">
+            <t t-esc="all"/>
+        </button>
+        <button class="btn btn-secondary btn-billable" type="button">
+            <t t-esc="billable"/>
+        </button>
+        <button class="btn btn-secondary btn-nonbillable" type="button">
+            <t t-esc="nonbillable"/>
+        </button>
+        <button class="btn btn-secondary btn-internal" type="button">
+            <t t-esc="internal"/>
+        </button>
+        <button class="btn btn-secondary btn-member" type="button">
+            <t t-esc="member"/>
+        </button>
+        <button class="btn btn-secondary btn-mine" type="button">
+            <t t-esc="mine"/>
+        </button>
+    </t>
+
+</templates>

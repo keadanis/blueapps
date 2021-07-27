@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="assets_backend" name="aspl_float_speedometer assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/aspl_float_speedometer/static/src/css/widget.css"/>
+            <script type="text/javascript" src="/aspl_float_speedometer/static/src/js/widget.js"></script>
+            <script type="text/javascript" src="/aspl_float_speedometer/static/src/js/infragistics.core.js"></script>
+            <script type="text/javascript" src="/aspl_float_speedometer/static/src/js/infragistics.dv.js"></script>
+            <script type="text/javascript" src="/aspl_float_speedometer/static/src/js/modernizr.min.js"></script>
+            <link rel="stylesheet" href="/aspl_float_speedometer/static/src/css/infragistics.theme.css"/>
+        </xpath>
+    </template>
+
+</odoo>

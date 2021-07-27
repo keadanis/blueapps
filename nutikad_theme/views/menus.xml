@@ -1,0 +1,6 @@
+<odoo>
+   <data>
+      <menuitem id="base.menu_administration" name="Settings" web_icon="nutikad_theme,static/img/setting.png"/>
+      <menuitem id="base.menu_management" name="Apps" web_icon="nutikad_theme,static/img/apps.png"/>
+   </data>
+</odoo>

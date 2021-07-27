@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+  <template id="_assets_primary_variables" inherit_id="web._assets_primary_variables">
+      <xpath expr="//link[last()]" position="before">
+          <link rel="stylesheet" type="text/scss" href="/nutikad_theme/static/src/scss/primary_variables.scss"/>
+      </xpath>
+  </template>
+
+  <template id="assets_backend" inherit_id="web.assets_backend">
+      <xpath expr="//link[last()]" position="after">
+          <link rel="stylesheet" type="text/scss" href="/nutikad_theme/static/src/scss/awesome-bootstrap-checkbox.scss"/>
+          <link rel="stylesheet" type="text/scss" href="/nutikad_theme/static/src/scss/mega_menu.scss"/>
+          <link rel="stylesheet" type="text/scss" href="/nutikad_theme/static/src/scss/backend_style.scss"/>
+      </xpath>
+
+      <xpath expr="//script[last()]" position="after">
+          <script type="text/javascript"
+          src="/nutikad_theme/static/src/js/main.js"></script>
+           <script type="text/javascript"
+          src="/nutikad_theme/static/src/js/settingsicon.js"></script>
+      </xpath>
+  </template>
+
+  <template id="assets_frontend" inherit_id="web.assets_frontend" name="Frontend Assets GBT Web">
+    <xpath expr="//link[last()]" position="after">
+      <link rel="stylesheet" href="/nutikad_theme/static/src/scss/login.scss" type="text/scss" />
+    </xpath>
+  </template>
+
+  <template id="nutikad_theme.layout" name="Web Layout - Nutikad" inherit_id="web.layout">
+    <xpath expr="//title" position="replace">
+      <title t-esc="title or 'Nutikad'"/>
+    </xpath>
+
+    <xpath expr="//link[@rel='shortcut icon']" position="replace">
+      <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon or '/nutikad_theme/static/img/favicon.png'"/>
+    </xpath>
+  </template>
+</odoo>

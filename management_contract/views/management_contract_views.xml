@@ -1,0 +1,798 @@
+<odoo>
+  <data>
+
+    <!--Contract form inherit-->
+    <record id="hr_management_contract_view_form" model="ir.ui.view">
+        <field name="name">hr.management.contract.view.form</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position='before'>
+                <button name="action_request_registration" string="Register discharge SS" type="object" class="btn-primary" attrs="{'invisible':[('state','!=','draft')]}"/>
+                <button name="action_approve" string="Register withdrawal SS" type="object" class="btn-primary" attrs="{'invisible':[('state','!=','valid')]}"/>
+                <button name="action_disapprove" string="Cancel" type="object" attrs="{'invisible':[('state','=','cancel')]}"/>
+                <button name="action_reset_to_new" string="Set draft" type="object" attrs="{'invisible':[('state','=','draft')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <field name="type_doc" string="Type document" required="True" invisible="True"/>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="attributes">
+                <attribute name="options">{"no_create": True}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="attributes">
+                <attribute name="domain">[('empl_ett', '=', True)]</attribute>
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="before">
+                <label for="partner_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                <div name="data_client" class="o_row" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                    <field name="cif_client" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/> -
+                    <field name="partner_id" domain="[('is_company', '=', True)]" options='{"no_create": True}' attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                </div>
+                <label for="cc_nass_code" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                <div name="data_client_2" class="o_row" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                    <field name="cc_nass_code" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/> -
+                    <field name="cc_nass_number" options='{"no_create": True}' attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                </div>
+
+            </xpath>
+            <xpath expr="//field[@name='employee_id']" position="after">
+                <field name="doc_ident" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                <field name="job_seeker" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                <field name="quotation_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')], 'required': [('type_doc', '!=', 'ctt_employee')]}" options='{"no_create": True}'/>
+                <field name="team_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')], 'required': [('type_doc', '!=', 'ctt_employee')]}" options='{"no_create": True}'/>
+                <field name="contract_hours" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="attributes">
+              <attribute name="attrs">{'invisible': [('type_doc', '!=', 'ctt_employee')]}</attribute>
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="after">
+                <field name="agreement_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')], 'required': [('type_doc', '!=', 'ctt_employee')]}"/>
+                <field name="category_professional_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')], 'required': [('type_doc', '!=', 'ctt_employee')]}"/>
+                <field name="cotization_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')], 'required': [('type_doc', '!=', 'ctt_employee')]}"/>
+                <field name="educational_level_id" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')], 'required': [('type_doc', '!=', 'ctt_employee')]}"/>
+            </xpath>
+            <xpath expr="//field[@name='wage']" position="after">
+                <field name="type_retribution" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+            </xpath>
+            <xpath expr="//group[@name='duration_group']" position="after">
+                <group name="registration" string="Register data" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                    <label for="registration_date" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <div name="data_wage" class="o_row" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                        <field name="registration_date" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/> -
+                        <field name="termination_date" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    </div>
+                    <field name="termination_cause" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <field name="ctt_assumption" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                </group>
+                <group name="inem" string="Management SS" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                    <label for="time_execution" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <div name="data_wage" class="o_row" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                        <field name="abred_code" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/> -
+                        <field name="time_execution" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    </div>
+                    <label for="registration_finger" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <div name="data_wage" class="o_row" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                        <field name="registration_finger" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/> -
+                        <field name="termination_finger" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    </div>
+                    <field name="code_inem" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <field name="notification_inem" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                </group>
+                <field name="obj_control_ctto" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+            </xpath>
+            <xpath expr="//group[@name='salary_and_advantages']" position="after">
+                <group name="Allowance" string="Monthly Allowance in Cash" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}">
+                    <field name="accom" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <field name="trans" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <field name="mobi" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <field name="food" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                    <field name="nature" attrs="{'invisible': [('type_doc', '=', 'ctt_employee')]}"/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="attributes">
+                <attribute name="attrs">{'invisible': [('type_doc', '!=', 'ctt_employee')]}</attribute>
+            </xpath>
+            <xpath expr="//page[2]" position="attributes">
+                <attribute name="attrs">{'invisible': [('type_doc', '!=', 'ctt_employee')]}</attribute>
+            </xpath>
+<!--            <xpath expr="//field[@name='advantages']" position="attributes">-->
+<!--                <attribute name="attrs">{'invisible': [('type_doc', '!=', 'ctt_employee')]}</attribute>-->
+<!--            </xpath>-->
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="statusbar_visible">draft,valid,done,cancel</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="clickable">False</attribute>
+            </xpath>
+            <xpath expr="//field[@name='state']" position="replace">
+                <field name="state" widget="statusbar" statusbar_visible="draft,valid,done,cancel"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- view Contract tree new -->
+    <record id="hr_management_contract_view_tree" model="ir.ui.view">
+      <field name="name">hr.management.contract.tree</field>
+      <field name="model">hr.contract</field>
+      <field name="arch" type="xml">
+        <tree string="Contracts" decoration-muted="state=='cancel'" decoration-danger="state in ('draft') and date_end &lt; current_date" decoration-primary="state=='draft'">
+            <field name="name"/>
+            <field name="type_doc" invisible="True"/>
+            <field name="date_end" invisible="True"/>
+            <field name="partner_id"/>
+            <field name="cif_client"/>
+            <field name="employee_id"/>
+            <field name="doc_ident"/>
+            <field name="quotation_id"/>
+            <field name="team_id"/>
+            <field name="contract_hours"/>
+            <field name="wage"/>
+            <field name="registration_date"/>
+            <field name="termination_date"/>
+            <field name="state"/>
+        </tree>
+      </field>
+    </record>
+
+      <!-- View Search Contract new -->
+    <record id="hr_management_contract_view_search" model="ir.ui.view">
+      <field name="name">hr.management.contract.search</field>
+      <field name="model">hr.contract</field>
+      <field name="arch" type="xml">
+        <search string="Contracts">
+            <field name="name"/>
+            <field name="partner_id"/>
+            <field name="cif_client"/>
+            <field name="employee_id"/>
+            <field name="doc_ident"/>
+            <field name="quotation_id"/>
+            <field name="team_id"/>
+            <field name="contract_hours"/>
+            <field name="wage"/>
+            <field name="registration_date"/>
+            <field name="termination_date"/>
+            <field name="state"/>
+            <separator/>
+            <filter string="New" domain="[('state', '=', 'draft')]" name="draft"/>
+            <filter string="Valid" domain="[('state', '=', 'valid')]" name="open"/>
+            <filter string="Done" domain="[('state', '=', 'done')]" name="done"/>
+            <filter string="Cancelled" domain="[('state', '=', 'cancel')]" name="cancel"/>
+            <separator/>
+            <group  expand='0' string='Group by...'>
+                <filter name="team" string='Team' context="{'group_by': 'team_id'}"/>
+                <filter name="state" string='State' context="{'group_by': 'state'}"/>
+            </group>
+        </search>
+      </field>
+    </record>
+
+      <!--View Graph Contract-->
+    <record id="hr_management_contract_view_graph" model="ir.ui.view">
+        <field name="name">hr.contract.graph</field>
+        <field name="model">hr.contract</field>
+        <field name="arch" type="xml">
+            <graph string="Contracts">
+                <field name="team_id"/>
+            </graph>
+        </field>
+    </record>
+
+      <!--View Pivot Contract-->
+    <record id="hr_management_contract_view_pivot" model="ir.ui.view">
+        <field name="name">hr.contract.pivot</field>
+        <field name="model">hr.contract</field>
+        <field name="arch" type="xml">
+            <pivot string="Contracts" display_quantity="true">
+                <field name="team_id"/>
+                <field name="partner_id"/>
+                <field name="registration_date" type="col"/>
+            </pivot>
+        </field>
+    </record>
+
+
+    <!-- actions contract -->
+    <record id="act_hr_management_contract" model="ir.actions.act_window">
+        <field name="name">Contracts</field>
+        <field name="res_model">hr.contract</field>
+        <field name="view_mode">tree,pivot,graph,form</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'tree', 'view_id': ref('hr_management_contract_view_tree')}),
+                  (0, 0, {'view_mode': 'form', 'view_id': ref('hr_management_contract_view_form')})]"/>
+        <field name="search_view_id" ref="hr_management_contract_view_search"/>
+        <field name="context">{'type_doc': 'ctt_ett'}</field>
+        <field name="domain">[('type_doc', '=', 'ctt_ett')]</field>
+    </record>
+
+    <record id="hr_contract.act_hr_employee_2_hr_contract" model="ir.actions.act_window">
+        <field name="context">{'type_doc': 'ctt_employee'}</field>
+        <field name="domain">[('type_doc', '=', 'ctt_employee')]</field>
+    </record>
+
+      <record id="hr_contract.action_hr_contract" model="ir.actions.act_window">
+        <field name="context">{'type_doc': 'ctt_employee'}</field>
+        <field name="domain">[('type_doc', '=', 'ctt_employee')]</field>
+    </record>
+
+     <!--View Form Inherit Employee-->
+    <record model="ir.ui.view" id="view_contract_hr_employee_form_inherit">
+        <field name="name">contract.hr.employee_form.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_ids']" position="after">
+                <field name="empl_ett" invisible="True"/>
+                <group name="category_f">
+                    <group name="category_s">
+                        <field name="category_professional_id" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                        <field name="cotization_id" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                        <field name="educational_level_id" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                        <field name="formation_job_id" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                    </group>
+                    <group name="category_t">
+                        <field name="date_last_b" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                    </group>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='identification_id']" position="after">
+                    <field name="fv_nie" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='bank_account_id']" position="after">
+                <label for="pnafss" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                <div name="data_client" class="o_row" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}">
+                    <field name="pnafss" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/> -
+                    <field name="nafss" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                </div>
+                <field name="irpf_cuote" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                <field name="irpf_base" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+                <field name="irpf_personal" attrs="{'invisible': [('empl_ett', '=', False)], 'required': [('empl_ett', '=', True)]}"/>
+            </xpath>
+            <xpath expr="//field[@name='identification_id']" position="attributes">
+                <attribute name="attrs">{'required': [('empl_ett', '=', True)]}</attribute>
+            </xpath>
+         </field>
+    </record>
+
+      <!-- View tree Inherit Employee-->
+    <record model="ir.ui.view" id="view_contract_hr_employee_tree_inherit">
+        <field name="name">contract.hr.employee_tree.inherit</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="identification_id"/>
+                <field name="empl_ett" invisible="True"/>
+                <field name="company_id" invisible="1"/>
+                <field name="department_id" invisible="1"/>
+                <field name="job_id" invisible="1"/>
+                <field name="parent_id" invisible="1"/>
+                <field name="coach_id" invisible="1"/>
+                <field name="category_professional_id"/>
+                <field name="cotization_id"/>
+                <field name="educational_level_id"/>
+                <field name="formation_job_id"/>
+                <field name="date_last_b"/>
+            </xpath>
+        </field>
+    </record>
+
+      <!-- actions employee -->
+    <record id="act_hr_employee_management_contract" model="ir.actions.act_window">
+        <field name="name">Employee</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'tree', 'view_id': ref('view_contract_hr_employee_tree_inherit')}),
+                  (0, 0, {'view_mode': 'form', 'view_id': ref('view_contract_hr_employee_form_inherit')})]"/>
+        <field name="context">{'empl_ett': True}</field>
+        <field name="domain">[('empl_ett', '=', True)]</field>
+    </record>
+
+
+    <record id="hr.open_view_employee_tree" model="ir.actions.act_window">
+        <field name="context">{'empl_ett': False}</field>
+        <field name="domain">[('empl_ett', '=', False)]</field>
+    </record>
+
+    <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+        <field name="context">{'empl_ett': False}</field>
+        <field name="domain">[('empl_ett', '=', False)]</field>
+    </record>
+
+       <!-- View Form Category P -->
+    <record model="ir.ui.view" id="formation_category_professional_form">
+      <field name="name">formation.category.professional.form</field>
+      <field name="model">formation.category.professional</field>
+      <field name="arch" type="xml">
+        <form string="Category professional">
+          <sheet>
+            <group>
+                <group name="credentials">
+                    <field name="name"/>
+                </group>
+                <group name="clients">
+                    <field name="description"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- View Tree Category P -->
+    <record model="ir.ui.view" id="formation_category_professional_tree">
+      <field name="name">formation.category.professional.tree</field>
+      <field name="model">formation.category.professional</field>
+      <field name="arch" type="xml">
+        <tree string="Category professional">
+            <field name="name"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+      <!-- View Form Group C -->
+    <record model="ir.ui.view" id="formation_cotization_group_form">
+      <field name="name">formation.cotization.group.form</field>
+      <field name="model">formation.cotization.group</field>
+      <field name="arch" type="xml">
+        <form string="Cotization group">
+          <sheet>
+            <group>
+                <group name="credentials">
+                    <field name="name"/>
+                </group>
+                <group name="clients">
+                    <field name="description"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- View Tree Group C -->
+    <record model="ir.ui.view" id="formation_cotization_group_tree">
+      <field name="name">formation.cotization.group.tree</field>
+      <field name="model">formation.cotization.group</field>
+      <field name="arch" type="xml">
+        <tree string="Cotization group">
+            <field name="name"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+      <!-- View Form Educational L -->
+    <record model="ir.ui.view" id="formation_educational_level_form">
+      <field name="name">formation.educational.level.form</field>
+      <field name="model">formation.educational.level</field>
+      <field name="arch" type="xml">
+        <form string="Educational Level">
+          <sheet>
+            <group>
+                <group name="credentials">
+                    <field name="name"/>
+                </group>
+                <group name="clients">
+                    <field name="description"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- View Tree Educational L -->
+    <record model="ir.ui.view" id="formation_educational_level_tree">
+      <field name="name">formation.educational.level.tree</field>
+      <field name="model">formation.educational.level</field>
+      <field name="arch" type="xml">
+        <tree string="Educational level">
+            <field name="name"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+      <!-- View Form Formation job -->
+    <record model="ir.ui.view" id="formation_job_form">
+      <field name="name">formation.job.form</field>
+      <field name="model">formation.job</field>
+      <field name="arch" type="xml">
+        <form string="Job">
+          <sheet>
+            <group>
+                <group name="credentials">
+                    <field name="name"/>
+                </group>
+                <group name="clients">
+                    <field name="description"/>
+                </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <!-- View Tree Formation job -->
+    <record model="ir.ui.view" id="formation_job_tree">
+      <field name="name">formation.job.tree</field>
+      <field name="model">formation.job</field>
+      <field name="arch" type="xml">
+        <tree string="Job">
+            <field name="name"/>
+            <field name="description"/>
+        </tree>
+      </field>
+    </record>
+
+      <!-- View Form Agreement -->
+    <record model="ir.ui.view" id="collective_agreement_form">
+      <field name="name">collective.agreement.form</field>
+      <field name="model">collective.agreement</field>
+      <field name="arch" type="xml">
+        <form string="Collective Agreement">
+            <sheet>
+                <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object" class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button" options="{&quot;terminology&quot;: &quot;archive&quot;}"/>
+                    </button>
+                </div>
+                <div class="oe_title">
+                    <label for="name" class="oe_edit_only"/>
+                    <h1><field name="name" placeholder="Document Name" required="True"/></h1>
+                </div>
+                <group>
+                    <group name="credentials">
+                        <field name="code"/>
+                        <field name="type_id" options="{'no_create':True}"/>
+                        <field name="partner_id" options="{'no_create':True}"/>
+                        <field name="contract_hours" required="True"/>
+                        <field name="net_salary" required="True"/>
+                        <field name="brut_salary"/>
+                        <field name="is_template"/>
+                    </group>
+                    <group name="clients">
+                        <field name="agreement_id" attrs="{'invisible': [('is_template', '!=', True)], 'required': [('is_template', '=', True)]}" options="{'no_create':True}"/>
+                        <field name="category_professional_id" required="True" options="{'no_create':True}"/>
+                        <field name="cotization_id" required="True" options="{'no_create':True}"/>
+                        <field name="educational_level_id" required="True" options="{'no_create':True}"/>
+                        <field name="formation_job_id" required="True" options="{'no_create':True}"/>
+                        <field name="company_id" options="{'no_create':True}"/>
+                    </group>
+                    <group name="others">
+                        <field name="signature_date"/>
+                        <field name="start_date"/>
+                        <field name="end_date"/>
+                        <field name="tag_cnae_id" options="{'no_create':True}"/>
+                        <field name="sector_cnae" options="{'no_create':True}"/>
+                    </group>
+                </group>
+                <notebook>
+                    <page string="Terms &amp; Condition">
+                        <field name="term_description"/>
+                        <br/>
+                        <field name="attachment_ids" widget="many2many_binary"/>
+                    </page>
+                </notebook>
+            </sheet>
+            <div class="o_attachment_preview"/>
+            <div class="oe_chatter">
+                <field name="message_follower_ids" widget="mail_followers"/>
+                <field name="activity_ids" widget="mail_activity"/>
+                <field name="message_ids" widget="mail_thread"/>
+            </div>
+        </form>
+      </field>
+    </record>
+
+    <!-- View Tree Agreement -->
+    <record model="ir.ui.view" id="collective_agreement_tree">
+      <field name="name">collective.agreement.tree</field>
+      <field name="model">collective.agreement</field>
+      <field name="arch" type="xml">
+        <tree string="Collective Agreement">
+            <field name="name"/>
+            <field name="code"/>
+            <field name="signature_date"/>
+            <field name="start_date"/>
+            <field name="end_date"/>
+            <field name="tag_cnae_id"/>
+            <field name="sector_cnae"/>
+            <field name="contract_hours"/>
+            <field name="category_professional_id"/>
+            <field name="cotization_id"/>
+            <field name="educational_level_id"/>
+            <field name="formation_job_id"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="collective_agreement_search" model="ir.ui.view">
+        <field name="name">collective.agreement.search</field>
+        <field name="model">collective.agreement</field>
+        <field name="arch" type="xml">
+            <search string="Collective Agreement">
+                <field name="name" filter_domain="['|', ('name', 'ilike', self), ('code', 'ilike', self)]" string="Name or Number"/>
+                <field name="partner_id"/>
+                <field name="code"/>
+                <field name="signature_date"/>
+                <field name="start_date"/>
+                <field name="end_date"/>
+                <field name="tag_cnae_id"/>
+                <field name="sector_cnae"/>
+                <field name="contract_hours"/>
+                <field name="category_professional_id"/>
+                <field name="cotization_id"/>
+                <field name="educational_level_id"/>
+                <field name="formation_job_id"/>
+                <separator/>
+                <filter name="inactive" string="Archived" domain="[('active', '=', False)]"/>
+                <group name="groupby">
+                    <filter name="partner_groupby" string="Partner" context="{'group_by': 'partner_id'}"/>
+                    <filter name="signature_date_groupby" string="Signature Date" context="{'group_by': 'signature_date'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+      <!-- View Form category CNAE -->
+    <record model="ir.ui.view" id="tag_category_cnae_form">
+      <field name="name">tag.cnae.category.form</field>
+      <field name="model">tag.cnae.category</field>
+      <field name="arch" type="xml">
+        <form string="Categories CNAE">
+            <sheet>
+              <group>
+                  <group>
+                      <field name="name"/>
+                      <field name="code_cnae" required='True'/>
+                      <field name="code_general" invisible='True'/>
+                      <field name="category_ine_id" options="{'no_create':True}"/>
+                  </group>
+                  <group>
+                      <field name="parent_id" options="{'no_create':True}"/>
+                      <field name="active"/>
+                  </group>
+                  <field name="note" placeholder="Internal note..."/>
+              </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- View Tree category CNAE -->
+    <record model="ir.ui.view" id="tag_cnae_category_tree">
+      <field name="name">tag.cnae.category.tree</field>
+      <field name="model">tag.cnae.category</field>
+      <field name="arch" type="xml">
+        <tree string="Categories CNAE">
+            <field name="name"/>
+            <field name="code_cnae"/>
+            <field name="code_general" invisible='True'/>
+            <field name="parent_id"/>
+            <field name="category_ine_id"/>
+            <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- View search category CNAE -->
+    <record model="ir.ui.view" id="tag_cnae_category_search">
+      <field name="name">tag.cnae.category.search</field>
+      <field name="model">tag.cnae.category</field>
+      <field name="arch" type="xml">
+        <search string="Categories CNAE">
+            <field name="name"/>
+            <field name="code_cnae"/>
+            <field name="category_ine_id"/>
+        </search>
+      </field>
+    </record>
+
+    <record id="action_tag_cnae_category" model="ir.actions.act_window">
+        <field name="name">Categories CNAE</field>
+        <field name="res_model">tag.cnae.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+  <!-- View Form category INE -->
+    <record model="ir.ui.view" id="tag_ine_category_form">
+      <field name="name">tag.ine.category.form</field>
+      <field name="model">tag.ine.category</field>
+      <field name="arch" type="xml">
+        <form string="Categories INE">
+            <sheet>
+              <group>
+                  <group>
+                      <field name="name"/>
+                      <field name="code_ine" required='True'/>
+                  </group>
+                  <group>
+                      <field name="active"/>
+                  </group>
+                  <field name="note" placeholder="Internal note..."/>
+              </group>
+            </sheet>
+        </form>
+      </field>
+    </record>
+
+  <!-- View Tree category INE -->
+    <record model="ir.ui.view" id="tag_ine_category_tree">
+      <field name="name">tag.ine.category.tree</field>
+      <field name="model">tag.ine.category</field>
+      <field name="arch" type="xml">
+        <tree string="Categories INE">
+            <field name="name"/>
+            <field name="code_ine"/>
+            <field name="active"/>
+        </tree>
+      </field>
+    </record>
+
+  <!-- View search category INE -->
+    <record model="ir.ui.view" id="tag_ine_category_search">
+      <field name="name">tag.ine.category.search</field>
+      <field name="model">tag.ine.category</field>
+      <field name="arch" type="xml">
+        <search string="Categories CNAE">
+            <field name="name"/>
+            <field name="code_ine"/>
+        </search>
+      </field>
+    </record>
+
+      <!-- Agreement Type List View-->
+    <record model="ir.ui.view" id="agreement_type_list_view">
+        <field name="name">Agreement Type List</field>
+        <field name="model">agreement.type</field>
+        <field name="arch" type="xml">
+            <tree string="Agreement Types" default_order="name">
+                <field name="name" string="Type Name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Agreement Type Form View -->
+    <record model="ir.ui.view" id="agreement_type_form_view">
+        <field name="name">Agreement Type Form</field>
+        <field name="model">agreement.type</field>
+        <field name="arch" type="xml">
+            <form string="Agreement Type">
+                <div class="oe_button_box" name="button_box">
+                    <button name="toggle_active" type="object"
+                            class="oe_stat_button" icon="fa-archive">
+                        <field name="active" widget="boolean_button"
+                               options='{"terminology": "archive"}'/>
+                    </button>
+                </div>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only"/>
+                        <h1><field name="name"/></h1>
+                    </div>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="agreement_type_search" model="ir.ui.view">
+        <field name="name">agreement.type.search</field>
+        <field name="model">agreement.type</field>
+        <field name="arch" type="xml">
+            <search string="Agreement Type">
+                <field name="name"/>
+                <filter name="archived" string="Archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Actions opening views on models -->
+    <record model="ir.actions.act_window" id="agreement_type_action">
+        <field name="name">Agreement Types</field>
+        <field name="res_model">agreement.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="action_tag_ine_category" model="ir.actions.act_window">
+        <field name="name">Categories INE</field>
+        <field name="res_model">tag.ine.category</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <!--Action Category P-->
+    <record id="action_formation_category_professional" model="ir.actions.act_window">
+        <field name="name">Category professional</field>
+        <field name="res_model">formation.category.professional</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <!--Action Cotization G-->
+    <record id="action_formation_cotization_group" model="ir.actions.act_window">
+        <field name="name">Cotization group</field>
+        <field name="res_model">formation.cotization.group</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <!--Action Educational L-->
+    <record id="action_formation_educational_level" model="ir.actions.act_window">
+        <field name="name">Educational level</field>
+        <field name="res_model">formation.educational.level</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <!--Action Educational L-->
+    <record id="action_formation_job" model="ir.actions.act_window">
+        <field name="name">Job</field>
+        <field name="res_model">formation.job</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+      <!--Action Agreement-->
+    <record id="action_collective_agreement" model="ir.actions.act_window">
+        <field name="name">Collective Agreement</field>
+        <field name="res_model">collective.agreement</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids"
+            eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'tree', 'view_id': ref('collective_agreement_tree')}),
+                  (0, 0, {'view_mode': 'form', 'view_id': ref('collective_agreement_form')})]"/>
+        <field name="search_view_id" ref="collective_agreement_search"/>
+    </record>
+
+    <record id="sale_view_order_form_inherit" model="ir.ui.view">
+    <field name="name">sale.view.order.form.inherit</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.view_order_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//button[@name='action_quotation_send']" position="before">
+            <button name="action_create_contract" string="Create Contract" type="object" states="sale" class="btn-primary"/>
+        </xpath>
+        <xpath expr="//sheet/div[@name='button_box']" position="after">
+            <div class="alert alert-success text-center o_form_header" attrs="{'invisible': [('check_process', '!=', True)]}">
+                <a class="close" data-dismiss="alert" href="#" aria-hidden="true">x</a>
+                <div>
+                    <strong>The contracts associated with this sales order have been generated:</strong>
+                </div>
+                <div>
+                    <field name="count_pending" readonly="True"/> contract(s) pending of <field name="count_create" readonly="True"/>.
+                </div>
+                <field name="check_process" invisible="True"/>
+            </div>
+        </xpath>
+        <xpath expr="//field[@name='payment_term_id']" position="after">
+            <field name="agreement_id" required="True" options="{'no_create': True}"/>
+        </xpath>
+        <xpath expr="//field[@name='team_id']" position="attributes">
+            <attribute name="attrs">{'required': [('state', '=', 'sale')]}</attribute>
+        </xpath>
+        <xpath expr="//field[@name='user_id']" position="attributes">
+            <attribute name="attrs">{'required': [('state', '=', 'sale')]}</attribute>
+        </xpath>
+    </field>
+    </record>
+
+    <!-- Top menu item -->
+    <menuitem name="Contracts" id="management_contract_menu_root"  web_icon="management_contract,static/description/icon.png"/>
+
+    <!-- menu categories -->
+    <menuitem name="Contracts" id="management_contract_menu_root_contract" parent="management_contract_menu_root" sequence="1"/>
+    <menuitem name="Settings" id="management_contract_menu_root_settings" parent="management_contract_menu_root" sequence="100"/>
+
+    <menuitem name="Contracts" id="management_contract_menu_contract" sequence="1" parent="management_contract_menu_root_contract" action="act_hr_management_contract"/>
+    <menuitem name="Employees" id="management_contract_employee_menu_contract" sequence="2" parent="management_contract_menu_root_contract" action="act_hr_employee_management_contract"/>
+    <menuitem name="Collective Agreement" id="menulist_collective_agreement" sequence="3" parent="management_contract_menu_root_contract" action="action_collective_agreement"/>
+    <menuitem name="Category professional" id="menulist_category_professional" sequence="2" parent="management_contract_menu_root_settings"  action="action_formation_category_professional"/>
+    <menuitem name="Cotization group" id="menulist_cotization_group" sequence="3" parent="management_contract_menu_root_settings"  action="action_formation_cotization_group"/>
+    <menuitem name="Educational level" id="menulist_educational_level" sequence="4" parent="management_contract_menu_root_settings"  action="action_formation_educational_level"/>
+    <menuitem name="Job" id="menulist_formation_job" sequence="5" parent="management_contract_menu_root_settings"  action="action_formation_job"/>
+    <menuitem name="Categories CNAE" id="menu_contract_cnae_tag" sequence="6" parent="management_contract_menu_root_settings" action="action_tag_cnae_category"/>
+    <menuitem name="Categories INE" id="menu_contract_ine_tag" sequence="7" parent="management_contract_menu_root_settings" action="action_tag_ine_category"/>
+    <menuitem name="Agreement Type" id="menu_qa_agreement_type" sequence="8" parent="management_contract_menu_root_settings" action="agreement_type_action"/>
+    <menuitem name="Settings (Premium)" id="menulist_menu_settings" sequence="100" parent="management_contract_menu_root_settings" action="action_formation_category_professional"/>
+  </data>
+</odoo>

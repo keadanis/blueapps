@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+       <template id="s2u_online_appointment.make_appointment" name="Online Appointment">
+           <t t-call="website.layout">
+               <style type="text/css">
+			       .color_green a{background:green !important;}
+		      </style>
+               <div class="container mb64" id="s2u_online_appointment">
+                   <div class="row">
+                       <div class="col-sm-12">
+                           <form t-att-action="form_action"  method="post" class="form-horizontal mt32" enctype="multipart/form-data">
+                               <input type="hidden" name="form_criteria" id="form_criteria" t-att-value="form_criteria"/>
+                               <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                               <div class="row">
+                                   <div class="col-lg-12">
+                                       <div t-if="error_message" class="alert alert-danger" role="alert">
+                                           <t t-foreach="error_message" t-as="err"><t t-esc="err"/><br /></t>
+                                       </div>
+                                   </div>
+                                   <t t-if="mode == 'registered'">
+                                       <div class="form-group col-xl-6">
+                                           <label class="control-label" for="name">Your Name</label>
+                                           <div>
+                                               <input type="text" class="form-control" readonly="True" name="name" t-att-value="name"/>
+                                           </div>
+                                       </div>
+                                       <div class="form-group col-xl-6">
+                                           <label class="control-label" for="name">Your Email</label>
+                                           <div>
+                                               <input type="text" class="form-control" name="email" readonly="True" t-att-value="email"/>
+                                           </div>
+                                       </div>
+                                       <div class="form-group col-xl-6">
+                                           <label class="control-label" for="name">Your Phone</label>
+                                           <div>
+                                               <input type="text" class="form-control" name="phone" readonly="True" t-att-value="phone"/>
+                                           </div>
+                                       </div>
+                                   </t>
+                                   <t t-else="">
+                                       <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-xl-6">
+                                           <label class="control-label" for="name">Your Name</label>
+                                           <div>
+                                               <input type="text" name="name" t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}" t-att-value="name" required="True" />
+                                           </div>
+                                       </div>
+                                       <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-xl-6">
+                                           <label class="control-label" for="email">Your Email</label>
+                                           <div>
+                                               <input type="text" name="email" t-attf-class="form-control #{error.get('email') and 'is-invalid' or ''}" t-att-value="email" required="True" />
+                                           </div>
+                                       </div>
+                                       <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-xl-6">
+                                           <label class="control-label" for="phone">Your Phone</label>
+                                           <div>
+                                               <input type="text" name="phone" t-attf-class="form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="phone" required="True" />
+                                           </div>
+                                       </div>
+                                   </t>
+                                   <div class="form-group col-xl-6"></div>
+                                   <div class="form-group col-xl-6">
+                                       <label class="control-label" for="appointment_option">Subject</label>
+                                       <div>
+                                           <select id="appointment_option_id" required="True" name="appointment_option_id" class="form-control">
+                                               <option value="">Select</option>
+                                               <t t-foreach="appointment_options" t-as="ao">
+                                                   <option t-att-value="ao.id" t-att-selected="ao.id == appointment_option_id">
+                                                       <t t-esc="ao.name" />
+                                                   </option>
+                                               </t>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div class="form-group col-xl-6">
+                                       <label class="control-label" for="appointee_id">With</label>
+                                       <div>
+                                           <select id="appointee_id" required="True" name="appointee_id" class="form-control">
+                                               <option value="">Select</option>
+                                               <t t-foreach="appointees" t-as="o">
+                                                   <option t-att-value="o.id" t-att-selected="o.id == appointee_id">
+                                                       <t t-esc="o.name" />
+                                                   </option>
+                                               </t>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div t-attf-class="form-group #{error and 'appointment_date' in error and 'has-error' or ''} col-xl-6">
+                                       <label class="control-label" for="appointment_date">Appointment Date</label>
+                                       <div>
+                                           <div class='input-group date'>
+                                               <input id ="appointment_date" name="appointment_date"  class="form-control datepicker" required="True" placeholder="dd/mm/yyyy" t-att-value="appointment_date"/>
+                                           </div>
+                                       </div>
+                                   </div>
+                                   <div class="form-group col-xl-6">
+                                       <label class="control-label" for="timeslot_id">Timeslot</label>
+                                       <div>
+                                           <select id="timeslot_id" required="True" name="timeslot_id" class="form-control">
+                                               <option value="">Select</option>
+                                               <t t-foreach="timeslots" t-as="t">
+                                                   <option t-att-value="t['id']" t-att-selected="t['id'] == timeslot_id">
+                                                       <t t-esc="t['timeslot']" />
+                                                   </option>
+                                               </t>
+                                           </select>
+                                       </div>
+                                   </div>
+                                   <div class="form-group col-lg-12">
+                                       <label class="control-label" for="remarks">Remarks</label>
+                                       <div>
+                                           <textarea class="form-control" cols="60" name="remarks" rows="6"><t t-esc="remarks"/></textarea>
+                                       </div>
+                                   </div>
+
+                                   <div class="form-group col-lg-12">
+                                       <div>
+                                           <button class="btn btn-success">Submit</button>
+                                       </div>
+                                   </div>
+                               </div>
+                           </form>
+                       </div>
+                   </div>
+                </div>
+           </t>
+       </template>
+
+        <template id="s2u_online_appointment.only_registered_users" name="Only registered users">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="alert alert-danger">
+                                        <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                        <h2>Sorry, no access!</h2>
+                                        <p>To schedule an appointment please,
+                                            <t t-if="request.env['res.users'].sudo()._get_signup_invitation_scope() == 'b2c'">
+                                                <a t-attf-href="/web/signup?redirect={{ quote_plus(request.httprequest.path) }}">Sign Up</a>
+                                                or
+                                            </t>
+                                            <a t-attf-href="/web/login?redirect={{ quote_plus(request.httprequest.path) }}">Sign In</a> to access this page.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    
+        <template id="s2u_online_appointment.thanks" name="Appointment Scheduled">
+            <t t-call="website.layout">
+                <div id="wrap">
+                    <div class="oe_structure"/>
+                    <div class="container">
+                        <div t-if="error_message" class="row">
+                            <div class="col-lg-12">
+                                <div class="alert alert-danger" role="alert">
+                                    <t t-foreach="error_message" t-as="err"><t t-esc="err"/><br /></t>
+                                </div>
+                            </div>
+                        </div>
+                        <div t-else="" class="row">
+                            <div class="col-12">
+                                <div class="alert alert-success">
+                                     <button type="button" class="close" data-dismiss="alert">&amp;times;</button>
+                                     <h2>Appointment scheduled!</h2>
+                                     <t t-if="appointment">
+                                         <p>Your Appointment <b><span t-field="appointment.name"/></b> has been scheduled for <b><span t-field="appointment.start"/></b>.</p>
+                                     </t>
+                                     <t t-else="">
+                                        <p>Your Appointment has been scheduled.</p>
+                                     </t>
+                                     <p>Thank You!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="oe_structure"/>
+                </div>
+            </t>
+        </template>
+
+        <template id="assets_frontend" name="website_date_info_assets" inherit_id="website.assets_frontend">
+               <xpath expr="." position="inside">
+                   <script type="text/javascript" src="/s2u_online_appointment/static/src/js/main.js"></script>
+               </xpath>
+        </template>
+
+    </data>
+</odoo>

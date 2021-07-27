@@ -1,0 +1,273 @@
+
+<section class="oe_container oe_dark">
+    <div class="oe_span12 mt32 mb8">
+        <div class="oe_span12 mt32">
+            <h1 style="text-align:center;color:#4b7f8f;">Budget Expense Management</h1>
+        </div>
+        <div class="oe_span12">
+            <p class="oe_mt32 text-justify">
+            This is a budget management module (for Odoo 12) developed to manage and track household expenses. The template is inspired from <a href="https://thefrugalgene.com/budget-spreadsheet-free-google-docs-planner/" target="_blank">Frugalgene personal monthly budget spreadsheet</a>.
+            </p>
+            <p >
+            Features include</p>
+            <ul >
+                <li>Option to budget income/expense for a month.</li>
+                <li>Add/list new income/expense.</li>
+                <li>Associate income/expense with corresponding bank accounts.</li>
+                <li>Manage cash transfer between accounts.</li>
+                <li>Monthly budget summary featuring expenses incurred, income received, monthyl savings, monthly investments, account balance details etc.</li>
+                <li>Annual Summary featuring networth, summary of income received/total expense incurred/total investments made for a year.</li>
+                <li>Admin account for CRUD operations, user account for read only operations.</li>
+                <li>Color coded to keep you on track. Red for negative, green for positive
+            </ul>
+        </div>
+   </div>
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_span12 oe_spaced">
+        <div class="oe_span12">
+            <h2 style="color:#4b7f8f;">Installation</h2>
+        </div>
+        <div class="oe_span12 text-justify mt8">
+            <p class="text-justify">
+            Budget Management application runs in two privilege modes.
+            </p>
+            <ol>
+                <li>Admin - Provides read/write access</li>
+                <li>User  - Provides read only access</li>
+            </ol>
+            <p >After installing the module, admin/user should be explicitly added to either of the groups
+            to setup/access budget management application. </p>
+        </div>
+        <div class="oe_span12">
+            <div class="oe_row_img oe_centered oe_bg_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 85%;" src="user_config.png">
+            </div>
+        </div>
+
+   </div>
+</section>
+
+ <section class="oe_container oe_dark">
+    <div class="oe_span12 mt16 mb32">
+        <div class="oe_span12" >
+            <h2 style="color:#4b7f8f;">Configuration</h2>
+        </div>
+            <ul style="list-style-type: circle;">
+                    <li><p class="mb16">To start using budget management application, BudgetManagement Admin has to first create income and expense categories from the configuration menu.
+                        </p>
+
+                        <div class="oe_row_img oe_centered oe_bg_img mt16 mb32" style="text-align:center;">
+                            <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Configuration Menu</h3>
+                            <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/admin_config.png">
+                        </div>
+                        <div class="oe_row_img oe_centered oe_bg_img mt16 mb32" style="text-align:center;">
+                            <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Add Expense Category</h3>
+                            <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/ExpenseCategory.png">
+                        </div>
+
+                        <div class="mt16 mb16" style="text-align:center;">
+                            <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Add Income Category</h3>
+                            <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/Incomecategory.png">
+                        </div>
+                    </li>
+
+                    <li><p class="mb16">Once categories are defined, user needs to create a year record for the year for which budget is managed (Configuration -> year).
+                        </p>
+                        <div class="oe_row_img oe_bg_img mt16 mb16" style="text-align:center;">
+                            <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Add Year Record</h3>
+                            <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/year.png">
+                        </div>
+                    </li>
+                    <li>Bank accounts can then be added (Configuration -> Bank Accounts) by specifying the account type and initial balance.
+                        <div class="mt16 mb16" style="text-align:center;">
+                            <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Add Bank Account</h3>
+                            <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/BankAccount.png">
+                        </div>
+                        <div class="mt16 mb16" style="text-align:center;">
+                        <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Bank Account View</h3>
+                            <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/account_details.png">
+                        </div>
+                    </li>
+                    <li>Configured bank accounts will be available when a new expense or income is added.
+                            </li>
+                    <li>It also provide option to transfer money between accounts.
+                    </li>
+
+
+                    <li>User can now add income sources and estimated income from each category (Configuration -> Expected Income).
+                        <div class="mt16 mb16" style="text-align:center;">
+                        <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Add Expected Income for each month</h3>
+                                <img class="oe_screenshot oe_centered" style="max-width: 85%;"  src="configuration/expected income.png">
+                            </div>
+                    </li>
+                    <li>To add budget expenses, click Configuration -> Budget Expense and specify expense category and an estimate of how much you spend on average per month.
+                        <div class="mt16 mb16" style="text-align:center;">
+                        <h3 class="mt16 mb16" style="color:#c04d73;text-align: left;margin-left: 77px;">Add Expected Expense for each month</h3>
+                                <img class="oe_screenshot oe_centered" style="max-width: 85%;"  src="configuration/expected_expense.png">
+                            </div>
+                    </li>
+            </ul>
+        </div>
+ </section>
+
+
+<section class="oe_container">
+    <div class="oe_span12 mt16 mb32">
+        <div class="oe_span12">
+            <h2 style="color:#4b7f8f;">Add new Expense</h2>
+        </div>
+        <div class="oe_span12 mt8">
+            <p>As you spend money, Click Expense->Add Expense to input a new expense. </p>
+            <div class="oe_row_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 85%;"  src="addexpense.png">
+            </div>
+        </div>
+
+    </div>
+ </section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_span12 oe_spaced">
+        <div class="oe_span12">
+            <h2 style="color:#4b7f8f;">List Expenses</h2>
+        </div>
+        <div class="oe_span12">
+            <p>To list all expenses, Click Expense -> My Expenses. BudgetManagement Admin user will be able to edit/delete an expense.</p>
+
+            <div class="oe_row_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 85%;" src="myexpenses.png">
+            </div>
+            <!-- <div class="mt16 mb16" style="text-align:center;">
+               <img class="oe_screenshot" style="max-width: 85%;"  src="configuration/exp_summary_backend.png">
+           </div> -->
+        </div>
+
+    </div>
+ </section>
+
+<section class="oe_container">
+    <div class="oe_span12 oe_spaced">
+        <div class="oe_span12">
+            <h2 style="color:#4b7f8f;">Add new Income</h2>
+        </div>
+        <div class="oe_span12">
+            <p>As you earn money, Click Income -> Add Income to input the amount. </p>
+            <div class="oe_row_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 85%;" src="addincome.png">
+            </div>
+        </div>
+
+    </div>
+ </section>
+
+ <section class="oe_container oe_dark">
+    <div class="oe_span12 oe_spaced">
+        <div class="oe_span12">
+            <h2 style="color:#4b7f8f;">List Income</h2>
+        </div>
+        <div class="oe_span12 mt8">
+            <p>To list all earned income, Click Income -> My Income. BudgetManagement Admin user will be able to edit/delete an income.</p>
+            <div class="oe_row_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 85%;"  src="IncomeSummary.png">
+            </div>
+        </div>
+
+    </div>
+ </section>
+<section class="oe_container">
+    <div class="oe_span12 oe_spaced mb16">
+         <div class="oe_span12">
+            <h2 style="color:#4b7f8f;">To record a cash transfer between accounts</h2>
+        </div>
+        <div class="oe_span12">
+        <p>To track money transfer between accounts, such as making a credit card payment or moving money
+        to savings, Click Cash Transfer and input details.  </p>
+            <div class="oe_row_img oe_centered" style="text-align:center;">
+                <img class="oe_picture oe_screenshot" src="CashTransfer.png">
+            </div>
+        </div>
+   </div>
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_span12 mb32">
+         <div class="oe_span12 mt16">
+            <h2 style="color:#4b7f8f;">Budget Expense Summary</h2>
+        </div>
+        <div class="oe_span12 mt8">
+            <p>This page provides a snapshot of monthly summary of earnings and spendings.
+            User can change the month/year to view the snapshot for a specific month/year.
+            It also provides option to track available balance in each bank accounts, increase in total savings,
+            total investments for a specified month/year. </p>
+
+            <p>Total savings in a month  = Total income earned in all accounts in a month - Total expense incurred in all accounts in a month
+            </p>
+            <p>Total investments in a month = Total income earned in investment account + Total amount transferred to an investment account - Total expense incurred in investment account - Total amount transferred from an investment account.
+            </p>
+        </div>
+        <div class="oe_span12">
+            <div class="oe_row_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 85%;"  src="MonthlySummary.png">
+            </div>
+        </div>
+   </div>
+</section>
+
+<section class="oe_container">
+    <div class="oe_span12 mb32">
+         <div class="oe_span12 mt16 mb8">
+            <h2 style="color:#4b7f8f;">Annual Summary</h2>
+        </div>
+        <div class="oe_span12">
+            <p>This page generates an annual summary of your income and expenses.
+            It also provides user’s net worth, total amount in investment accounts/savings accounts etc. </p>
+        </div>
+        <div class="oe_span12">
+            <div class="oe_row_img" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 90%;"  src="Annual-Summary-My-Website.png">
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="oe_container oe_dark">
+    <div class="oe_span12 mb32">
+         <div class="oe_span12 mt16">
+            <h2 style="color:#4b7f8f;">Login Screen</h2>
+        </div>
+        <div class="oe_span12">
+            <div class="oe_row_img mt16" style="text-align:center;">
+                <img class="oe_screenshot" style="max-width: 79%;"  src="newlogin.png">
+            </div>
+        </div>
+   </div>
+
+         <p class="oe_span12" style="margin-left: 60px;">
+            For any assistance, please feel free to contact: minujames2000@gmail.com
+         </p>
+
+</section>
+
+
+<section class="oe_container">
+    <div class="oe_span12 oe_spaced">
+        <div class="oe_slogan text-center">
+            <div style="color:#2a4c56;">
+                <h3 style="color:#2a4c56;font-size: 25px;">If you need any help or want more features, just contact:</h3><br>
+                <h3 style="color:#2a4c56;font-size: 20px;">Email: <a style="color:#4c7b89;" href="minujames2000@gmail.com">minujames2000@gmail.com</a> <br></h3>
+            </div>
+            <div style="color:#4c7b89;" class="oe_slogan">
+               <h2 >
+                    <a style="color:#4c7b89;" target="_blank" href="https://github.com/minupjames/budget_expense_management/" target="new">
+                        <i class="fa  fa-github" style="font-size:38px;color:#4c7b89;"></i>
+                    </a>
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+

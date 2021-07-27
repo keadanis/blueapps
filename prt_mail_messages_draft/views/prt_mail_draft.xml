@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ 
+    Copyright (C) Cetmix OÜ
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU LESSER GENERAL PUBLIC LICENSE as
+    published by the Free Software Foundation, either version 3 of the
+    License, or (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU LESSER GENERAL PUBLIC LICENSE for more details.
+
+    You should have received a copy of the GNU LESSER GENERAL PUBLIC LICENSE
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<odoo>
+
+<!--################
+    # Mail.Message #
+    ################-->
+
+<!--## Tree ##-->
+    <record id="prt_mail_message_tree" model="ir.ui.view">
+        <field name="name">prt.mail.message.draft.tree</field>
+        <field name="model">prt.mail.message.draft</field>
+        <field name="arch" type="xml">
+          <tree string="Drafts" create="false" >
+            <field name="subject_display"/>
+            <field name="write_date"/>
+            <field name="author_id" invisible="1"/>
+          </tree>
+        </field>
+    </record>
+
+<!--## Form ##-->
+    <record id="prt_mail_message_draft_form" model="ir.ui.view">
+        <field name="name">prt.mail.message.draft.form</field>
+        <field name="model">prt.mail.message.draft</field>
+        <field name="arch" type="xml">
+          <form string="Draft message" create="false">
+            <header>
+               <button name="send_it" string="Send" type="object" class="oe_highlight" attrs="{'invisible': [('record_ref','=',False)]}"/>
+            </header>
+            <sheet>
+              <div class="oe_title"><div><b>
+                  Related record: </b><field name="record_ref"/></div>
+              </div>
+              <group name="base">
+                <field name="write_date" readonly="1" attrs="{'invisible':[('write_date', '=', False)]}"/>
+                <field name="subtype_id" widget="selection"/>
+                <field name="author_id" readonly="1"/>
+                <field name="ref_partner_ids" widget="many2many_tags" attrs="{'invisible':[('ref_partner_count', '=', 0)]}"/>
+                <field name="ref_partner_count" invisible="1"/>
+                <field name="partner_ids" widget="many2many_tags_email" context="{'force_email':True}"/>
+              </group>
+              <group>
+                <field name="subject"/>
+              </group>
+              <notebook>
+                <page name="body" string="Body">
+                  <div style="margin-left:10px">
+                    <br/>
+                      <field name="body" nolabel="1"/>
+                  </div>
+                </page>
+                <page name="attachments" string="Attachments">
+                  <sheet>
+                    <field name="attachment_ids" widget="many2many_binary"/>
+                  </sheet>
+                </page>
+              </notebook>
+            </sheet>
+          </form>
+        </field>
+    </record>
+
+<!--## Action ##-->
+    <record id="action_prt_mail_messages_draft" model="ir.actions.act_window">
+      <field name="name">Drafts</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">prt.mail.message.draft</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+<!--## Menu ##-->
+<menuitem id="prt_messages_messages"
+    name="Drafts"
+    action="action_prt_mail_messages_draft"
+    parent="prt_mail_messages.prt_messages_root"
+    groups="base.group_user,base.group_partner_manager"
+    sequence="2"/>
+
+<!--## Search ##-->
+<record id="prt_mail_message_draft_search" model="ir.ui.view">
+    <field name="name">prt.mail.message.draft.search</field>
+    <field name="model">prt.mail.message.draft</field>
+    <field name="arch" type="xml">
+      <search string="Messages Search">
+        <field name="body"/>
+        <field name="subject"/>
+        <separator/>
+        <filter string="Write Date" name="filter_date" date="write_date"/>
+      </search>
+    </field>
+</record>
+
+<!--########################
+   # Mail.Compose.Message #
+   ########################-->
+
+<!--## Form ## -->
+   <record id="prt_mail_compose_message_view_form" model="ir.ui.view">
+       <field name="name">prt.mail.compose.message.form</field>
+       <field name="model">mail.compose.message</field>
+       <field name="inherit_id" ref="prt_mail_messages.prt_mail_compose_messae_view_form"/>
+       <field name="arch" type="xml">
+         <button special="cancel" position="before">
+           <field name="current_draft_id" invisible="1"/>
+           <button name="save_draft" type="object" string="Save" context="{'save_mode': 'save'}"/>
+           <button name="save_draft" type="object" string="Save &amp; Close" context="{'save_mode': False}"/>
+       </button>
+     </field>
+   </record>
+
+</odoo>

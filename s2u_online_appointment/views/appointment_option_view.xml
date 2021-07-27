@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.ui.view" id="appointment_option_search">
+            <field name="model">s2u.appointment.option</field>
+            <field name="arch" type="xml">
+                <search>
+                       <field name="name"/>
+                </search>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="appointment_option_form_view">
+            <field name="model">s2u.appointment.option</field>
+            <field name="arch" type="xml">
+                <form string="Appointment Option">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <field name="duration" widget="float_time" />
+                            </group>
+                            <group>
+                                <field name="user_specific"/>
+                                <field name="users_allowed"
+                                       widget="many2many_tags"
+                                       attrs="{'required': [('user_specific', '==', True)], 'invisible': [('user_specific', '!=', True)]}"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="appointment_option_tree_view">
+            <field name="model">s2u.appointment.option</field>
+            <field name="arch" type="xml">
+                <tree string="Appointment options">
+                    <field name="name"/>
+                    <field name="duration" widget="float_time"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="appointment_option_action">
+            <field name="name">Appointment Options</field>
+            <field name="res_model">s2u.appointment.option</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Appointment Options" id="menu_appointment_option"
+                  parent="menu_appointment" groups="website.group_website_designer" action="appointment_option_action" sequence="20"/>
+
+    </data>
+</odoo>

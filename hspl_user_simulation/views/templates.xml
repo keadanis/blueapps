@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hspl_assets_backend" inherit_id="web.assets_backend" name="Backend Assets (used in backend interface)">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/hspl_user_simulation/static/src/js/user_simulation.js"></script>
+        </xpath>
+    </template>
+</odoo>

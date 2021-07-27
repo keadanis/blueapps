@@ -1,0 +1,12 @@
+<odoo>
+    <record id="kw_address_gmap_link_kw_address_form" model="ir.ui.view">
+        <field name="name">kw.address.form (kw_address_gmap_link)</field>
+        <field name="model">kw.address</field>
+        <field name="inherit_id" ref="kw_address.kw_address_kw_address_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/group[2]" possition="inside">
+                <field name="address_url" widget="url" text_field="name"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

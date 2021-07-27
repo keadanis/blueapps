@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+acess_document_type,acess.document.type,ni_document_storage_location.model_document_type,base.group_user,1,1,1,1
+acess_document_storage,acess.document.storage,ni_document_storage_location.model_document_storage,base.group_user,1,1,1,1
+acess_document_document_storage_location,acess.document.storage.location,ni_document_storage_location.model_document_storage_location,base.group_user,1,1,1,1

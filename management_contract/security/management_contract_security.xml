@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Rules -->
+    <record id="formation_category_professional_rule_all_user" model="ir.rule">
+        <field name="name">Category professional all user</field>
+        <field name="model_id" ref="model_formation_category_professional"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="formation_educational_level_rule_all_user" model="ir.rule">
+        <field name="name">Educational level all user</field>
+        <field name="model_id" ref="model_formation_educational_level"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="formation_cotization_group_rule_all_user" model="ir.rule">
+        <field name="name">Cotization group all user</field>
+        <field name="model_id" ref="model_formation_cotization_group"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="formation_job_rule_all_user" model="ir.rule">
+        <field name="name">Job all user</field>
+        <field name="model_id" ref="model_formation_job"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="collective_agreement_rule_all_user" model="ir.rule">
+        <field name="name">Collective agreement Profile all user</field>
+        <field name="model_id" ref="model_collective_agreement"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="tag_category_rule_all_user" model="ir.rule">
+        <field name="name">Category all user</field>
+        <field name="model_id" ref="model_tag_cnae_category"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="tag_ine_category_rule_all_user" model="ir.rule">
+        <field name="name">Category INE all user</field>
+        <field name="model_id" ref="model_tag_ine_category"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+     <record id="agreement_type_rule_all_user" model="ir.rule">
+        <field name="name">Agreement Type all user</field>
+        <field name="model_id" ref="model_agreement_type"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+</odoo>

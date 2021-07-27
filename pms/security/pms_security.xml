@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="0">
+        <!--Group for pms user -->
+        <record id="group_pms_user" model="res.groups">
+            <field name="name">Property Management / User</field>
+        </record>
+        <!--Group for pms manager -->
+        <record id="group_pms_manager" model="res.groups">
+            <field name="name">Property Management/ Manager</field>
+            <field name="implied_ids" eval="[(4, ref('pms.group_pms_user'))]" />
+        </record>
+        <!--Group for pms user -->
+        <record id="group_pms_call" model="res.groups">
+            <field name="name">Property Management / CallCenter</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <!-- Company Rules -->
+        <record id="pms_folio_company_rule" model="ir.rule">
+            <field name="name">PMS Folio Company Rule</field>
+            <field name="model_id" ref="model_pms_folio" />
+            <field name="global" eval="True" />
+            <field name="domain_force">
+                ['|',('company_id','=',False),('company_id', 'in', company_ids)]
+            </field>
+        </record>
+        <record id="pms_reservation_company_rule" model="ir.rule">
+            <field name="name">PMS Reservation Company Rule</field>
+            <field name="model_id" ref="model_pms_reservation" />
+            <field name="global" eval="True" />
+            <field name="domain_force">
+                ['|',('company_id','=',False),('company_id', 'in', company_ids)]
+            </field>
+        </record>
+        <!-- Property Rules -->
+        <record id="pms_folio_property_rule" model="ir.rule">
+            <field name="name">PMS Folio Company Rule</field>
+            <field name="model_id" ref="model_pms_folio" />
+            <field name="global" eval="True" />
+            <field name="domain_force">
+                ['|',('pms_property_id','=',False),('pms_property_id', 'in',
+                user.get_active_property_ids())]
+            </field>
+        </record>
+        <record id="pms_reservation_property_rule" model="ir.rule">
+            <field name="name">PMS Reservation Company Rule</field>
+            <field name="model_id" ref="model_pms_reservation" />
+            <field name="global" eval="True" />
+            <field name="domain_force">
+                ['|',('pms_property_id','=',False),('pms_property_id', 'in',
+                user.get_active_property_ids())]
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,10 @@
+#oe_hide{
+    display:none;
+}
+
+#oe_radio_gauge{
+    height: 250px;
+    width: 90%;
+    margin-top:-10px;
+    margin-left:-35px;
+}

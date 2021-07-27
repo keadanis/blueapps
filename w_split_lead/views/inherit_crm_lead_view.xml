@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="w_inherit_crm_lead_view_add_page_split_lead" model="ir.ui.view">
+            <field name="name">inherit.crm.lead.view.add.page.split.lead</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='team_id']" position="after">
+                    <field name="show_split" invisible="1"/>
+                    <field name="show_note" invisible="1"/>
+                </xpath>
+                <xpath expr="//notebook" position="before">
+                    <div class="col-lg-12 col-sm-12 alert alert-warning" role="alert" attrs="{'invisible': [('show_note', '!=', True)]}">
+                        <strong>NOTE: </strong>The sum of the percentages of the lines must be equal to the percentage probabilty of the opportunity, please equal the total percentage of the lines with the one established in the opportunity, in order to save it.
+                    </div>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Split lead" name="split_crm" attrs="{'invisible': [('show_split', '=', False)]}">
+                        <field name="split_lead_ids" nolabel="1" widget="one2many_list" mode="tree,kanban">
+                            <tree string="Split lead" editable="top">
+                                <field name="sequence" widget="handle"/>
+                                <field name="lead_id" invisible="1"/>
+                                <field name="comercial_id" required="True" options="{'no_open': True, 'no_create': True}"/>
+                                <field name="percentaje" required="True" sum="total"/>
+                                <field name="amount_percent" required="True" sum="total"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+   </data>
+</odoo>

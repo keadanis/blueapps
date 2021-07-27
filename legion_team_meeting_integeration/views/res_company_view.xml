@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="team_view_company_form">
+        <field name="name">team.view.company.form</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]" position="after">
+                <page string="Microsoft Team">
+                                        <div class="row">
+							<div class="col-md-4" align="center">
+								<button string='Authenticate' type="object" name="users_authentic"
+									class="oe_highlight" icon="fa-plug" />
+							</div>
+
+                            <div class="col-md-4" align="center">
+								<button string='Refresh Token' type="object" name="generate_refresh_token_from_access_token"
+									class="oe_highlight" icon="fa-plug" />
+							</div>
+					</div>
+
+
+
+
+                    <group string="Credentials">
+                        <field name="application_id" />
+	                    <field name="client_secret" />
+	                    <field name="authorization_url" />
+                        <field name="redirect_uri" />
+                        <field name="access_token" />
+                        <field name="refresh_token" />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="snippet_information" name="Information">
+        <section class="s_features pt32 pb32 o_colored_level s_information_block" data-snippet="s_features" data-name="Features">
+            <div class="container-wrap">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 pt32 pb32 text-center o_colored_level">
+                        <div class="icon-box">
+                            <img src="/theme_sync_ar_restaurant/static/src/images/icon_001.png" alt="preview"/>
+                        </div>
+                        <h3 class="o_default_snippet_text">Quality Foods</h3>
+                        <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the prining and typesetting industry. Lorem Ipsum </p>
+                    </div>
+                    <div class="col-lg-4 pt32 pb32 text-center o_colored_level">
+                        <div class="icon-box">
+                            <img src="/theme_sync_ar_restaurant/static/src/images/icon_002.png" alt="preview"/>
+                        </div>
+                        <h3 class="o_default_snippet_text">Best Location</h3>
+                        <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the prining and typesetting industry. Lorem Ipsum </p>
+                    </div>
+                    <div class="col-lg-4 pt32 pb32 text-center o_colored_level">
+                        <div class="icon-box">
+                            <img src="/theme_sync_ar_restaurant/static/src/images/icon_003.png" alt="preview"/>
+                        </div>
+                        <h3 class="o_default_snippet_text">Original Recipe</h3>
+                        <p class="o_default_snippet_text">Lorem Ipsum is simply dummy text of the prining and typesetting industry. Lorem Ipsum </p>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+    </template>
+    <template id="snippet_information_bar" inherit_id="website.snippets" name="Information">
+        <xpath expr="//div[@id='snippet_structure']/div[@class='o_panel_body']" position="inside">
+            <t t-snippet="theme_sync_ar_restaurant.snippet_information"
+               t-thumbnail="/theme_sync_ar_restaurant/static/src/images/info_icon.png"/>
+        </xpath>
+    </template>
+</odoo>

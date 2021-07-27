@@ -1,0 +1,106 @@
+
+.akl_menu_apps {
+
+    @include akl-flex();
+    @include akl-align-items-center;
+    flex-wrap: nowrap;
+
+    .nav-item {
+        margin-right: 0.5rem;
+    }
+
+    :last-child.nav-item {
+        margin-right: 0px;
+    }
+
+    .nav-item {
+        
+        .nav-link {
+            padding: 0.75rem 1.25rem;
+            font-size: 1rem;
+            font-weight: 400;
+            
+            -webkit-transition: all 0.3s;
+            transition: all 0.3s;
+
+            font-size: 1rem;
+            font-weight: 400;
+            color: #fff;
+
+            &:active, &.active, &.active:hover, &:hover {
+                background-color: #f8f9fa26;
+                -webkit-transition: all 0.3s;
+                transition: all 0.3s;
+            }
+
+            .nav-link-icon {
+                height: 48px;
+                width: 48px;
+                display: block;
+                margin: 0 auto 6px;
+                color: #fff;
+            }
+
+            .nav-link-title {
+                word-wrap: none;
+                text-align: center;
+                line-height: 24px;
+            }
+        }
+    }
+
+    .o_extra_menu_items {
+        .dropdown-menu {
+            .akl_app_item {
+                font-size: 1rem;
+                font-weight: 400;
+                
+                -webkit-transition: all 0.3s;
+                transition: all 0.3s;
+    
+                font-size: 1rem;
+                font-weight: 400;
+                color: #fff;
+
+                a {
+
+                    background-color: transparent;
+                    color: #c7c7c7;
+                    border-bottom: none;
+
+                    &:active, &.active, &.active:hover, &:hover {
+                        background-color: #c6c6c6;
+                        -webkit-transition: all 0.3s;
+                        transition: all 0.3s;
+                    }
+
+                    .nav-link-icon {
+                        height: 48px;
+                        width: 48px;
+                        display: block;
+                        margin: 6px auto 0px;
+                    }
+        
+                    .nav-link-title {
+                        word-wrap: none;
+                        text-align: center;
+                        line-height: 24px;
+                        color: #505050;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@include media-breakpoint-down(md) {
+
+    .akl_menu_apps {
+        display: none !important;
+    }
+
+    .company_logo {
+        display: none !important;
+    }
+}

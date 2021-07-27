@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="ni_view_res_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.form</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <div name="button_box" position="inside">
+                    <button class="oe_stat_button" type="action" name="%(ni_document_storage_location.ni_action_document_storage_res_partner)d"
+                        icon="fa-file-text-o"
+                    context="{'search_default_partner_id': active_id, 'default_partner_id': active_id}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value"><field name="document_storage_count"/></span>
+                        <span class="o_stat_text">Documents</span>
+                    </div>
+                    </button>
+                </div>
+                <xpath expr="//page[last()]" position="after" >
+                        <page string="Documents" invisible="1">
+                            <field name="document_storage_ids" />
+                        </page>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

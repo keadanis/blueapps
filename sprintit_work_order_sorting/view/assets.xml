@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="assets_backend" inherit_id="web.assets_backend"
+		name="KanbanChanges">
+		<xpath expr="." position="inside">
+			<script type="text/javascript"
+				src="/sprintit_work_order_sorting/static/src/js/kanban_color.js"></script>
+		</xpath>
+	</template>
+
+</odoo>

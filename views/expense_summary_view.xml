@@ -1,0 +1,105 @@
+<?xml  version="1.0" encoding="utf-8" ?>
+<odoo>
+
+
+	<record id="expense_summary_tree_view" model="ir.ui.view">
+		<field name="name">Expense Summary Tree View</field>
+		<field name="model">expense.summary</field>
+		<field name="arch" type="xml">
+			<!-- <tree string="Expense Summary" class="tree_field_progress"> -->
+			<tree string="Expense Summary" >
+				<field name="date" />
+				<field name="location" />
+				<field name="name" />
+				<field name="exp_category_id" />
+				<field name="account_journal_id" />
+				<field name="amount" sum="Total Expense"/>
+			</tree>
+		</field>
+	</record>
+	
+	<record id="expense_summary_form_view" model="ir.ui.view">
+		<field name="name">Expense Summary Form View</field>
+		<field name="model">expense.summary</field>
+		<field name="arch" type="xml">
+			<form>
+			<header>
+				  <widget name="attach_document" string="Attach Bill Reference" highlight="1" action="message_post" />
+				
+			</header>
+				<sheet>
+					<div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Pizza Hut"  required="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                    	<group>
+                            <field name="date"  required="1"/>
+                    		<field name="exp_category_id"  required="1"/>
+                    		<field name="location" />
+						
+                     	</group>
+                    	<group>
+                    		
+                    		<field name="account_journal_id"  required="1"/>
+                    		<field name="amount"  required="1" />
+                    	</group>
+                    </group>
+                    <div>
+                        <field name="description" class="oe_inline" placeholder="Notes..."/>
+                    </div>
+                   
+				</sheet>
+				 <div class="o_attachment_preview"/>
+                	<div class="oe_chatter">
+	                  
+	                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+			</form>
+		</field>
+	</record>
+	
+	
+	<record id="view_expected_summary_filter" model="ir.ui.view">
+		<field name="name">Expense Summary Search View</field>
+		<field name="model">expense.summary</field>
+		<field name="arch" type="xml">
+		<search string="Search Expense Summary">
+ 			 <field name="name"/>
+             <field name="exp_category_id"/>
+             <field name="location"/>
+             <field name="amount"/>
+             <field name="date"/>
+             <field name="account_journal_id" />
+             <separator/>                         
+               <filter string="This Month" name="current_month" domain="[('date','&lt;',(context_today()+relativedelta(months=1)).strftime('%Y-%m-01')), 
+               													('date','&gt;=',time.strftime('%Y-%m-01'))]"/>
+               <filter string="This Year" name="current_year" domain="[('date','&lt;=', time.strftime('%%Y-12-31')),('date','&gt;=',time.strftime('%%Y-01-01'))]"/>
+               <filter string="Date Order" name="date_order" date="date"/>
+               <group expand="0" string="Group By">
+                    <filter name="group_category" string="Category" context="{'group_by':'exp_category_id'}"/>
+                    <separator/>
+                    <filter name="group_year" string="Year" context="{'group_by':'date:year'}"/>
+                    <filter name="group_month" string="Month" context="{'group_by':'date:month'}"/>
+               </group>
+		</search>
+		</field>
+	</record>
+	
+	<record id="action_expense_summary" model="ir.actions.act_window">
+		<field name="name">Expense Summary</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">expense.summary</field>
+		<field name="search_view_id" ref="budget_expense_management.view_expected_summary_filter"  />
+		<field name="view_type">form</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_current_month': 1,
+								}</field>
+	</record>
+
+	<menuitem id="menu_exp_summary" action="action_expense_summary" sequence="1" parent="budget" />
+	
+	
+</odoo>

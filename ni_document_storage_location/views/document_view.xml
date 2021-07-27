@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!--        Document Type form view-->
+        <record id="ni_view_document_type_form" model="ir.ui.view">
+            <field name="name">ni.view.document.type.form</field>
+            <field name="model">document.type</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Document Type">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="name" placeholder="Directory Name" required="True"/>
+                            </h1>
+                        </div>
+                        <group col='2'>
+                            <field name="exp_bool"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Document Type tree view-->
+        <record id="ni_view_document_type_tree" model="ir.ui.view">
+        <field name="name">ni.document.type.tree</field>
+        <field name="model">document.type</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree string="Document Type">
+                <field name="name"/>
+                <field name="exp_bool"/>
+            </tree>
+        </field>
+        </record>
+
+        <!--        Document Type Action view-->
+        <record id="ni_action_document_type" model="ir.actions.act_window">
+        <field name="name">Document Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create document types.
+            </p>
+        </field>
+        </record>
+
+         <!--        Document storage location form view-->
+        <record id="ni_view_document_storage_location_form" model="ir.ui.view">
+            <field name="name">ni.view.document.storage.location.form</field>
+            <field name="model">document.storage.location</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Location">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="name" placeholder="Directory Name"/>
+                            </h1>
+                        </div>
+                        <group col="4">
+                            <field name="document_type_id"/>
+                            <field name="dir_location" placeholder="/home/"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Document storage location tree view-->
+        <record id="ni_view_document_storage_location__tree" model="ir.ui.view">
+        <field name="name">ni.document.storage.location.tree</field>
+        <field name="model">document.storage.location</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree string="Location">
+                <field name="name" />
+                <field name="document_type_id"/>
+                <field name="dir_location"/>
+            </tree>
+        </field>
+        </record>
+
+        <!--        Document storage location Action view-->
+        <record id="ni_action_document_storage_location" model="ir.actions.act_window">
+        <field name="name">Document Location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.storage.location</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create document location.
+            </p>
+        </field>
+        </record>
+
+         <!--        Document storage form view-->
+        <record id="ni_view_document_storage_form" model="ir.ui.view">
+            <field name="name">ni.view.document.storage.form</field>
+            <field name="model">document.storage</field>
+            <field name="priority" eval="1"/>
+            <field name="arch" type="xml">
+                <form string="Document Storage" create="0" edit="0">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="d-flex">
+                                <field name="name" placeholder="Name" required="True"/>
+                            </h1>
+                        </div>
+                        <group col="4">
+                            <field name="document_type_id"/>
+                            <field name="employee_id"/>
+                            <field name="partner_id"/>
+                            <field name="document_file" />
+                            <field name="expiry_date" />
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--        Document storage tree view-->
+        <record id="ni_view_document_storage_tree" model="ir.ui.view">
+        <field name="name">ni.document.storage.tree</field>
+        <field name="model">document.storage</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree string="Document Storage" editable="bottom" create="0" edit="0">
+                <field name="document_type_id" />
+                <field name="document_location_id"  domain="[('document_type_id','=',document_type_id)]"/>
+                <field name="expiry_date"  attrs="{'required':[('expiration_bool','=',True)]}"/>
+                <field name="document_file" filename="name" widget="binary"/>
+                <field name="expiration_bool" invisible="1" />
+                <field name="employee_id" invisible="1"/>
+                <field name="partner_id" invisible="1"/>
+                <field name="name" />
+            </tree>
+        </field>
+        </record>
+
+        <!--        Document storage tree view-->
+        <record id="ni_view_document_storage_tree_1" model="ir.ui.view">
+        <field name="name">ni.document.storage.tree</field>
+        <field name="model">document.storage</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree string="Document Storage" editable="bottom">
+                <field name="document_type_id" />
+                <field name="document_location_id"  domain="[('document_type_id','=',document_type_id)]"/>
+                <field name="expiry_date"  attrs="{'required':[('expiration_bool','=',True)]}"/>
+                <field name="document_file" filename="name" widget="binary"/>
+                <field name="expiration_bool" invisible="1" />
+                <field name="employee_id" invisible="1"/>
+                <field name="partner_id" invisible="1"/>
+                <field name="name" />
+            </tree>
+        </field>
+        </record>
+
+        <!--        Document storage search view-->
+        <record id="ni_document_storage_view_search" model="ir.ui.view">
+            <field name="name">ni.document.storage.view.search</field>
+            <field name="model">document.storage</field>
+            <field name="arch" type="xml">
+                <search string="Document Storage">
+                    <field name="document_type_id" />
+                    <field name="document_location_id" />
+                    <field name="employee_id" />
+                    <field name="partner_id" />
+                    <group string="Group By...">
+                        <filter string="Document Type" name="group_document_type_id"
+                            domain="[]" context="{'group_by':'document_type_id'}"/>
+                        <separator/>
+                        <filter string="Expiry Date" name="expiry_date"
+                            domain="[]" context="{'group_by':'expiry_date'}"/>
+                        <separator/>
+                        <filter string="Location" name="document_location_id"
+                            domain="[]" context="{'group_by':'document_location_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!--        Document storage Action view-->
+        <record id="ni_action_document_storage" model="ir.actions.act_window">
+        <field name="name">Document Storage</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.storage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="ni_view_document_storage_tree"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                document storage.
+            </p>
+        </field>
+        </record>
+
+        <!--        Document storage partner Action view-->
+        <record id="ni_action_document_storage_res_partner" model="ir.actions.act_window">
+        <field name="name">Document Storage</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.storage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('partner_id', '=', active_id)]</field>
+        <field name="view_id" ref="ni_view_document_storage_tree_1"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                document storage.
+            </p>
+        </field>
+        </record>
+
+        <!--        Document storage Employee Action view-->
+        <record id="ni_action_document_storage_hr_employee" model="ir.actions.act_window">
+        <field name="name">Document Storage</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">document.storage</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('employee_id', '=', active_id)]</field>
+        <field name="view_id" ref="ni_view_document_storage_tree_1"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                document storage.
+            </p>
+        </field>
+        </record>
+
+    </data>
+</odoo>

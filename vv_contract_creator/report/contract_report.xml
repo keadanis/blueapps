@@ -1,0 +1,20 @@
+<odoo>
+    <record id="action_report_contract" model="ir.actions.report">
+        <field name="name">Contract</field>
+        <field name="model">vv.contract.creator</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">vv_contract_creator.report_contract</field>
+        <field name="report_file">vv_contract_creator.report_contract</field>
+        <field name="paperformat_id" ref="base.paperformat_euro"/>
+    </record>
+
+    <template id="report_contract">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <t t-raw="docs._prepare_contract()"/>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
