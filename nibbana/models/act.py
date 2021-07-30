@@ -41,7 +41,7 @@ class Act(models.Model):
             ORDER BY sequence;
     """
 
-    @api.model_cr
+    
     def init(self):
         self.env.cr.execute(self._sql)
 
