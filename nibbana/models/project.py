@@ -173,14 +173,14 @@ class Project(models.Model):
                     domain, groupby, remaining_groupbys, aggregated_fields,
                     count_field, read_group_result, read_group_order)
 
-    @api.one
+    
     @api.constrains('schedule_start_date')
     def _check_schedule_start_date(self):
         if self.schedule_start_date and \
                 self.schedule_start_date <= fields.Date.today():
             raise ValidationError(_('You should set a future date!'))
 
-    @api.one
+    
     @api.constrains('state')
     def check_limits(self):
         if self.area and self.state == 'Active':
@@ -215,21 +215,21 @@ class Project(models.Model):
         if not self.env.context.get('group_by'):
             self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
-    @api.one
+    
     def _open_task_count(self):
         self.open_task_count = self.with_context(
             {'active_test': False}).env['nibbana.task'].search_count([
                 ('project', '=', self.id),
                 ('state', 'not in', ['Done', 'Cancelled'])])
 
-    @api.one
+    
     def _closed_task_count(self):
         self.closed_task_count = self.with_context(
             {'active_test': False}).env['nibbana.task'].search_count([
                 ('project', '=', self.id),
                 ('state', 'in', ['Done', 'Cancelled'])])
 
-    @api.one
+    
     def _reference_count(self):
         self.reference_count = self.with_context(
             {'active_test': False}).env['nibbana.reference'].search_count([
@@ -517,7 +517,7 @@ class ProjectArea(models.TransientModel):
 
     new_area = fields.Many2one(comodel_name='nibbana.area', required=True)
 
-    @api.one
+    
     def do_change_area(self):
         projects = self.env['nibbana.project'].browse(self._context.get(
                                                         'active_ids', []))

@@ -28,19 +28,19 @@ class Area(models.Model):
         ('uid_uniq', 'UNIQUE(uid)', _('The uid must be unique !')),
     ]
 
-    @api.one
+    
     def _get_project_count(self):
         self.project_count = self.env['nibbana.project'].search_count([
             ('area', '=', self.id)])
 
 
-    @api.one
+    
     def _get_task_count(self):
         self.task_count = self.env['nibbana.task'].search_count([
             ('area', '=', self.id),('state','not in',['Done','Cancelled'])])
 
 
-    @api.one
+     
     def _get_reference_count(self):
         self.reference_count = self.env['nibbana.reference'].search_count([
             ('area', '=', self.id)])
