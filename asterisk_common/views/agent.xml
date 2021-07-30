@@ -2,10 +2,11 @@
 <odoo>
     <data>
 
-        <record id='remote_agent_agent_action' model='ir.actions.act_window'>
-            <field name='name'>Remote Agents</field>
-            <field name='res_model'>remote_agent.agent</field>
-            <field name="view_mode">tree,form</field>
+        <record id="remote_agent_agent_action" model="ir.actions.server">
+            <field name="name">Asterisk Agent</field>
+            <field name="model_id" ref="model_remote_agent_agent"/>
+            <field name="state">code</field>
+            <field name="code">action = model.open_agent_form()</field>
         </record>
 
         <record id='remote_agent_states_action' model='ir.actions.act_window'>
@@ -14,13 +15,9 @@
             <field name="view_mode">tree,graph</field>
             <field name="domain">[('agent', '=', context.get('agent_id'))]</field>
         </record>
-            
-        <menuitem id="remote_agent_top_menu" name='Agents'
-            parent="asterisk_settings_menu" sequence="170"
-            groups="asterisk_common.group_asterisk_admin"/>
 
-        <menuitem id="remote_agent_agent_menu" parent='remote_agent_top_menu'
-            name='Agents' action='remote_agent_agent_action'/>
+        <menuitem id="remote_agent_agent_menu" parent='asterisk_settings_menu'
+            sequence="10" name='Agent' action='remote_agent_agent_action'/>
 
         <record id='remote_agent_agent_list' model='ir.ui.view'>
             <field name='name'>remote_agent.agent.list</field>
@@ -30,12 +27,12 @@
                 <tree decoration-danger="alarm != False">
                     <field name="alarm" invisible="1"/>
                     <field name="state_icon" widget="html" string="S"/>
+                    <field name="note"/>
                     <field name="system_name"/>                    
                     <field name="state"/>                          
-                    <field name="state_changed_human"/>                    
+                    <field name="state_changed_human"/>
                     <field name="last_online_human"/>
-                    <field name="bus_enabled" string="Bus"/>
-                    <field name="http_enabled" string="HTTP"/>
+                    <field name="connection_type"/>
                     <field name="version"/>
                 </tree>
             </field>
@@ -46,14 +43,14 @@
             <field name='model'>remote_agent.agent</field>
             <field name='type'>form</field>
             <field name='arch' type='xml'>
-              <form>
+              <form create="false">
                   <header>                    
-                    <button type="object" name="ping_button"
+                    <button type="object" name="ping_agent"
                                 class="oe_read_only btn-primary"
-                                string="Ping" icon="fa-eye"/>
-                    <button type="object" name="refresh_view_button"
+                                string="Ping Agent" icon="fa-eye"/>
+                    <button type="object" name="ping_asterisk"
                                 class="oe_read_only"
-                                string="Refresh" icon="fa-refresh"/>
+                                string="Ping Asterisk" icon="fa-eye"/>
                     <button type="object" name="restart"
                                 class="oe_read_only btn-warning"
                                 string="Restart" icon="fa-plug"/>
@@ -64,6 +61,12 @@
                     <button type="object" name="adjust_permissions"
                                 class="oe_read_only" string="Adjust Permissions"
                                 icon="fa-gear"/>
+                    <button type="object" name="reload_events"
+                                class="oe_read_only" string="Reload events"
+                                icon="fa-gear"/>
+                    <button type="object" name="refresh_view_button"
+                                class="oe_read_only"
+                                string="Refresh" icon="fa-refresh"/>
                     <field name="state" widget="statusbar"/>
                   </header>
                   <sheet>
@@ -80,8 +83,8 @@
                             <field name="alarm"/>
                     </div>                    
                     <div name="title" class="oe_title">
-                        <label for="system_name" class="oe_edit_only"/>
-                        <h1><field name="system_name"/></h1>
+                        <label for="note" class="oe_edit_only"/>
+                        <h1><field name="note"/></h1>
                     </div>
                     <notebook>
                         <page string="Settings">
@@ -89,38 +92,35 @@
                                 <group>
                                     <field name="id" invisible="1"/>
                                     <field name="user"/>
+                                    <field name="tz"/>
+                                    <field name="country_id"/>
                                 </group>                        
-                                <group>                        
-                                    <field name='note'/>
-                                </group>
-                            </group>
-                            <group name="communication">
-                                <group string="Odoo bus">
-                                    <field name='bus_enabled'/>                        
+                                <group name="connection">
+                                    <field name="connection_type"/>
                                     <field name="bus_timeout"
-                                            attrs="{'invisible': [('bus_enabled', '=', False)],
-                                                    'required': [('bus_enabled', '=', True)]}"/>
-                                </group>
-                                <group string="Agent HTTP">
-                                    <field name='http_enabled'/>
-                                    <field name='http_url'                                
-                                           attrs="{'invisible': [('http_enabled', '=', False)],
-                                                   'required': [('http_enabled', '=', True)]}"/>
+                                            attrs="{'invisible': [('connection_type', '!=', 'bus')],
+                                                    'required': [('connection_type', '=', 'bus')]}"/>
+                                    <field name='http_url'
+                                           attrs="{'invisible': [('connection_type', '!=', 'http')],
+                                                   'required': [('connection_type', '=', 'http')]}"/>
                                     <field name='http_ssl_verify'
-                                           attrs="{'invisible': [('http_enabled', '=', False)]}"/>
+                                           attrs="{'invisible': [('connection_type', '!=', 'http')]}"/>
                                     <field name='http_timeout'
-                                           attrs="{'invisible': [('http_enabled', '=', False)],
-                                                   'required': [('http_enabled', '=', True)]}"/>                                                          
-                                  </group>
+                                           attrs="{'invisible': [('connection_type', '!=', 'http')],
+                                                   'required': [('connection_type', '=', 'http')]}"/>
+                                </group>
                             </group>
                         </page>
-                        <page string="Statistics" class="oe_read_only">
+                        <page string="Information" class="oe_read_only">
                             <group>
-                                <group>                            
+                                <group>
+                                    <field name="system_name"/>
+                                    <field name="version"/>
                                     <field name="state_changed"/>
                                     <field name="state_changed_human"/>
                                 </group>
-                                <group>                            
+                                <group>
+                                    <field name="current_db"/>
                                     <field name="last_online"/>
                                     <field name="last_online_human"/>
                                 </group>
@@ -129,6 +129,7 @@
                                     <field name="states" nolabel="1">
                                         <tree limit="10">                                
                                             <field name="state"/>
+                                            <field name="create_date"/>
                                             <field name="note"/>
                                             <field name="create_date" string="Created"/>
                                         </tree>
@@ -147,14 +148,15 @@
             <field name='type'>search</field>
             <field name='arch' type='xml'>
                 <search>
+                    <field name="note"/>
                     <field name='system_name'/>
                     <field name="state"/>
                     <field name="state_changed"/>
                     <field name="last_online"/>
-                    <filter name="bus_enabled" string="Bus enabled"
-                        domain="[('bus_enabled', '=', True)]"/>
-                    <filter name="http_enabled" string="HTTP"
-                        domain="[('http_enabled', '=', True)]"/>
+                    <filter name="bus_enabled" string="Bus Connection"
+                        domain="[('connection_type', '=', 'bus')]"/>
+                    <filter name="http_enabled" string="HTTP Connection"
+                        domain="[('connection_type', '=', 'http')]"/>
                     <separator/>
                     <filter name="online" string="Online"
                         domain="[('state', '=', 'online')]"/>

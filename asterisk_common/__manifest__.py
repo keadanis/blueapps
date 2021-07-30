@@ -1,6 +1,7 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 {
     'name': "Asterisk Common (connector)",
-    'version': '1.10',
+    'version': '2.9',
     'price': 0,
     'currency': 'EUR',
     'author': "Odooist",
@@ -8,13 +9,12 @@
     'license': 'OPL-1',
     'summary': 'Click2dial, set callerid name and more...',
     'description': 'Common module for other Asterisk addons',
-    'depends': ['contacts', 'website'],
-    'external_dependencies': {'python': ['phonenumbers']},
+    'depends': ['contacts'],
+    'external_dependencies': {'python': ['jsonrpcclient', 'phonenumbers']},
     'data': [
-        # User's Data first!
-        'data/user.xml',
+        # Agents's Data first!
+        'data/agent.xml',
         'security/groups.xml',
-        'security/ir.model.access.csv',
         'security/admin_access_rules.xml',
         'security/admin_record_rules.xml',
         'security/agent_access_rules.xml',
@@ -22,7 +22,6 @@
         'security/user_record_rules.xml',
         'views/menus.xml',
         'views/agent.xml',
-        'views/agent_state.xml',
         'views/assets.xml',
         'views/ir_cron.xml',
         'views/res_partner.xml',
@@ -32,7 +31,6 @@
         'views/about.xml',
         # Put it after settings as it goes under Settings menu.
         'views/event.xml',
-        'views/user_settings.xml',
         # Wizards
         'wizards/user.xml',
         # Data

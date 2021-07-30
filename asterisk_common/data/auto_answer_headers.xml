@@ -1,0 +1,15 @@
+<odoo><data>
+
+    <function model="asterisk_common.settings" name="set_param"
+        eval="('auto_answer_headers', '''Call Info: Answer-After=0\n
+Call Info: answer-after=0\n
+Alert-Info: info=alert-autoanswer\n
+Call-Info: &lt;sip:&gt;;answer-after=0\n
+Answer-Mode: Auto\n
+P-Auto-Answer: normal\n
+Alert-Info: Ring Answer\n
+Alert-Info: Info=Alert-Autoanswer\n
+Call-Info:\;Answer-After=0\n
+Call-Info: answer-after=0''')"/>
+
+</data></odoo>

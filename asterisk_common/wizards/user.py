@@ -1,7 +1,8 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 import json
 import logging
 from odoo import models, fields
-from odoo.tools import safe_eval
+from odoo.tools.safe_eval import safe_eval
 
 
 logger = logging.getLogger(__name__)

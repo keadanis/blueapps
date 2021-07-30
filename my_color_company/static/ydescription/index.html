@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Odoo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://emoji-css.afeld.me/emoji.css" rel="stylesheet">
+
+
+</head>
+<!-- odoo description page css -->
+<style>
+    h1,
+    h2{
+        text-align: center;
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #80B354;
+    },
+    h3,
+    h4,
+    h5,
+    h6,
+    .h1,
+    .h2,
+    .h3,
+    .h4,
+    .h5{
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #21272b;
+    },
+    .h6 {
+        font-family: "Ubuntu", sans-serif;
+        font-weight: 400;
+        line-height: 1.1;
+        color: #21272b;
+    }
+
+    ul {
+        color: #222020;
+    }
+
+    * {
+        font-family: "Ubuntu", sans-serif;
+    }
+    
+    .rainbow-text {
+  		background-image: linear-gradient(to left, violet, indigo, blue, green, orange, red, violet, indigo, blue, green, orange, red);
+  		-webkit-background-clip: text;
+  		-webkit-text-fill-color: transparent;
+	}
+
+</style>
+
+<body>
+
+<div class="container">
+
+    <!-- Header -->
+    <div class="row justify-content-md-between justify-content-center border-bottom align-items-center py-2 mx-0">
+        <div class="text-center mr-lg-5 mb-3 mb-lg-0">
+            <a class="btn p-0" href="https://axolot.com/">
+                <img src="images/axolot_logo.jpg"
+                		width="100"
+                     alt="axolot-logo">
+            </a>
+        </div>
+        <div class="mt-md-0 mt-3">
+            <i class="em em-flag-mx"></i>
+            <i class="em em-flag-do"></i>
+            <i class="em em-flag-pe"></i>
+            <i class="em em-flag-ec"></i>
+            <i class="em em-flag-co"></i>
+            <i class="em em-flag-us"></i>
+        </div>
+        <div class="mt-md-0 mt-3">
+            <!--
+            <a class="btn btn-outline-success btn-sm mb-2 mb-lg-0"
+               style="font-size: 13px;border-radius: 7px !important;position: relative;overflow: hidden;color: #585e64;padding: 10px 4px;line-height: 0px;"><i
+                    class="fa fa-users"></i> Community</a> -->
+            <a class="btn btn-outline-success btn-sm mb-2 mb-lg-0"
+               style="font-size: 13px;border-radius: 7px !important;position: relative;overflow: hidden;color: #585e64;padding: 10px 4px;line-height: 0px;"><i
+                    class="fa fa-building""></i> Enterprise</a>
+            <a class="btn btn-outline-success btn-sm mb-2 mb-lg-0"
+               style="font-size: 13px;border-radius: 7px !important;position: relative;overflow: hidden;color: #585e64;padding: 10px 4px;line-height: 0px;"><i
+                    class="fa fa-cloud"></i> Odoo.sh</a>
+        </div>
+    </div>
+    <!-- Hero Description  -->
+    <div class="row align-items-center justify-content-center py-3 mx-0">
+        
+        
+        <div class="col-12 col-sm mb-2 mb-lg-0 text-center text-sm-right">
+            
+            <a class="btn btn-primary my-2 mb-2 mb-lg-0  ml-2" href="#"
+                   style="box-shadow: rgba(0, 0, 0, 0.5) -1px 2px 3px; color:yellow;"> <i class="fa fa-video-camera"></i> Demo Video
+		      </a>
+        </div>
+        <div class="col-12 col-sm mb-2 mb-lg-0 text-center text-sm-right">
+            <a href="#" class="btn btn-sm px-0"
+               style="border: none; font-size: 10px; width: 30px;color: #3b5999;"> <i class="fa fa-facebook fa-2x"></i>
+            </a>
+            <a href="#" class="btn btn-sm px-0"
+               style="font-size: 10px;border: none; width: 30px;color:#0077B5;"> <i class="fa fa-linkedin fa-2x"></i>
+            </a>
+            <a href="#" class="btn btn-sm px-0"
+               style="font-size: 10px;border: none; width: 30px;color: red;"> <i
+                    class="fa fa-youtube-play fa-2x"></i> </a>
+            <a href="#" class="btn btn-sm px-0"
+               style="font-size: 10px;border: none; width: 30px;color: #00acee;"> <i class="fa fa-twitter fa-2x"></i>
+            </a>
+        </div>
+    </div>
+  
+	 <h1 class="w-100 text-center mb-3 rainbow-text">COLOR BY COMPANY</h2>
+    <h2 class="w-100 text-center mb-3">Selección de colores por compania.</h2>
+    <h6 class="w-100 text-center mb-3">La aplicación Color By Company de Axolot le ayuda a personalizar la gama de colores de su entorno, dando la opcion de personalizar nuestras diferentes companias.</h6>
+    
+    <div>
+        <ul class="list-unstyled pl-0  bg-white" style="font-size:15px;">
+				<li class="d-flex align-items-baseline mb-2 p-3 font-weight-bold"
+                style="border-radius: 10px;font-size: 16px;">
+                <span class="text-center "
+                        style="font-size: 30px;font-weight: 400;color: #80B354;">El primer paso es instalar nuestra aplicación en nuestro odoo.
+                        <img src="images/axolot_install_color.png" alt="faq"
+                                                 style="max-width:100%;" class="my-4">
+                </span>
+            </li>        		
+        		
+            <li class="d-flex align-items-baseline mb-2 p-3 font-weight-bold"
+                style="border-radius: 10px;font-size: 16px;">
+                <span class="text-center "
+                        style="font-size: 30px;font-weight: 400;color: #80B354;">Para cambiar la selección de colores tenemos que ir al menu Ajustes/Compañias y damos clic en la que queremos configurar.
+                        <img src="images/axolot_select_company.png" alt="faq"
+                                                 style="max-width:100%;" class="my-4">
+                </span>
+            </li>
+            
+            <li class="d-flex align-items-baseline mb-2 p-3 font-weight-bold"
+                style="border-radius: 10px;font-size: 16px;">
+                <span class="text-center "
+                        style="font-size: 30px;font-weight: 400;color: #80B354;">solo hay que seleccionar nuestra paleta de colores preferida en la pestaña 'Company Style'.
+                        <h6 style="color: black;" class="w-100 text-center mb-3">Recuerde consultar a su diseñador web sobre una paleta de colores adecuada o puede consultar <a target="_blank" tarjet="blank" href="https://color.adobe.com/es">https://color.adobe.com/es</a> para obtener una paleta de colores.</h6>
+                        <img src="images/axolot_selection_colors.png" alt="faq"
+                                                 style="max-width:100%;" class="my-4">
+                </span>
+            </li>
+        </ul>
+    </div>
+    
+
+    <div class="suggested-app">
+        <div class="row pt-4 px-3">
+            <div class="w-100 mb-4 mb-lg-5">
+                <!-- Nav tabs 898D8F-->
+                <ul class="nav nav-tabs mb-4 justify-content-center bg-transparent">
+                    <li class="nav-item ml-4 mr-1" style="background-color: #898D8F;border-radius: 5px 5px 0 0;">
+                        <a class="nav-link active"
+                           style="border-top-left-radius: .25rem;border-top-right-radius: .25rem;color: #80B354;"
+                           data-toggle="tab" href="#s-features">Features</a>
+                    </li>
+                    <!---
+                    <li class="nav-item mr-1" style="background-color: #898D8F;border-radius: 5px 5px 0 0;">
+                        <a class="nav-link "
+                           style="border-top-left-radius: .25rem;border-top-right-radius: .25rem;color: #80B354;"
+                           data-toggle="tab" href="#s-faq">FAQ</a>
+                    </li> 
+                    <li class="nav-item mr-1" style="background-color: #898D8F;border-radius: 5px 5px 0 0;">
+                        <a class="nav-link "
+                           style="border-top-left-radius: .25rem;border-top-right-radius: .25rem;color: #80B354;"
+                           data-toggle="tab" href="#pills-setup">User Guide</a>
+                    </li> -->
+                    <li class="nav-item mr-1" style="background-color: #898D8F;border-radius: 5px 5px 0 0;">
+                        <a class="nav-link"
+                           style="border-top-left-radius: .25rem;border-top-right-radius: .25rem;color: #80B354;"
+                           data-toggle="tab" href="#pills-profile">Support</a>
+                    </li>
+                    <!-- <li class="nav-item mr-1" style="background-color: #898D8F;border-radius: 5px 5px 0 0;">
+                        <a class="nav-link "
+                           style="border-top-left-radius: .25rem;border-top-right-radius: .25rem;color: #80B354;"
+                           data-toggle="tab" href="#pills-releases">Releases</a>
+                    </li> -->
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="s-features">
+                        <!-- <hr> -->
+                        <div class="text-left py-4">
+                            <h2 class="mb-3 display-4" style="font-size: 2.6rem; ">
+                                <span style="color: #80B354;">Caracteristicas</h2>
+            
+                        </div>
+                        <div class="card p-4 p-lg-5 mb-4 border-0"
+                             style="border-radius: .25rem;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); color: #002966;">
+                            <div class="row">
+                                <div class="col-12 col-lg-6">
+                                    <ul class="list-unstyled" style="font-size:16px;color: #222020;">
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Opción para cambiar los colores de la barra principal de odoo.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Color de fondo del sheet del formulario.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Cambia los colores de los kanban y modo lista.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Color del fondo de la parte de atras del formulario.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Puedes cambiar el color del texto en general y de los textos de tipo enlace.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <ul class="list-unstyled" style="font-size:16px;color: #222020;">
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Cambia el color de texto y de fondo de los botones primarios.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Opción para cambiar los colores de los botones secundarios.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div><img src="images/axolot_mini_logo.png" alt="faq"
+                                                      style="width:25px;margin-right:10px"></div>
+                                            <span>Tenemos 2 opciones de cambio del fondo del menu pricipal, gradiente, la cual permite seleccionar 2 colores y la opción de imagen, la cual al seleccionarla la colocara como fondo pricipal.</span>
+                                        </li>
+                                        
+                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        <!--  Support -->
+                    </div>
+
+                    <div class="px-3 pt-3 tab-pane fade" id="pills-setup" role="tabpanel"
+                         aria-labelledby="pills-profile-tab">
+                        <div class="tab-pane">
+                            <a href="https://wiki.xmarts.com/" target="_blank"
+                               class="d-flex flex-wrap flex-md-nowrap align-items-center"
+                               style="text-decoration: none !important">
+                                <h5 class="mb-0">Para mas detalle revise el <span style="font-weight:bold; color:blue;"><u>  manual de usuariso </u></span>
+                                  </h5>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- setup tab-->
+                    <div class="tab-pane fade " id="pills-profile">
+                        <div class="tab-pane">
+                            <div class="row mt-5">
+                                <div class="col-12 col-md-8 mx-auto">
+                                    <div class="p-4 bg-white position-relative h-100"
+                                         style="margin-bottom : 10px;  ">
+                                       
+                                        <div class="text-center px-lg-5">
+                                            <h2 class="font-weight-bold mb-4 ">30 dias de soporte</h2 >
+                                            <h6>Nuestros clientes cuentan con 30 dias de soporte para configuraciones o resolución de bugs. <br> 
+                                            <a href="mailto:support@axolot.com"> support@axolot.com </a></h6>
+                                        </div>
+                                        <div class="text-center px-lg-5">
+                                            <img src="images/supoort.png" alt="faq" style="width:155px;" >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- <div class="tab-pane fade" id="pills-releases">
+                        <div class="row mt-5">
+
+                          
+                            <div class="col-12 col-lg-12  mb-4">
+                                <div class="card p-4 h-100" style="border-radius: .25rem;">
+                                    <div class="row">
+                                        <div><img src="images/release.png" alt="faq" style="width:35px;" class="ml-2">
+                                        </div>
+                                        <div class="col">
+                                            <h5 class="mb-0" style="font-size: 16px;">Release 13.0.1 </h5>
+                                            <small class="text-muted"> 25th March 2020</small>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <ul class="p-0 mb-0" style="font-size: 16px; color: #002966;list-style-type: none;">
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <img src="images/Foco.png" alt="faq"
+                                                 style="width:15px;margin-right:10px">
+                                            <span>Fix - Fixed rounds.</span>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <img src="images/Foco.png" alt="faq"
+                                                 style="width:15px;margin-right:10px">
+                                            <span>Fix - Fixed Report.</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-lg-12  mb-4">
+                                <div class="card p-4 h-100" style="border-radius: .25rem;">
+                                    <div class="row">
+                                        <div><img src="images/release.png" alt="faq" style="width:35px;" class="ml-2">
+                                        </div>
+                                        <div class="col">
+                                            <h5 class="mb-0" style="font-size: 16px;">Release 13.0.0 </h5>
+                                            <small class="text-muted"> 1 May 2020</small>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <ul class="p-0 mb-0" style="font-size: 16px; color: #002966;list-style-type: none;">
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <img src="images/Foco.png" alt="faq"
+                                                 style="width:15px;margin-right:10px">
+                                            <span>Feature - Inicial Release.</span>
+                                        </li>
+ 
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div> -->
+
+                    <!-- faq tab-->
+
+                
+                                
+                    <div class="tab-pane fade" id="s-faq">
+                        <div class="card p-4 p-lg-5 mb-4 border-0"
+                             style="border-radius: .25rem;box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23); color: #002966;">
+                            <div class="row">
+                
+                                <div class="col-12 col-lg-6">
+                                    <ul class="list-unstyled" style="font-size:16px;color: #222020;">
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div class="card p-4 h-100"
+                                                style="border-color: #007bff;border-radius: .25rem;font-size: 16px;">
+                                                <div class="row pl-3 align-items-center mb-3">
+                                                    <img src="images/faq.png" alt="faq">
+                                                    <h6 class="col mb-0 pr-0" style="font-weight: 600;font-size: 16px">Is this app compatible with Odoo Enterprise?</h6>
+
+                                                </div>
+                                                Yes, our app works with Odoo Enterprise as well as Community.
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div class="card p-4 h-100"
+                                                style="border-color: #007bff;border-radius: .25rem;font-size: 16px;">
+                                                <div class="row pl-3 align-items-center mb-3">
+                                                    <img src="images/faq.png" alt="faq">
+                                                    <h6 class="col mb-0 pr-0" style="font-weight: 600;font-size: 16px">Is this app compatible with Odoo Enterprise?</h6>
+
+                                                </div>
+                                                Yes, our app works with Odoo Enterprise as well as Community.
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <ul class="list-unstyled" style="font-size:16px;color: #222020;">
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div class="card p-4 h-100"
+                                                style="border-color: #007bff;border-radius: .25rem;font-size: 16px;">
+                                                <div class="row pl-3 align-items-center mb-3">
+                                                    <img src="images/faq.png" alt="faq">
+                                                    <h6 class="col mb-0 pr-0" style="font-weight: 600;font-size: 16px">Is this app compatible with Odoo Enterprise?</h6>
+
+                                                </div>
+                                                Yes, our app works with Odoo Enterprise as well as Community.
+                                            </div>
+                                        </li>
+                                        <li class="d-flex align-items-baseline mb-3">
+                                            <div class="card p-4 h-100"
+                                                style="border-color: #007bff;border-radius: .25rem;font-size: 16px;">
+                                                <div class="row pl-3 align-items-center mb-3">
+                                                    <img src="images/faq.png" alt="faq">
+                                                    <h6 class="col mb-0 pr-0" style="font-weight: 600;font-size: 16px">Is this app compatible with Odoo Enterprise?</h6>
+
+                                                </div>
+                                                Yes, our app works with Odoo Enterprise as well as Community.
+                                            </div>
+                                        </li>
+                                    </ul>
+                
+                                </div>
+                            </div>
+                        </div>
+                
+                     
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+
+
+      
+        <div>
+            <ul class="list-unstyled pl-0  bg-white" style="font-size:15px;">
+                    <li class="d-flex align-items-baseline mb-2 p-3 font-weight-bold"
+                         style="border-radius: 10px;font-size: 16px;">
+                            <span class="text-center "
+                                style="font-size: 40px;font-weight: 400;color: #80B354;">Siempre muy cerca de ti ...
+                                <!-- <img src="images/map.png" alt="faq" style="max-width:100%;" class="my-4"> -->
+                                </span>
+                    </li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <div>
+            <div class="row mx-0 justify-content-sm-between justify-content-center"
+                 style="border-top: 1px solid #80B354; ">
+              
+                <div>
+                    <i class="fa fa-envelope fa-2x"
+                       style="margin-right: 10px;color: #898D8F;transform: translateY(4px) scale(1.2);"></i>
+                    <span style="font-size: 18px;">info@axolot.com‬</span>
+                </div>
+            </div>
+        </div>
+        <!-- container End -->
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,3 +1,4 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 import logging
 import phonenumbers
 from phonenumbers import phonenumberutil
@@ -23,19 +24,19 @@ class Partner(models.Model):
     def create(self, vals):
         res = super(Partner, self).create(vals)
         if res and not self.env.context.get('no_clear_cache'):
-            self.pool.clear_caches()
+            self.clear_caches()
         return res
 
     def write(self, values):
         res = super(Partner, self).write(values)
         if res and not self.env.context.get('no_clear_cache'):
-            self.pool.clear_caches()
+            self.clear_caches()
         return res
 
     def unlink(self):
         res = super(Partner, self).unlink()
         if res and not self.env.context.get('no_clear_cache'):
-            self.pool.clear_caches()
+            self.clear_caches()
         return res
 
     @api.depends('phone', 'mobile', 'country_id')
@@ -43,8 +44,12 @@ class Partner(models.Model):
         for rec in self:
             if rec.phone:
                 rec.phone_normalized = rec.normalize_phone(rec.phone)
+            else:
+                rec.phone_normalized = False
             if rec.mobile:
                 rec.mobile_normalized = rec.normalize_phone(rec.mobile)
+            else:
+                rec.mobile_normalized = False
 
     @api.model
     def originate_extension(self, partner_id):
@@ -96,7 +101,6 @@ class Partner(models.Model):
         return number
 
     @api.model
-    @tools.ormcache('number', 'country_code', 'format_type')
     def _format_number(self, number, country_code=None,
                        format_type='e164'):
         logger.debug('FORMAT_NUMBER %s COUNTRY %s FORMAT %s',

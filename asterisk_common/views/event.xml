@@ -9,14 +9,14 @@
 
   <menuitem action="asterisk_event_action" id="asterisk_event_menu" name="Events"
     groups="asterisk_common.group_asterisk_admin"
-    parent="common_settings_menu" sequence="50"/>
+    parent="asterisk_settings_menu" sequence="50"/>
 
   <record id="asterisk_event_list" model="ir.ui.view">
     <field name="name">asterisk_common.event.list</field>
     <field name="model">asterisk_common.event</field>
     <field name="type">tree</field>
     <field name="arch" type="xml">
-      <tree>        
+      <tree multi_edit="1">
         <field name="source"/>
         <field name="name"/>
         <field name="model"/>

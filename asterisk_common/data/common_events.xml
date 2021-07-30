@@ -1,9 +1,11 @@
 <odoo>
-    <record id="fully_booted" model="asterisk_common.event">
-        <field name="name">OriginateResponse</field>
-        <field name="source">AMI</field>
-        <field name="model">asterisk_common.user</field>
-        <field name="method">ami_originate_response</field>
-        <field name="condition">"event['Response'] == 'Failure'"</field>
+  <data noupdate="1">
+    <record id="originate_response" model="asterisk_common.event">
+      <field name="name">OriginateResponse</field>
+      <field name="source">AMI</field>
+      <field name="model">asterisk_common.user</field>
+      <field name="method">ami_originate_response</field>
+      <field name="condition">"event['Response'] == 'Failure'"</field>
     </record>
+  </data>
 </odoo>

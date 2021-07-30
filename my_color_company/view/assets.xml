@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template
+        id="webclient_bootstrap_add_assets"
+        name="my_color_company assets"
+        inherit_id="web.webclient_bootstrap"
+    >
+        <xpath expr="//t[@t-set='head_web']" >
+            <t t-call-assets="my_color_company.company_color_assets" />
+        </xpath>
+    </template>
+
+    <template id="assets_backend" name="dev tool assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/my_color_company/static/src/js/res_config_edition.js"></script>
+        </xpath>
+    </template>
+   
+</odoo>

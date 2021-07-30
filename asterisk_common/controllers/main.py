@@ -1,3 +1,4 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 import logging
 from odoo import http, SUPERUSER_ID, registry
 from odoo.api import Environment

@@ -1,3 +1,4 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 import logging
 from odoo import fields, models, api, _
 from odoo.exceptions import ValidationError
@@ -46,9 +47,9 @@ class AsteriskSettings(models.Model):
     def _get_name(self):
         # name fields in open_settings_form does not work. Why?
         for rec in self:
-            rec.name = _('Settings')
+            rec.name = 'General Settings'
 
-    def open_settings_form(self, module='common'):
+    def open_settings_form(self):
         rec = self.env['asterisk_common.settings'].search([])
         if not rec:
             rec = self.sudo().create({})
@@ -58,9 +59,7 @@ class AsteriskSettings(models.Model):
             'type': 'ir.actions.act_window',
             'res_model': 'asterisk_common.settings',
             'res_id': rec.id,
-            'view_id': self.env.ref(
-                'asterisk_{}.{}_settings_form'.format(module, module)).id,
-            'name': _('{} Settings').format(module.capitalize()),
+            'name': 'General Settings',
             'view_mode': 'form',
             'view_type': 'form',
             'target': 'current',
@@ -76,12 +75,25 @@ class AsteriskSettings(models.Model):
             else:
                 data = data[0]
             logger.debug(
-                'ASTERISK BASE SETTING PARAM: %s DATA: %s DEFAULT: %s',
+                'ASTERISK BASE GET PARAM: %s DATA: %s DEFAULT: %s',
                 param, getattr(data, param, False), default)
             return getattr(data, param, default)
         except Exception as e:
             logger.warning('Get param error: %s', str(e))
             return default
+
+    @api.model
+    def set_param(self, param, value):
+        data = self.search([])
+        if not data:
+            data = self.sudo().create({})
+        else:
+            data = data[0]
+        logger.debug(
+            'ASTERISK BASE SET PARAM: %s DATA: %s.',
+            param, value)
+        setattr(data, param, value)
+        return True
 
     @api.model
     def bus_sendone(self, channel, message):
@@ -93,7 +105,8 @@ class AsteriskSettings(models.Model):
     def on_agent_start(self):
         # Called from Agent after Odoo connection has been estabslied.
         logger.info('Asterisk Agent has been started.')
-        self.env.user.remote_agent.update_state(force_create=True)
+        self.env.user.remote_agent.update_state(force_create=True,
+                                                note='Agent started.')
         return True
 
     def reformat_numbers(self):
@@ -106,10 +119,3 @@ class AsteriskSettings(models.Model):
                 rec.mobile = rec._format_number(
                     rec.mobile, format_type='international')
         self.env['res.partner'].pool.clear_caches()
-
-    def reload_events(self):
-        for agent in self.env['remote_agent.agent'].search([]):
-            logger.info(
-                'Sending reload events command to %s', agent.system_name)
-            agent.send({'command': 'reload_events',
-                        'notify_uid': self.env.uid})

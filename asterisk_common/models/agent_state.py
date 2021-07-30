@@ -1,3 +1,4 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 from datetime import datetime, timedelta
 import logging
 from odoo import models, fields, api

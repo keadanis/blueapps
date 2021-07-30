@@ -1,6 +1,11 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 import json
 import logging
-from odoo import models, fields, api, _
+
+import psycopg2
+from odoo.tools import mute_logger
+
+from odoo import models, fields, api, registry, SUPERUSER_ID, _
 from datetime import datetime, timedelta
 
 logger = logging.getLogger(__name__)
@@ -32,7 +37,7 @@ class Cache(models.Model):
 
     @api.model
     def put(self, key, value, tag='/', expire=DEFAULT_EXPIRE_SECONDS,
-            serialize=None):
+            serialize=None, new_env=False, overwrite_existing=True):
         self.do_expiration()
         try:
             expire_time = (datetime.utcnow() + timedelta(
@@ -40,20 +45,58 @@ class Cache(models.Model):
             # Check serialize option
             if serialize == 'json':
                 value = json.dumps(value)
-            with self.env.cr.savepoint():
-                self.create({
-                    'key': key,
-                    'tag': tag,
-                    'value': value,
-                    'expire': expire_time,
-                })
-                logger.debug('CACHE PUT KEY: %s VALUE: %s', key, value)
-        except Exception as e:
-            if 'kv_cache_cache_tag_key_uniq' in str(e):
-                # Value already there
-                logger.debug('CACHE PUT DUPLICATE KEY %s TAG %s', key, tag)
+            if not new_env:
+                with mute_logger('odoo.sql_db'), self.env.cr.savepoint():
+                    self.create({
+                        'key': key,
+                        'tag': tag,
+                        'value': value,
+                        'expire': expire_time,
+                    })
+                    logger.debug('CACHE PUT KEY: %s VALUE: %s', key, value)
             else:
-                logger.exception('[ODOO_ERROR] CACHE PUT ERROR:')
+                with mute_logger('odoo.sql_db'), api.Environment.manage():
+                    with registry(self.env.cr.dbname).cursor() as new_cr:
+                        env = api.Environment(
+                            new_cr, self.env.uid, self.env.context)
+                        env['kv_cache.cache'].create({
+                            'key': key,
+                            'tag': tag,
+                            'value': value,
+                            'expire': expire_time,
+                        })
+                        env.cr.commit()
+                logger.debug('CACHE NEW ENV PUT KEY: %s VALUE: %s', key, value)
+        except psycopg2.IntegrityError as e:
+            if e.pgcode == psycopg2.errorcodes.UNIQUE_VIOLATION:
+                if not new_env:
+                    with self.env.cr.savepoint():
+                        # Find duplicate record to update
+                        cache_record = self.env['kv_cache.cache'].search([('key', '=', key), ('tag', '=', tag)])
+                        cache_record.update({
+                            'key': key,
+                            'tag': tag,
+                            'value': value,
+                            'expire': expire_time,
+                        })
+                        logger.debug('CACHE UPDATE KEY: %s VALUE: %s', key, value)
+                else:
+                    with api.Environment.manage():
+                        with registry(self.env.cr.dbname).cursor() as new_cr:
+                            env = api.Environment(
+                                new_cr, self.env.uid, self.env.context)
+                            cache_record = env['kv_cache.cache'].search([('key', '=', key), ('tag', '=', tag)])
+                            cache_record.update({
+                                'key': key,
+                                'tag': tag,
+                                'value': value,
+                                'expire': expire_time,
+                            })
+                            env.cr.commit()
+                    logger.debug('CACHE NEW ENV UPDATE KEY: %s VALUE: %s', key, value)
+        except Exception:
+            logger.exception('[ODOO_ERROR] CACHE PUT ERROR')
+            raise Exception('CACHE PUT ERROR')
 
     @api.model
     def get(self, key, tag='/', clean=False, serialize=None):

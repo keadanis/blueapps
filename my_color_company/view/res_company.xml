@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_company_form" model="ir.ui.view">
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page
+                    string="Company Styles"
+                    name="company_styles"
+                    groups="base.group_system"
+                >  <group>
+                    <group string="Navbar Colors" name="navbar_colors">
+                        <field name="color_navbar_bg" widget="color" />
+                        <field name="color_navbar_bg_hover" widget="color" />
+                        <field name="color_navbar_text" widget="color" />
+                    </group>
+                    <group string="Button Colors" name="background_button_colors">
+                        <field name="button_color_primary" widget="color"/>
+                        <field name="button_color_secondary" widget="color"/>
+                        <field name="button_color_primary_font" widget="color"/>
+                        <field name="button_color_secondary_font" widget="color"/>
+                    </group>
+                    <group string="Sheet Colors" name="background_sheet_colors">
+                        <field name="sheet_background_color" widget="color"/>
+                        <field name="sheet_color" widget="color"/>
+                        <field name="control_sheet_color" widget="color"/>
+                    </group>
+                    <group string="Text Colors" name="background_text_colors">
+                        <field name="link_text_color" widget="color"/>
+                        <field name="general_text_color" widget="color"/>
+                    </group>
+                    <group string="Background Type" name="background_colors_type">
+                        <field name="background_select"/>
+                    </group>
+                    <group string="Background Colors" name="background_colors" attrs="{'invisible': [('background_select', '=', 'image')]}">
+                        <field name="color_background_first_grad" widget="color" />
+                        <field name="color_background_second_grad" widget="color" />
+                    </group>
+                     <group string="Background Image" name="background_image" attrs="{'invisible': [('background_select', '=', 'gradient')]}">
+                        <field name="color_background_img" invisible="1"/>
+                        <field name="color_background_image"  filename='color_background_image_name' widget="image"/>
+                        <field name="color_background_image_name" invisible="1"/>
+                    </group>
+                    <group string="Legend" name="legend">
+                        <field name="legend_exist"/>
+                        <field name="legend" attrs="{'invisible': [('legend_exist', '=', False)]}"/>
+                        
+                    </group>
+                </group>
+                    <div class="alert alert-info info_icon" role="alert">
+                        <span class="fa fa-info fa-2x" />
+                        To see the changes, please refresh
+                        the page.
+                    </div>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

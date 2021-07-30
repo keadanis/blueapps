@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="slide_fullscreen_sidebar_category_ora_inherit" inherit_id="website_slides.slide_fullscreen_sidebar_category">
+            <ul class="list-unstyled w-100 pt-2 small" position="attributes">
+                <attribute name="t-if">slide.prompt_ids or slide.link_ids or slide.slide_resource_ids or (slide.question_ids and not slide.slide_type =='quiz')</attribute>
+            </ul>
+            <xpath expr='//li[@class="o_wslides_fs_sidebar_list_item pl-0 mb-1"]' position="after">
+                <li class="o_wslides_fs_sidebar_list_item pl-0 mb-1 ora_tab" t-if="slide.prompt_ids"
+                    t-att-data-id="slide.id"
+                    t-att-data-can-access="is_member"
+                    t-att-data-name="slide.name"
+                    t-att-data-type="slide.slide_type"
+                    t-att-data-slug="slug(slide)"
+                    t-att-data-is-ora="1"
+                    t-att-data-is-member="is_member" style="box-shadow: none;">
+                    <a t-if="is_member" class="o_wslides_fs_slide_quiz" href="#" t-att-index="i">
+                        <i class="fa fa-flag-checkered text-warning mr-2"/>
+                        Assessment
+                    </a>
+                    <span t-else="" class="text-600">
+                        <i class="fa fa-flag-checkered text-warning mr-2"/>
+                        Assessment
+                    </span>
+                </li>
+            </xpath>
+        </template>
+    </data>
+</odoo>

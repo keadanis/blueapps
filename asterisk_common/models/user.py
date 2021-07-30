@@ -1,9 +1,27 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 import logging
-from odoo import models, fields, api, tools, _
+from odoo import models, fields, api, tools, _, SUPERUSER_ID
 from odoo.exceptions import ValidationError
 import uuid
 
 logger = logging.getLogger(__name__)
+
+# Fields allowed to be changed by user.
+USER_PERMITTED_FIELDS = [
+    'originate_vars', 'channels', 'originate_enabled', 'auto_answer_header',
+]
+
+AUTO_ANSWER_HEADERS = [
+    ('Alert-Info: Info=Alert-Autoanswer', 'Alert-Info: Info=Alert-Autoanswer'),
+    ('Alert-Info: Info=Auto Answer', 'Alert-Info: Info=Auto Answer'),
+    ('Alert-Info: ;info=alert-autoanswer', 'Alert-Info: ;info=alert-autoanswer'),
+    ('Alert-Info: <sip:>;info=alert-autoanswer', 'Alert-Info: <sip:>;info=alert-autoanswer'),
+    ('Alert-Info: Ring Answer', 'Alert-Info: Ring Answer'),
+    ('Answer-Mode: Auto', 'Answer-Mode: Auto'),
+    ('Call Info: Answer-After=0', 'Call Info: Answer-After=0'),
+    ('Call-Info: <sip:>;answer-after=0', 'Call-Info: <sip:>;answer-after=0'),
+    ('P-Auto-Answer: normal', 'P-Auto-Answer: normal'),
+]
 
 
 class AsteriskUserChannel(models.Model):
@@ -11,6 +29,7 @@ class AsteriskUserChannel(models.Model):
     _rec_name = 'channel'
     _description = 'Asterisk User Channel'
 
+    sequence = fields.Integer(default=100, index=True)
     channel = fields.Char(required=True)
     # Store originate_context here.
     context = fields.Char()
@@ -23,36 +42,36 @@ class AsteriskUserChannel(models.Model):
     originate_enabled = fields.Boolean(default=True, string="Originate")
     originate_context = fields.Char(
         default=lambda self: self._get_default_context(),
-        string='Context', required=True,
+        string='Context',
         compute='_get_originate_context', inverse='_set_originate_context')
+    auto_answer_header = fields.Selection(AUTO_ANSWER_HEADERS)
 
     _sql_constraints = [
         ('system_channel_uniq', 'unique (system_name,channel)',
             _('The channel is already defined for this System!')),
     ]
 
-    def create(self, create_vals):
-        if type(create_vals) is not list:
-            create_vals = [create_vals]
-        for vals in create_vals:
+    def write(self, values):
+        if not (self.env.user.has_group(
+                'asterisk_common.group_asterisk_admin') or
+                self.env.user.id == SUPERUSER_ID):
+            # User can only change some fields.
+            restricted_fields = set(values.keys()) - set(USER_PERMITTED_FIELDS)
+            if restricted_fields:
+                raise ValidationError(
+                    _('Fields {} not allowed to be changed!').format(
+                        restricted_fields))
+        res = super(AsteriskUserChannel, self).write(values)
+        return res
+
+    @api.constrains('channel')
+    def _check_channel_name(self):
+        for rec in self:
             try:
-                if 'channel' in vals and vals['channel']:
-                    chan, name = vals['channel'].split('/')
-                    vals['channel'] = '{}/{}'.format(chan.upper(), name)
-            except Exception:
-                logger.error('Bad channel format: %s', vals['channel'])
+                chan, name = rec.channel.split('/')
+            except ValueError:
                 raise ValidationError(
                     _('Bad channel format. Example: SIP/101.'))
-        return super(AsteriskUserChannel, self).create(vals)
-
-    def write(self, vals):
-        try:
-            if 'channel' in vals and vals['channel']:
-                chan, name = vals['channel'].split('/')
-                vals['channel'] = '{}/{}'.format(chan.upper(), name)
-        except Exception:
-            raise ValidationError(_('Bad channel format. Example: SIP/101.'))
-        return super(AsteriskUserChannel, self).write(vals)
 
     def _get_default_context(self):
         return self.env['asterisk_common.settings'].get_param(
@@ -79,28 +98,21 @@ class AsteriskUser(models.Model):
                            # Exclude shared users
                            domain=[('share', '=', False)])
     name = fields.Char(related='user.name', readonly=True)
-    lang = fields.Char(default=lambda self: self._get_default_lang(),
-                       string='Language',
-                       help='Two digits lang code, for example: en')
     agent = fields.Many2one('remote_agent.agent', string='System',
                             required=True, ondelete='restrict',
                             default=lambda self: self._get_default_agent())
-    system_name = fields.Char(related='agent.system_name', stored=True)
+    system_name = fields.Char(related='agent.system_name', store=True)
     partner = fields.Many2one(related='user.partner_id', readonly=True)
     is_primary_system = fields.Boolean(default=True, string='Primary')
     channels = fields.One2many('asterisk_common.user_channel',
                                inverse_name='asterisk_user')
-    originate_vars = fields.Text(
-        default='SIPADDHEADER=Alert-Info: Auto Answer',
-        string='Variables',
-        help=_('Examples:\nSIPADDHEADER=Alert-Info: Auto Answer\n'
-               'PJSIP_HEADER(add,Alert-Info)=Auto Answer'))
+    originate_vars = fields.Text(string='Channel Variables')
 
     _sql_constraints = [
         ('exten_uniq', 'unique (exten,agent)',
-         _('The phone extension @ agent must be unique !')),
+         _('This phone extension is already used!')),
         ('user_uniq', 'unique ("user",agent)',
-         _('The user @ agent must be unique !')),
+         _('This user is already defined!')),
         ('primary_uniq', 'unique ("user",is_primary_system)',
          _('The primary system is already defined!')),
     ]
@@ -108,18 +120,37 @@ class AsteriskUser(models.Model):
     @api.model
     def create(self, vals):
         user = super(AsteriskUser, self).create(vals)
-        asterisk_user_group = self.env.ref(
-            'asterisk_common.group_asterisk_user')
-        if user.user not in asterisk_user_group.users:
+        if not user.user.has_group('asterisk_common.group_asterisk_user') and \
+                not user.user.has_group('asterisk_common.group_asterisk_admin'):
+            # First time adding Odoo user to PBX user, so add also Asterisk User group.
+            asterisk_user_group = self.env.ref(
+                'asterisk_common.group_asterisk_user')
             asterisk_user_group.sudo().users = [(4, user.user.id)]
         if user and not self.env.context.get('no_clear_cache'):
             self.pool.clear_caches()
         return user
 
     def write(self, values):
+        if not (self.env.user.has_group(
+                'asterisk_common.group_asterisk_admin') or
+                self.env.user.id == SUPERUSER_ID):
+            # User can only change some fields.
+            restricted_fields = set(values.keys()) - set(USER_PERMITTED_FIELDS)
+            if restricted_fields:
+                raise ValidationError(
+                    _('Fields {} not allowed to be changed!').format(
+                        restricted_fields))
         res = super(AsteriskUser, self).write(values)
         if res and not self.env.context.get('no_clear_cache'):
             self.pool.clear_caches()
+        # Automatically apply changes for user
+        if not (self.env.user.has_group(
+                'asterisk_common.group_asterisk_admin') or
+                self.env.user.id == SUPERUSER_ID):
+            if not self.env.user.asterisk_user:
+                raise ValidationError('PBX user is not defined!')
+            self.env.user.asterisk_user.server.sudo().with_context(
+                disable_notify=True).apply_changes()
         return res
 
     def unlink(self):
@@ -128,49 +159,39 @@ class AsteriskUser(models.Model):
             self.pool.clear_caches()
         return res
 
+    @api.model
+    def has_asterisk_group(self):
+        if (self.env.user.has_group('asterisk_common.group_asterisk_user') or
+                self.env.user.has_group(
+                'asterisk_common.group_asterisk_admin')):
+            return True
+
     def _get_default_agent(self):
         agents = self.env['remote_agent.agent'].search([])
         if len(agents) == 1:
             return agents[0].id
 
-    def _get_default_lang(self):
-        try:
-            return self.env.user.lang.split('_')[0]
-        except Exception:
-            pass
-
-    def open_user_settings(self):
-        rec = self.env['asterisk_common.user'].search(
-            [('user', '=', self.env.user.id)])
-        if not rec:
-            raise ValidationError(_('Asterisk user is not configured!'))
-        elif len(rec) == 1:
-            # One user at one agent is defined, open the form.
-            rec = rec[0]
+    def open_user_form(self):
+        if self.env.user.has_group('asterisk_common.group_asterisk_admin'):
             return {
                 'type': 'ir.actions.act_window',
                 'res_model': 'asterisk_common.user',
-                'res_id': rec.id,
-                'view_id': self.env.ref(
-                    'asterisk_common.user_settings_form').id,
-                'name': _('User Settings'),
-                'view_mode': 'form',
+                'name': 'Users',
+                'view_mode': 'tree,form',
                 'view_type': 'form',
                 'target': 'current',
             }
         else:
-            # Many users are defined, open list view.
+            if not self.env.user.asterisk_user:
+                raise ValidationError('PBX user is not configured!')
             return {
                 'type': 'ir.actions.act_window',
                 'res_model': 'asterisk_common.user',
-                'views': [
-                    (self.env.ref(
-                        'asterisk_common.user_settings_list').id, 'tree'),
-                    (self.env.ref(
-                        'asterisk_common.user_settings_form').id, 'form')],
-                'name': _('User Settings'),
-                'domain': "[('user', '=', uid)]",
-                'view_mode': 'tree,form',
+                'res_id': self.env.user.asterisk_user.id,
+                'name': 'User',
+                'view_id': self.env.ref(
+                    'asterisk_common.asterisk_user_user_form').id,
+                'view_mode': 'form',
                 'view_type': 'form',
                 'target': 'current',
             }
@@ -185,9 +206,13 @@ class AsteriskUser(models.Model):
             logger.exception('Get originate vars error:')
             return []
 
+    def dial_user(self):
+        self.ensure_one()
+        self.originate_call(self.exten)
+
     @api.model
     def originate_call(self, number, model=None, res_id=None,
-                       system_name='asterisk', variables={}):
+                       system_name='asterisk'):
         if not number:
             raise ValidationError(_('Phone number not set!'))
         if not self.env.user.asterisk_user:
@@ -255,7 +280,26 @@ class AsteriskUser(models.Model):
             }
         for user_channel in originate_channels:
             # Save in cache originate operation
-            channel_id = originate_channels_data[user_channel.channel]['channel_id']
+            channel_id = originate_channels_data[
+                user_channel.channel]['channel_id']
+            channel_vars = variables.copy()
+            if user_channel.auto_answer_header:
+                header = user_channel.auto_answer_header
+                try:
+                    pos = header.find(':')
+                    param = header[:pos]
+                    val = header[pos+1:]
+                    if 'PJSIP' in user_channel.channel.upper():
+                        channel_vars.append(
+                            'PJSIP_HEADER(add,{})={}'.format(
+                                param.lstrip(), val.lstrip()))
+                    else:
+                        channel_vars.append(
+                            'SIPADDHEADER={}: {}'.format(
+                                param.lstrip(), val.lstrip()))
+                except Exception:
+                    logger.warning(
+                        'Cannot parse auto answer header: %s', header)
             originate_call_data = {
                 'uid': self.env.user.id,
                 'channel': channel_id,
@@ -266,7 +310,7 @@ class AsteriskUser(models.Model):
             }
             self.env['kv_cache.cache'].put(
                 channel_id, originate_call_data, tag='originated_call',
-                serialize='json')
+                serialize='json', new_env=True)
             self.call_originate_request(
                 system_name=self.env.user.asterisk_user.agent.system_name,
                 exten=self.env.user.asterisk_user.exten,
@@ -278,7 +322,7 @@ class AsteriskUser(models.Model):
                     user_channel.channel]['other_channel_id'],
                 callerid=callerid,
                 timeout=originate_timeout,
-                variables=variables)
+                variables=channel_vars)
 
     @api.model
     def call_originate_request(self, system_name='asterisk', exten=None,
@@ -294,55 +338,37 @@ class AsteriskUser(models.Model):
             timeout = int(self.env[
                     'asterisk_common.settings'].get_param(
                     'originate_timeout'))
-        data = {
-            'command': 'nameko_rpc',
-            'service': '{}_ami'.format(system_name),
-            'method': 'send_action',
-            'callback_model': 'asterisk_common.user',
-            'callback_method': 'call_originate_response',
-            'args': [{
-                'Action': 'Originate',
-                'Context': context,
-                'Priority': '1',
-                'Timeout': 1000 * timeout,
-                'Channel': channel,
-                'Exten': number,
-                'Async': 'true',
-                'EarlyMedia': 'true',
-                'CallerID': callerid,
-                'ChannelId': channel_id,
-                'OtherChannelId': uuid.uuid4().hex,
-                'Variable': variables,
-            }],
-            'pass_back': {'uid': self.env.user.id},
-        }
-        self.env.user.asterisk_user.agent.send(data)
+        self.env.user.asterisk_user.agent.action({
+            'Action': 'Originate',
+            'Context': context,
+            'Priority': '1',
+            'Timeout': 1000 * timeout,
+            'Channel': channel,
+            'Exten': number,
+            'Async': 'true',
+            'EarlyMedia': 'true',
+            'CallerID': callerid,
+            'ChannelId': channel_id,
+            'OtherChannelId': uuid.uuid4().hex,
+            'Variable': variables,
+            },
+            passback={'uid': self.env.user.id},
+            callback=('asterisk_common.user', 'call_originate_response'),
+        )
 
     @api.model
     def call_originate_response(self, data):
-        result = data.get('result', {})
-        uid = data.get('pass_back', {}).get('uid')
-        if result and type(result) is list:            
-            logger.debug('Originate result: %s', result)
-            # Convert messages to o =ne dict.
-            res = {}
-            for r in result:
-                res.update(r)
-            if res['Response'] == 'Error' and uid:
-                self.env['bus.bus'].sendone(
-                    'remote_agent_notification_{}'.format(uid), {
-                        'message': res['Message'],
-                        'warning': True, 'title': 'Error',
-                    })
-        elif data.get('error'):
+        result = data.get('result') and data['result'][0]
+        uid = data.get('passback', {}).get('uid', 0)
+        if result:
+            if result['Response'] == 'Error' and uid:
+                message = result['Message']
+                self.env.user.asterisk_notify(message, uid=uid, warning=True)
+                logger.warning('ORIGINATE ERROR: %s', message)
+        elif data.get('error') and uid:
             message = data['error'].get('message') or str(data['error'])
-            if uid:
-                self.env['bus.bus'].sendone(
-                    'remote_agent_notification_{}'.format(uid), {
-                        'message': message,
-                        'warning': True,
-                        'title': 'PBX',
-                    })
+            self.env.user.asterisk_notify(message, uid=uid, warning=True)
+            logger.warning('ORIGINATE ERROR: %s', message)
         return True
 
     @api.model
@@ -359,4 +385,5 @@ class AsteriskUser(models.Model):
             self.env['res.users'].asterisk_notify(
                 _('Call failed, reason {0}').format(reason),
                 uid=originate_uid, warning=True)
+            logger.warning('ORIGINATE RESPONSE: %s', reason)
         return True

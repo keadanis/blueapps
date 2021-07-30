@@ -1,4 +1,4 @@
-odoo.define("remote_agent.notification", function (require) {
+odoo.define("asterisk_common.notification", function (require) {
     "use strict";
   
     var WebClient = require('web.WebClient');
@@ -10,11 +10,11 @@ odoo.define("remote_agent.notification", function (require) {
     WebClient.include({
         start: function() {
             this._super()
-            var self = this
-            ajax.rpc('/web/dataset/call_kw/res.users', {
-                    "model": "res.users",
-                    "method": "has_group",
-                    "args": ['asterisk_common.group_asterisk_user'],
+            let self = this
+            ajax.rpc('/web/dataset/call_kw/asterisk_common', {
+                    "model": "asterisk_common.user",
+                    "method": "has_asterisk_group",
+                    "args": [],
                     "kwargs": {},            
             }).then(function (res) {
               if (res == true) {

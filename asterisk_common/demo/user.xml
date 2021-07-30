@@ -4,4 +4,8 @@
     <field name="user" ref="base.user_demo"/>
     <field name="exten">1002</field>
   </record>
+  <record model="asterisk_common.user" id="user_admin">
+    <field name="user" ref="base.user_admin"/>
+    <field name="exten">1001</field>
+  </record>
 </odoo>

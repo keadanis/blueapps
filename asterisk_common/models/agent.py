@@ -1,5 +1,10 @@
+# ©️ OdooPBX by Odooist, Odoo Proprietary License v1.0, 2020
 from datetime import datetime, timedelta
 import json
+from jsonrpcclient.client import Client as JsonRpcClient
+from jsonrpcclient.response import Response as JsonRpcResponse
+from jsonrpcclient.exceptions import JsonRpcClientError
+from jsonrpcclient.exceptions import ReceivedErrorResponseError
 try:
     import humanize
     HUMANIZE = True
@@ -12,39 +17,171 @@ import requests
 import string
 import time
 from urllib.parse import urlparse, urlunparse
+import urllib3
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 import uuid
 
-from odoo import models, fields, api, registry, _
+from odoo import models, fields, api, registry, _, SUPERUSER_ID
 from odoo.exceptions import ValidationError
 from odoo.addons.bus.models.bus import dispatch
 
 from .agent_state import STATES
 
 logger = logging.getLogger(__name__)
+logging.getLogger('jsonrpcclient').setLevel(logging.WARNING)
 
 DEFAULT_PASSWORD_LENGTH = os.getenv('AGENT_DEFAULT_PASSWORD_LENGTH', '10')
 CHANNEL_PREFIX = 'remote_agent'
 
 
+class AgentError(Exception):
+    def __init__(self, message, note=None):
+        self.message = message
+        self.note = note
+        super().__init__(message)
+
+
+class AgentClient(JsonRpcClient):
+
+    def __init__(self, agent):
+        self.agent = agent
+        self.env = agent.env
+        self.message = {
+            'token': agent.token,
+            'system_name': agent.system_name,
+            'command': 'jsonrpc',
+        }
+
+    def send_message(self, request, response_expected, **kwargs):
+        if self.agent.connection_type == 'bus':
+            return self.send_bus_message(request, response_expected, **kwargs)
+        elif self.agent.connection_type == 'http':
+            return self.send_http_message(request, response_expected, **kwargs)
+        else:
+            raise AgentError(
+                'Unknown connection method!')
+
+    def update_state(self, state, note):
+        if state == self.agent.state:
+            # State did not change.
+            return
+        # Update agent state
+        with api.Environment.manage():
+            with registry(self.env.cr.dbname).cursor() as new_cr:
+                env = api.Environment(
+                    new_cr, SUPERUSER_ID, self.env.context)
+                env['remote_agent.agent'].browse(
+                    self.agent.id).update_state(
+                    state=state, note=note)
+                env.cr.commit()
+
+    def send_bus_message(self, request, response_expected, **kwargs):
+        channel = '{}/{}'.format(CHANNEL_PREFIX, self.agent.system_name)
+        self.message['request'] = request
+        reply_channel = '{}/{}'.format(channel, uuid.uuid4().hex)
+        if response_expected:
+            # Add reply channel
+            self.message['reply_channel'] = reply_channel
+        with api.Environment.manage():
+            with registry(self.env.cr.dbname).cursor() as new_cr:
+                env = api.Environment(new_cr, self.env.uid, self.env.context)
+                env['bus.bus'].sendone(channel, json.dumps(self.message))
+                new_cr.commit()
+        # Request or notification?
+        if not response_expected:
+            # Notification
+            return JsonRpcResponse('')
+        # Request, wait for response.
+        agent_reply = None
+        # Poll is done in a separate transaction so we don't do it.
+        if dispatch:
+            # Gevent instance
+            agent_reply = dispatch.poll(self.env.cr.dbname,
+                                        [reply_channel],
+                                        last=0,
+                                        timeout=self.agent.bus_timeout)
+        else:
+            # Cron instance
+            started = datetime.utcnow()
+            to_end = started + timedelta(seconds=self.agent.bus_timeout)
+            agent_reply = None
+            while datetime.now() < to_end:
+                with api.Environment.manage():
+                    with registry(self.env.cr.dbname).cursor() as new_cr:
+                        env = api.Environment(
+                            new_cr, self.env.uid, self.env.context)
+                        rec = env['bus.bus'].sudo().search(
+                            [('create_date', '>=', started.strftime(
+                                '%Y-%m-%d %H:%M:%S')),
+                             ('channel', '=', '"{}"'.format(reply_channel))])
+                        if not rec:
+                            time.sleep(0.25)
+                        else:
+                            logger.debug(
+                                'Got reply within %s seconds',
+                                (datetime.now() - started).total_seconds()),
+                            agent_reply = [{'message':
+                                            json.loads(rec[0].message)}]
+                            break
+        if agent_reply:
+            # Update agent state
+            self.update_state('online',
+                              '{} reply'.format(self.message['command']))
+            # Convert result message to dict
+            return JsonRpcResponse(agent_reply[0]['message'])
+        # No reply recieved
+        else:
+            self.update_state(
+                'offline', '{} not replied'.format(str(request)))
+            raise AgentError('Offline')
+
+    def send_http_message(self, request, response_expected, **kwargs):
+        self.message['request'] = request
+        try:
+            r = requests.post(
+                self.agent.http_url,
+                timeout=self.agent.http_timeout,
+                json=self.message,
+                headers={
+                    'X-Token': self.agent.token,
+                    'Response-Expected': '1' if response_expected else '0',
+                },
+                verify=self.agent.http_ssl_verify)
+            r.raise_for_status()
+            self.update_state('online',
+                              '{} reply'.format(self.message['command']))
+            return JsonRpcResponse(r.text, raw=r)
+        except Exception as e:
+            logger.error('Agent HTTP error: %s', e)
+            self.update_state('offline',
+                '{} not replied: {}'.format(self.message['command'], str(e)))
+            raise AgentError('Offline', note=str(e))
+
+
 class Agent(models.Model):
     _name = 'remote_agent.agent'
     _description = 'Remote Agent'
-    _rec_name = 'system_name'
+    _rec_name = 'note'
 
-    system_name = fields.Char(required=True,
+    note = fields.Char(required=True, string='Name', default='Asterisk')
+    system_name = fields.Char(readonly=True, required=True,
+                              string='System ID',
                               default=lambda r: r._get_default_system_name())
     version = fields.Char(readonly=True)
-    note = fields.Text()
+    current_db = fields.Char(compute='_get_current_db', string='Database')
     alarm = fields.Text(readonly=True)
-    token = fields.Char(groups="")
+    token = fields.Char(default='never-connected')
+    connection_type = fields.Selection([('bus', 'Bus'), ('http', 'HTTP(s)')],
+                                       default='bus', required=True)
     bus_timeout = fields.Integer(default=10)
-    bus_enabled = fields.Boolean(default=True)
-    http_enabled = fields.Boolean(string=_('HTTP(s) Enabled'))
-    http_url = fields.Char(string=_('HTTP(s) URL'))
+    http_url = fields.Char(string=_('HTTP(s) URL'),
+                           default='https://127.0.0.1:40000')
     http_timeout = fields.Integer(string=_('HTTP(s) Timeout'), default=10)
     http_ssl_verify = fields.Boolean(string=_('SSL Verify'),
                                      help=_("Verify agent's certificate"))
     user = fields.Many2one('res.users', ondelete='restrict', required=True)
+    tz = fields.Selection(related='user.tz', readonly=False)
+    country_id = fields.Many2one(related='user.country_id', readonly=False)
     states = fields.One2many(comodel_name='remote_agent.agent_state',
                              inverse_name='agent')
     state_count = fields.Integer(compute='_get_state_count')
@@ -65,7 +202,22 @@ class Agent(models.Model):
     ]
 
     def _get_default_system_name(self):
-        return '{}'.format(uuid.uuid4().hex)
+        return 'agent_not_connected'
+
+    def _get_current_db(self):
+        self.current_db = self.env.cr.dbname
+
+    def open_agent_form(self):
+        rec = self.env.ref('asterisk_common.remote_agent')
+        return {
+            'type': 'ir.actions.act_window',
+            'res_model': 'remote_agent.agent',
+            'res_id': rec.id,
+            'name': 'Agent',
+            'view_mode': 'form',
+            'view_type': 'form',
+            'target': 'current',
+        }
 
 # Model and UI methods #
 
@@ -177,136 +329,33 @@ class Agent(models.Model):
             ast_group = self.env.ref('asterisk_common.group_asterisk_agent')
             ast_group.write({'users': [(4, self.user.id)]})
 
-# Remote communication methods #
     @api.model
-    def send_agent(self, system_name, message, silent=False):
+    def get_agent(self, system_name):
         agent = self.search([('system_name', '=', system_name)])
-        if not agent and not silent:
-            raise ValidationError(_('Agent {} not found!'.format(system_name)))
-        return agent[0].send(message, silent=silent)
+        if not agent:
+            raise ValidationError('Agent {} not found!'.format(system_name))
+        return agent
 
-    def send(self, message, timeout=None, silent=False):
-        if self.env.context.get('install_mode'):
-            logger.info('Not sending to Agents in install mode.')
-            return
+    def request(self, method, *args, **kwargs):
         self.ensure_one()
-        if not timeout:
-            timeout = self.http_timeout
-        # Unpack if required
-        if type(message) != dict:
-            message = json.loads(message)
-        if self.http_enabled:
-            # Use Agent HTTP interface to communicate
-            try:
-                r = requests.post(
-                    self.http_url,
-                    json=message,
-                    headers={'X-Token': self.token},
-                    timeout=timeout,
-                    verify=self.http_ssl_verify)
-                # Test for good response.
-                r.raise_for_status()
-            except Exception:
-                if not silent:
-                    raise
-        elif self.bus_enabled:
-            # Use Odoo bus for communication
-            message['token'] = self.sudo(True).token
-            if type(message) == dict:
-                message = json.dumps(message)
-            self.env['bus.bus'].sendone('{}/{}'.format(CHANNEL_PREFIX,
-                                        self.system_name), message)
-        else:
-            raise ValidationError(_('You should enable either bus or HTTP!'))
-
-    def call(self, message, timeout=None, silent=False):
-        self.ensure_one()
-        if self.http_enabled:
-            return self.call_http(message, timeout=timeout, silent=silent)
-        elif self.bus_enabled:
-            return self.call_bus(message, timeout=timeout, silent=silent)
-        else:
-            raise ValidationError(_('You should enable either bus or HTTP!'))
-
-    def call_http(self, message, timeout=None, silent=False):
-        self.ensure_one()
-        if not timeout:
-            timeout = self.http_timeout
+        client = AgentClient(self)
         try:
-            r = requests.post(self.http_url, timeout=timeout, json=message,
-                              headers={'X-Token': self.sudo().token},
-                              verify=self.http_ssl_verify)
-            r.raise_for_status()
-            self.sudo().update_state(
-                state='online',
-                note='{} reply'.format(message['command']))
-            return r.json()
-        except Exception as e:
-            self.sudo().update_state(
-                state='offline',
-                note='{} not replied: {}'.format(
-                    message['command'], str(e)))
-            return {}
+            response = client.request('execute', method, args, kwargs)
+            return response.data.result
+        except ReceivedErrorResponseError:
+            raise AgentError('Server error')
 
-    def call_bus(self, message, timeout=None, silent=False):
+    def notify(self, method, *args, **kwargs):
         self.ensure_one()
-        if not timeout:
-            timeout = self.bus_timeout
-        channel = '{}/{}'.format(CHANNEL_PREFIX, self.system_name)
-        reply_channel = '{}/{}'.format(channel, uuid.uuid4().hex)
-        message.update(
-            {'reply_channel': reply_channel, 'token': self.sudo().token})
-        # Send in separate transaction so that we could get an reply.
-        with api.Environment.manage():
-            with registry(self.env.cr.dbname).cursor() as new_cr:
-                env = api.Environment(new_cr, self.env.uid, self.env.context)
-                env['bus.bus'].sendone(channel, json.dumps(message))
-                new_cr.commit()
-        # Poll is done is separate transaction in bus.bus so we don't do it.
-        if dispatch:
-            # Gevent instance
-            agent_reply = dispatch.poll(self.env.cr.dbname,
-                                        [reply_channel],
-                                        last=0, timeout=timeout)
+        client = AgentClient(self)
+        return client.notify('execute', method, args, kwargs)
+
+    def action(self, action, notify=False, **kwargs):
+        self.ensure_one()
+        if notify:
+            return self.notify('asterisk.manager_action', action, **kwargs)
         else:
-            # Cron instance
-            started = datetime.utcnow()
-            to_end = started + timedelta(seconds=timeout)
-            agent_reply = None
-            while datetime.now() < to_end:
-                with api.Environment.manage():
-                    with registry(self.env.cr.dbname).cursor() as new_cr:
-                        env = api.Environment(
-                            new_cr, self.env.uid, self.env.context)
-                        rec = env['bus.bus'].sudo().search(
-                            [('create_date', '>=', started.strftime(
-                                '%Y-%m-%d %H:%M:%S')),
-                             ('channel', '=', '"{}"'.format(reply_channel))])
-                        if not rec:
-                            time.sleep(0.25)
-                        else:
-                            logger.debug(
-                                'Got reply within %s seconds',
-                                (datetime.now() - started).total_seconds()),
-                            agent_reply = [{'message':
-                                            json.loads(rec[0].message)}]
-                            break
-        if agent_reply:
-            # Update agent state
-            self.sudo(True).update_state(
-                state='online',
-                note='{} reply'.format(message['command']))
-            # Convert result message to dict
-            reply_message = agent_reply[0]['message']
-            if type(reply_message) != dict:
-                json.loads(reply_message)
-            return reply_message
-        # No reply recieved
-        else:
-            self.sudo(True).update_state(
-                state='offline',
-                note='{} not replied'.format(message['command']))
-            return {}
+            return self.request('asterisk.manager_action', action, **kwargs)
 
     @api.model
     def reload_view(self, uid=None, model=None):
@@ -317,15 +366,33 @@ class Agent(models.Model):
             {'reload': True, 'model': model})
         return True
 
+    def reload_events(self):
+        self.ensure_one()
+        self.action({'Action': 'ReloadEvents'}, notify=True,
+                    status_notify_uid=self.env.uid)
+
     def restart(self):
         self.ensure_one()
-        self.call({'command': 'restart',
-                   'notify_uid': self.env.user.id})
+        client = AgentClient(self)
+        # Overwritee json-rpc command
+        client.message['command'] = 'restart'
+        client.message['notify_uid'] = self.env.user.id
+        client.notify('restart')
+    
+    def ping_agent(self):
+        try:
+            self.notify('test.ping', status_notify_uid=self.env.uid)
+        except AgentError as e:
+            raise ValidationError('Agent error: {}'.format(e))
 
-    def ping_button(self):
+    def ping_asterisk(self):
         self.ensure_one()
-        self.call({'command': 'ping',
-                   'notify_uid': self.env.user.id})
+        try:
+            res = self.action({'Action': 'Ping'})
+        except AgentError as e:
+            raise ValidationError('Agent error: {}'.format(e))
+        self.env.user.asterisk_notify(res[0]['Response'])
+
 
     def clear_alarm_button(self):
         self.ensure_one()
@@ -350,14 +417,17 @@ class Agent(models.Model):
             return True
 
     @api.model
-    def update_system_name(self, system_name):
+    def update_system_name(self, system_name, version):
         # Called from the Agent to set its system name before polling.
         agent = self.env.user.remote_agent
         if not agent:
             logger.error('Agent not found for user %s!', self.env.user.name)
             return False
         else:
-            agent.system_name = system_name
+            agent.write({
+                'system_name': system_name,
+                'version': version,
+            })
             return True
 
     def update_state(self, state='online', note=False, force_create=False):

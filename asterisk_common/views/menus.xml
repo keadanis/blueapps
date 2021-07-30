@@ -14,6 +14,7 @@
         sequence="400" parent="asterisk_top_menu"/>
 
   <menuitem id="asterisk_support_menu" name="Support"
+        groups="asterisk_common.group_asterisk_admin"
         sequence="500" parent="asterisk_top_menu"/>
 
   <menuitem id="asterisk_board_menu" parent="base.menu_board_root" name="PBX"

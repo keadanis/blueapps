@@ -14,7 +14,7 @@
     <record model="res.groups" id="group_asterisk_admin">
         <field name="name">Administrator</field>
         <field name="category_id" ref="asterisk_common.module_asterisk_category"/>
-        <field name="implied_ids" eval="[(4, ref('asterisk_common.group_asterisk_user'))]"/>
+        <field name="implied_ids" eval="[(5, 0, 0)]"/>
         <field name="users" eval="[(4, ref('base.user_admin'))]"/>
     </record>
 
@@ -26,7 +26,7 @@
 
     <record model="res.groups" id="group_asterisk_supervisor">
         <field name="name">Supervisor</field>
-        <field name="implied_ids" eval="[(4, ref('asterisk_common.group_asterisk_user'))]"/>
+        <field name="implied_ids" eval="[(5, 0, 0)]"/>
         <field name="category_id" ref="asterisk_common.module_asterisk_category"/>
     </record>
 
