@@ -44,14 +44,14 @@ class Reference(models.Model):
         return res
 
 
-    @api.multi
+    
     def unlink(self):
         for rec in self:
             self.env['nibbana.timeline'].timeline_unlink_event(rec)
         return super(Reference, self).unlink()
 
 
-    @api.multi
+    
     def write(self, vals):
         if vals.get('name') or vals.get('content'): 
             for rec in self:
@@ -60,7 +60,7 @@ class Reference(models.Model):
         return super(Reference, self).write(vals)
 
 
-    @api.multi
+    
     def _get_area(self):
         for self in self:
             if not self.project:
@@ -72,7 +72,7 @@ class Reference(models.Model):
                 self.area = self.project.area
 
 
-    @api.multi
+    
     def _set_area(self):
         for self in self:
             if not self.area:
@@ -113,7 +113,7 @@ class Reference(models.Model):
             raise ValidationError(_('Search area by {} not implemented!').format(operator))
 
 
-    @api.multi
+    
     def _get_area_color(self):
         for self in self:
             self.area_color = self.area.color
@@ -144,7 +144,7 @@ class Reference(models.Model):
             }
 
 
-    @api.multi
+    
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})

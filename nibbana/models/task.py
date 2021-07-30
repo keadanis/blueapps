@@ -87,14 +87,14 @@ class Task(models.Model):
         return res
 
 
-    @api.multi
+    
     def unlink(self):
         for rec in self:
             self.env['nibbana.timeline'].timeline_unlink_event(rec)
         return super(Task, self).unlink()
 
 
-    @api.multi
+    
     def write(self, vals):
         for rec in self:
             # Check focus remove attempt
@@ -128,7 +128,7 @@ class Task(models.Model):
         return True
 
 
-    @api.multi
+    
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})
@@ -331,7 +331,7 @@ class Task(models.Model):
             raise ValidationError(_('You should set a future date!'))
 
 
-    @api.multi # Critical for returning a view!
+     # Critical for returning a view!
     def open_project_form(self):
         res = {
             'type': 'ir.actions.act_window',
@@ -345,7 +345,7 @@ class Task(models.Model):
         return res
 
 
-    @api.multi
+    
     def convert_to_project(self):        
         tasks = self.browse(self.env.context.get('active_ids'))
         last_project_id = False
@@ -378,7 +378,7 @@ class Task(models.Model):
             self.context_list = ', '.join([k.name for k in self.context])
 
 
-    @api.multi
+    
     def _get_context(self):
         for self in self:
             self.context = [k.context_id.id for k in self.env[
@@ -387,7 +387,7 @@ class Task(models.Model):
                     ('task_id','=', self.id)])]
 
 
-    @api.multi
+    
     def _set_context(self):
         for self in self:
             old = set(self.env['nibbana.context_task'].search([
@@ -429,7 +429,7 @@ class Task(models.Model):
 
 
 
-    @api.multi
+    
     def _get_area(self):
         for self in self:
             if not self.project:
@@ -441,7 +441,7 @@ class Task(models.Model):
                 self.area = self.project.area
 
 
-    @api.multi
+    
     def _set_area(self):
         for self in self:
             if not self.area:
@@ -547,7 +547,7 @@ class Task(models.Model):
                             offset, limit, orderby, lazy)
 
 
-    @api.multi
+    
     def _get_area_color(self):
         for self in self:
             self.area_color = self.area.color

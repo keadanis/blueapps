@@ -18,7 +18,7 @@ class Settings(models.Model):
     ]
 
 
-    @api.multi
+    
     def _get_name(self):
         for self in self:
             self.name = _('Nibbana Settings')

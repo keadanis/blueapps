@@ -46,7 +46,7 @@ class Area(models.Model):
             ('area', '=', self.id)])
 
 
-    @api.multi
+    
     def toggle_active(self):
         for self in self:
             self.active = not self.active
@@ -60,7 +60,7 @@ class Area(models.Model):
                 raise ValidationError(_('Color must be in format of #AABBCC!'))
 
 
-    @api.multi
+    
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})

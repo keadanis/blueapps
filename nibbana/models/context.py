@@ -39,7 +39,7 @@ class Context(models.Model):
             ('context', '=', self.id)])
 
 
-    @api.multi
+    
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})
