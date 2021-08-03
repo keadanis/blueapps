@@ -1,0 +1,180 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* telenoc_community_theme
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2021-03-31 16:36+0000\n"
+"Last-Translator: SplashS <sergey@shebanin.ru>\n"
+"Language-Team: none\n"
+"Language: ru\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/search_panel.xml:0
+#, python-format
+msgid "All"
+msgstr "Все"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/control_panel.xml:0
+#, python-format
+msgid "CLEAR"
+msgstr "Очистить"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields,field_description:telenoc_community_theme.field_res_users__chatter_position
+msgid "Chatter Position"
+msgstr "Расположение Чата"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Create"
+msgstr "Создать"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Discard"
+msgstr "Отменить"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields,field_description:telenoc_community_theme.field_res_users__display_name
+msgid "Display Name"
+msgstr "Видимое имя"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Edit"
+msgstr "Править"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/control_panel.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/search_panel.xml:0
+#, python-format
+msgid "FILTER"
+msgstr "Фильтр"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields,field_description:telenoc_community_theme.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields,field_description:telenoc_community_theme.field_res_users____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/attachment_viewer.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/attachment_viewer.xml:0
+#, python-format
+msgid "Maximize"
+msgstr "Увеличить"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/attachment_viewer.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/attachment_viewer.xml:0
+#, python-format
+msgid "Minimize"
+msgstr "Уменьшить"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields.selection,name:telenoc_community_theme.selection__res_users__chatter_position__normal
+msgid "Normal"
+msgstr "Снизу"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Quick actions"
+msgstr "Действия"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/control_panel.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/search_panel.xml:0
+#, python-format
+msgid "SEE RESULT"
+msgstr "Применить"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Save"
+msgstr "Сохранить"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#, python-format
+msgid "Search menus..."
+msgstr "Поиск по меню..."
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/control_panel.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/control_panel.xml:0
+#, python-format
+msgid "Search..."
+msgstr "Поиск..."
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/menu.xml:0
+#, python-format
+msgid "Shift"
+msgstr ""
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields.selection,name:telenoc_community_theme.selection__res_users__chatter_position__sided
+msgid "Sided"
+msgstr "Справа"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_buttons.xml:0
+#, python-format
+msgid "Today"
+msgstr "Сегодня"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/js/kanban_renderer_mobile.js:0
+#, python-format
+msgid "Undefined"
+msgstr "Не определено"
+
+#. module: telenoc_community_theme
+#: model:ir.model,name:telenoc_community_theme.model_res_users
+msgid "Users"
+msgstr "Пользователи"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/control_panel.xml:0
+#, python-format
+msgid "View switcher"
+msgstr "Сменить вид"

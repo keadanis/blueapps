@@ -1,0 +1,139 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* telenoc_community_theme
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2020-07-08 05:19+0000\n"
+"Last-Translator: 黎伟杰 <674416404@qq.com>\n"
+"Language-Team: none\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 3.10\n"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#, python-format
+msgid "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+msgstr "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields,field_description:telenoc_community_theme.field_res_users__chatter_position
+msgid "Chatter Position"
+msgstr "聊天位置"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Close"
+msgstr "关闭"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Create"
+msgstr "创建"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Discard"
+msgstr "丢弃"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Edit"
+msgstr "编辑"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Maximize"
+msgstr "最大化"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Minimize"
+msgstr "最小化"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields.selection,name:telenoc_community_theme.selection__res_users__chatter_position__normal
+msgid "Normal"
+msgstr "正常"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Quick actions"
+msgstr "快捷方式"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Save"
+msgstr "保存"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#, python-format
+msgid "Search menus..."
+msgstr "搜索菜单..."
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/menu.xml:0
+#, python-format
+msgid "Shift"
+msgstr ""
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields.selection,name:telenoc_community_theme.selection__res_users__chatter_position__sided
+msgid "Sided"
+msgstr "侧面"
+
+#. module: telenoc_community_theme
+#: model:ir.model,name:telenoc_community_theme.model_res_users
+msgid "Users"
+msgstr "用户"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/discuss.xml:0
+#, python-format
+msgid ""
+"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
+msgstr ""
+"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "false"
+msgstr "false"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+msgstr ""
+"modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"

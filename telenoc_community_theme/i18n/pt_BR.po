@@ -1,0 +1,157 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * telenoc_community_theme
+#
+# Translators:
+# Rodrigo de Almeida Sottomaior Macedo <rmsolucoeseminformatic4@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-22 08:27+0000\n"
+"PO-Revision-Date: 2020-03-21 21:13+0000\n"
+"Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.10\n"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#, python-format
+msgid "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+msgstr "#menu_id=#{app.menuID}&action_id=#{app.actionID}"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields,field_description:telenoc_community_theme.field_res_users__chatter_position
+msgid "Chatter Position"
+msgstr "Posição do Chatter"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Close"
+msgstr "Fechar"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Create"
+msgstr "Criar"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Discard"
+msgstr "Descartar"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Edit"
+msgstr "Editar"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Maximize"
+msgstr "Maximizar"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "Minimize"
+msgstr "Minimizar"
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields.selection,name:telenoc_community_theme.selection__res_users__chatter_position__normal
+msgid "Normal"
+msgstr "Normal"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Quick actions"
+msgstr "Ações rápidas"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/form_view.xml:0
+#, python-format
+msgid "Save"
+msgstr "Salvar"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#, python-format
+msgid "Search menus..."
+msgstr "Pesquisar menus..."
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/menu.xml:0
+#, python-format
+msgid "Shift"
+msgstr ""
+
+#. module: telenoc_community_theme
+#: model:ir.model.fields.selection,name:telenoc_community_theme.selection__res_users__chatter_position__sided
+msgid "Sided"
+msgstr "Frente e verso"
+
+#. module: telenoc_community_theme
+#: model:ir.model,name:telenoc_community_theme.model_res_users
+msgid "Users"
+msgstr "Usuários"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/discuss.xml:0
+#, python-format
+msgid ""
+"btn btn-secondary o_mail_discuss_button_multi_user_channel d-md-block d-none"
+msgstr ""
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/apps.xml:0
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "false"
+msgstr "falso"
+
+#. module: telenoc_community_theme
+#. openerp-web
+#: code:addons/telenoc_community_theme/static/src/xml/document_viewer.xml:0
+#, python-format
+msgid "modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+msgstr ""
+"modal o_modal_fullscreen o_document_viewer o_responsive_document_viewer"
+
+#~ msgid "<span class=\"sr-only\">Toggle App Drawer</span>"
+#~ msgstr "<span class=\"sr-only\">Aplicativo Desenhador Alternativo</span>"
+
+#~ msgid "<span class=\"sr-only\">Toggle Navigation</span>"
+#~ msgstr "<span class=\"sr-only\">Navegação Alternativa</span>"
+
+#~ msgid "Apps"
+#~ msgstr "Aplicativos"
+
+#~ msgid "HTTP routing"
+#~ msgstr "roteamento HTTP"
+
+#~ msgid "More <b class=\"caret\"/>"
+#~ msgstr "Mais <b class=\"caret\"/>"

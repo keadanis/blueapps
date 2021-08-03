@@ -1,0 +1,6 @@
+2021-08-03 02:03:01,929 402 INFO ? odoo: Odoo version 14.0-20210726 
+2021-08-03 02:03:01,930 402 INFO ? odoo: Using configuration file at /mnt/c/Users/Kerberos/Documents/GitHub/blueapps/odoo.conf 
+2021-08-03 02:03:01,930 402 INFO ? odoo: addons paths: ['/usr/lib/python3/dist-packages/odoo/addons'] 
+2021-08-03 02:03:01,980 402 INFO ? odoo: database: odoo@default:5433 
+2021-08-03 02:03:06,755 402 INFO ? odoo.addons.base.models.ir_actions_report: You need Wkhtmltopdf to print a pdf version of the reports. 
+2021-08-03 02:03:08,917 402 INFO ? odoo.service.server: HTTP service (werkzeug) running on kerberos-pc.localdomain:8069 
