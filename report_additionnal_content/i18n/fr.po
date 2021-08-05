@@ -1,0 +1,133 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* report_additionnal_content
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-06-16 09:10+0000\n"
+"PO-Revision-Date: 2021-06-16 09:10+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__action_report_id
+msgid "Action Report"
+msgstr "Action Rapport"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__additionnal_content
+msgid "Additionnal Content"
+msgstr "Contenu additionnel"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report__additionnal_line_ids
+msgid "Additionnal content"
+msgstr "Contenu additionnel"
+
+#. module: report_additionnal_content
+#: model_terms:ir.ui.view,arch_db:report_additionnal_content.additionnal_content_action_report_form
+msgid "Additionnals Contents"
+msgstr "Contenus additionnels"
+
+#. module: report_additionnal_content
+#: code:addons/report_additionnal_content/models/ir_actions_report_line.py:0
+#: model:ir.model.fields.selection,name:report_additionnal_content.selection__ir_actions_report_line__position__af
+#, python-format
+msgid "After"
+msgstr "Après"
+
+#. module: report_additionnal_content
+#: code:addons/report_additionnal_content/models/ir_actions_report_line.py:0
+#: model:ir.model.fields.selection,name:report_additionnal_content.selection__ir_actions_report_line__position__be
+#, python-format
+msgid "Before"
+msgstr "Avant"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__company_ids
+msgid "Companies"
+msgstr "Sociétés"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__create_date
+msgid "Created on"
+msgstr "Créé le"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report__display_name
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report__id
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__id
+msgid "ID"
+msgstr "ID"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__lang_ids
+msgid "Languages"
+msgstr "Langues"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report____last_update
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__position
+msgid "Position"
+msgstr "Position"
+
+#. module: report_additionnal_content
+#: model:ir.model,name:report_additionnal_content.model_ir_actions_report
+msgid "Report Action"
+msgstr "Action Rapport"
+
+#. module: report_additionnal_content
+#: model:ir.model,name:report_additionnal_content.model_ir_actions_report_line
+msgid "Report Action Line"
+msgstr "Ligne Action Rapport"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report_line__sequence
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report__watermark_file
+msgid "Watermark"
+msgstr "Filigrane"
+
+#. module: report_additionnal_content
+#: model:ir.model.fields,field_description:report_additionnal_content.field_ir_actions_report__watermark_filename
+msgid "Watermark name"
+msgstr "Nom du Filigrane"

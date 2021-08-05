@@ -1,0 +1,5 @@
+Nicolas Potier <nicolas.potier@sudokeys.com> (www.sudokeys.com)
+Quentin Peyramale <quentin@sudokeys.com> (www.sudokeys.com)
+Alexis Vannot <alexis@sudokeys.com> (www.sudokeys.com)
+Patrice Laborde <patrice@sudokeys.com> (www.sudokeys.com)
+Niels Graveron <niels@sudokeys.com> (www.sudokeys.com)

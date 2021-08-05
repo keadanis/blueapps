@@ -1,0 +1,22 @@
+<odoo>
+	<data>
+		<record id="view_move_form" model="ir.ui.view">
+			<field name="name">Ivoice Source Document Smart Button</field>
+			<field name="model">account.move</field>
+			<field name="inherit_id" ref="account.view_move_form" />
+			<field name="arch" type="xml">
+
+				<div name="button_box" position="inside">
+					<button name="action_view_saleorder" type="object" class="oe_stat_button" attrs="{'invisible': [('sale_source', '=',False)]}"
+						icon="fa-pencil-square-o" string="Source Document">
+					</button>
+					<button name="action_view_po" type="object" class="oe_stat_button" attrs="{'invisible': [('purchase_source', '=',False)]}"
+						icon="fa-pencil-square-o" string="Source Document">
+					</button>
+					<field name="purchase_source" invisible="1"/>
+					<field name="sale_source" invisible="1"/>
+				</div>
+			</field>
+		</record>
+	</data>
+</odoo>

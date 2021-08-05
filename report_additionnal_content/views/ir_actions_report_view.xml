@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright Sudokeys (www.sudokeys.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="additionnal_content_action_report_form">
+        <field name="name">Additionnal Content Report Action Form</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view" />
+        <field name="priority">100</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='paperformat_id']" position="after">
+                <field name="watermark_file" filename="watermark_filename" />
+                <field name="watermark_filename" invisible="1" />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page string="Additionnals Contents">
+                    <field
+                        name="additionnal_line_ids"
+                        context="{'default_action_report_id': active_id}"
+                    >
+                        <tree editable="bottom">
+                            <field name="sequence" widget="handle" />
+                            <field name="name" invisible="1" />
+                            <field
+                                name="additionnal_content"
+                                widget="download_link"
+                                filename="name"
+                            />
+                            <field name="position" />
+                            <field name="company_ids" widget="many2many_tags" />
+                            <field name="lang_ids" widget="many2many_tags" />
+                            <field name="action_report_id" invisible="1" />
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
