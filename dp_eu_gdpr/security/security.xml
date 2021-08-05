@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright 2018-Today datenpol gmbh (<https://www.datenpol.at/>)
+    License OPL-1 or later (https://www.odoo.com/documentation/user/13.0/legal/licenses/licenses.html#licenses).
+-->
+
+<odoo>
+    <record id="dp_eu_gdpr_user" model="res.groups">
+        <field name="name">EU-GDPR User</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
+    </record>
+</odoo>

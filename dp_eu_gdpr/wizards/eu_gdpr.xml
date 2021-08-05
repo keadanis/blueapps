@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018-Today datenpol gmbh(<http://www.datenpol.at>)
+     License OPL-1 or later (https://www.odoo.com/documentation/user/13.0/legal/licenses/licenses.html#licenses). -->
+
+<odoo>
+
+    <record id="dp_eu_gdpr_form_view" model="ir.ui.view">
+        <field name="name">eu.gdpr.form</field>
+        <field name="model">eu.gdpr</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="info" nolabel="1" class="info-box" attrs="{'invisible': [('info', '=', False)]}"/>
+                    <group>
+                        <label for="operation"/>
+                        <div>
+                            <field name="operation"/>
+                            <field name="help" nolabel="1"/>
+                        </div>
+                        <field name="object" required="1"/>
+                        <field name="partner"/>
+                        <field name="note"/>
+                    </group>
+                    <footer>
+                        <button name="process" string="Execute Operation" type="object" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel" class="oe_link"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dp_eu_gdpr_execute_operation" model="ir.actions.act_window">
+        <field name="name">Execute Operation</field>
+        <field name="res_model">eu.gdpr</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_dp_eu_gdpr_execute" name="Execute Operation" parent="menu_dp_gdpr"
+              action="action_dp_eu_gdpr_execute_operation"/>
+
+</odoo>

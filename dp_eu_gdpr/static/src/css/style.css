@@ -1,0 +1,13 @@
+.info-box{
+    color: green;
+    border: 1px solid green;
+    font-weight: 600;
+}
+
+a.dp-contact{
+    color: white !important;
+}
+
+a.dp-contact:hover{
+    color: #0096EB !important;
+}

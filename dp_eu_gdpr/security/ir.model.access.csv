@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_eu_gdpr_log,eu.gdpr.log,model_eu_gdpr_log,dp_eu_gdpr_user,1,0,0,0
+access_eu_gdpr,eu.gdpr,model_eu_gdpr,dp_eu_gdpr_user,1,1,1,1

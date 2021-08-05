@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_privado_script" inherit_id="website.assets_frontend">
+        <xpath expr="//link[1]" position="before">
+            <t t-set="privado_script"
+               t-value="request.env['ir.config_parameter'].sudo().get_param('gdpr_cookie_consent.privado_script_code_snippet')"/>
+            <t t-if="privado_script" t-raw="privado_script"/>
+        </xpath>
+    </template>
+</odoo>

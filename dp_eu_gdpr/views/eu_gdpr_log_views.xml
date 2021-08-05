@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2018-Today datenpol gmbh (<https://www.datenpol.at/>)
+    License OPL-1 or later (https://www.odoo.com/documentation/user/13.0/legal/licenses/licenses.html#licenses).
+-->
+
+<odoo>
+    <record id="dp_eu_gdpr_log_form_view" model="ir.ui.view">
+        <field name="name">eu.gdpr.log.form</field>
+        <field name="model">eu.gdpr_log</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" invisible="1"/>
+                        <field name="date"/>
+                        <field name="user_id"/>
+                        <field name="operation"/>
+                        <field name="object"/>
+                        <field name="dataset"/>
+                        <field name="partner"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="dp_eu_gdpr_log_tree_view" model="ir.ui.view">
+        <field name="name">eu.gdpr.log.tree</field>
+        <field name="model">eu.gdpr_log</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="date"/>
+                <field name="user_id"/>
+                <field name="operation"/>
+                <field name="object"/>
+                <field name="dataset"/>
+                <field name="partner"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_dp_eu_gdpr_log" model="ir.actions.act_window">
+        <field name="name">GDPR Log</field>
+        <field name="res_model">eu.gdpr_log</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+    </record>
+
+    <menuitem id="dp_menu_eu_gdpr" name="GDPR" groups="dp_eu_gdpr_user"
+              web_icon="dp_eu_gdpr,static/description/icon.png" sequence="200"/>
+    <menuitem id="menu_dp_gdpr" name="GDPR" parent="dp_menu_eu_gdpr"/>
+    <menuitem id="menu_dp_eu_gdpr_log" name="GDPR Log" parent="menu_dp_gdpr" action="action_dp_eu_gdpr_log"/>
+
+</odoo>

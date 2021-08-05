@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2018-Today datenpol gmbh (<https://www.datenpol.at/>)
+    License OPL-1 or later (https://www.odoo.com/documentation/user/13.0/legal/licenses/licenses.html#licenses).
+-->
+
+<odoo noupdate="1">
+    <record id="dp_eu_gdpr_sequence" model="ir.sequence">
+        <field name="name">EU-GDPR</field>
+        <field name="code">gdpr</field>
+        <field name="number_next" eval="1"/>
+        <field name="number_increment" eval="1"/>
+        <field name="implementation">no_gap</field>
+        <field name="padding" eval="5"/>
+    </record>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright 2018-Today datenpol gmbh (<https://www.datenpol.at/>)
+    License OPL-1 or later (https://www.odoo.com/documentation/user/13.0/legal/licenses/licenses.html#licenses).
+-->
+
+<odoo>
+    <template id="assets_backend" name="dp_eu_gdpr_assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" href="/dp_eu_gdpr/static/src/css/style.css"/>
+        </xpath>
+    </template>
+</odoo>
