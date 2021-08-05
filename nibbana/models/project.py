@@ -94,13 +94,13 @@ class Project(models.Model):
         self.env['nibbana.timeline'].timeline_create_event(res)
         return res
 
-    
+    @api.multi
     def unlink(self):
         for rec in self:
             self.env['nibbana.timeline'].timeline_unlink_event(rec)
         return super(Project, self).unlink()
 
-    
+    @api.multi
     def write(self, vals):
         for rec in self:
             if not vals.get('state_change_count') and (
@@ -140,7 +140,7 @@ class Project(models.Model):
         super(Project, self).write(vals)
         return True
 
-    
+    @api.multi
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):
         default = dict(default or {})
@@ -173,14 +173,14 @@ class Project(models.Model):
                     domain, groupby, remaining_groupbys, aggregated_fields,
                     count_field, read_group_result, read_group_order)
 
-    
+    @api.one
     @api.constrains('schedule_start_date')
     def _check_schedule_start_date(self):
         if self.schedule_start_date and \
                 self.schedule_start_date <= fields.Date.today():
             raise ValidationError(_('You should set a future date!'))
 
-    
+    @api.one
     @api.constrains('state')
     def check_limits(self):
         if self.area and self.state == 'Active':
@@ -190,52 +190,52 @@ class Project(models.Model):
                 raise ValidationError(
                     _("Area's projects limit has been reached!"))
 
-    
+    @api.multi
     def set_state(self, state):
         self.write({
             'state': state,
         })
 
-    
+    @api.multi
     def set_active(self):
         self.write({'state': 'Active', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
             self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
-    
+    @api.multi
     def set_inactive(self):
         self.write({'state': 'Inactive', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
             self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
-    
+    @api.multi
     def toggle_focus(self):
         for self in self:
             self.focus = '1' if self.focus == '0' else '0'
         if not self.env.context.get('group_by'):
             self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
-    
+    @api.one
     def _open_task_count(self):
         self.open_task_count = self.with_context(
             {'active_test': False}).env['nibbana.task'].search_count([
                 ('project', '=', self.id),
                 ('state', 'not in', ['Done', 'Cancelled'])])
 
-    
+    @api.one
     def _closed_task_count(self):
         self.closed_task_count = self.with_context(
             {'active_test': False}).env['nibbana.task'].search_count([
                 ('project', '=', self.id),
                 ('state', 'in', ['Done', 'Cancelled'])])
 
-    
+    @api.one
     def _reference_count(self):
         self.reference_count = self.with_context(
             {'active_test': False}).env['nibbana.reference'].search_count([
                 ('project', '=', self.id)])
 
-    
+    @api.multi
     def _get_context(self):
         for self in self:
             self.context = [k.context_id.id for k in self.env[
@@ -243,7 +243,7 @@ class Project(models.Model):
                     ('create_uid', '=', self.env.user.id),
                     ('project_id', '=', self.id)])]
 
-    
+    @api.multi
     def _set_context(self):
         for self in self:
             old = set(self.env['nibbana.context_project'].search([
@@ -287,7 +287,7 @@ class Project(models.Model):
     ######### AREA  #######
     #######################
 
-    
+    @api.multi
     def _get_area(self):
         for self in self:
             area = self.env['nibbana.area_project'].search([
@@ -296,7 +296,7 @@ class Project(models.Model):
             self.area = area.area_id if area else False
 
 
-    
+    @api.multi
     def _set_area(self):
         for self in self:
             if not self.area:
@@ -407,7 +407,7 @@ class Project(models.Model):
                 offset, limit, orderby, lazy)
 
 
-    
+    @api.multi
     def _get_area_color(self):
         for self in self:
             self.area_color = self.area.color
@@ -517,7 +517,7 @@ class ProjectArea(models.TransientModel):
 
     new_area = fields.Many2one(comodel_name='nibbana.area', required=True)
 
-    
+    @api.one
     def do_change_area(self):
         projects = self.env['nibbana.project'].browse(self._context.get(
                                                         'active_ids', []))

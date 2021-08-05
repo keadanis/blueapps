@@ -87,14 +87,14 @@ class Task(models.Model):
         return res
 
 
-    
+    @api.multi
     def unlink(self):
         for rec in self:
             self.env['nibbana.timeline'].timeline_unlink_event(rec)
         return super(Task, self).unlink()
 
 
-    
+    @api.multi
     def write(self, vals):
         for rec in self:
             # Check focus remove attempt
@@ -128,7 +128,7 @@ class Task(models.Model):
         return True
 
 
-    
+    @api.multi
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})
@@ -192,56 +192,56 @@ class Task(models.Model):
 
 
 
-    
+    @api.one
     def set_today(self):
         self.write({'state': 'Today', 'focus': '1', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def set_tomorrow(self):
         self.write({'state': 'Tomorrow', 'focus': '0', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def set_next(self):
         self.write({'state': 'Next', 'focus': '0', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def set_scheduled(self):
         self.write({'state': 'Scheduled','focus': '0'})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def set_done(self):
         self.write({'active': False, 'state': 'Done', 'focus': '0', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')    
 
 
-    
+    @api.one
     def set_waiting(self):
         self.write({'state': 'Waiting', 'focus': '0', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def set_someday(self):
         self.write({'state': 'Someday', 'focus': '0', 'schedule_start_date': False})
         if not self.env.context.get('group_by'):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def set_cancelled(self):
         self.write({'active': False, 'state': 'Cancelled', 'focus': '0', 
                     'schedule_start_date': False})
@@ -249,7 +249,7 @@ class Task(models.Model):
              self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.one
     def invert_focus(self):
         self.focus = '1' if self.focus == '0' else '0'
         if not self.env.context.get('group_by'):
@@ -331,7 +331,7 @@ class Task(models.Model):
             raise ValidationError(_('You should set a future date!'))
 
 
-     # Critical for returning a view!
+    @api.multi # Critical for returning a view!
     def open_project_form(self):
         res = {
             'type': 'ir.actions.act_window',
@@ -345,7 +345,7 @@ class Task(models.Model):
         return res
 
 
-    
+    @api.multi
     def convert_to_project(self):        
         tasks = self.browse(self.env.context.get('active_ids'))
         last_project_id = False
@@ -378,7 +378,7 @@ class Task(models.Model):
             self.context_list = ', '.join([k.name for k in self.context])
 
 
-    
+    @api.multi
     def _get_context(self):
         for self in self:
             self.context = [k.context_id.id for k in self.env[
@@ -387,7 +387,7 @@ class Task(models.Model):
                     ('task_id','=', self.id)])]
 
 
-    
+    @api.multi
     def _set_context(self):
         for self in self:
             old = set(self.env['nibbana.context_task'].search([
@@ -429,7 +429,7 @@ class Task(models.Model):
 
 
 
-    
+    @api.multi
     def _get_area(self):
         for self in self:
             if not self.project:
@@ -441,7 +441,7 @@ class Task(models.Model):
                 self.area = self.project.area
 
 
-    
+    @api.multi
     def _set_area(self):
         for self in self:
             if not self.area:
@@ -547,7 +547,7 @@ class Task(models.Model):
                             offset, limit, orderby, lazy)
 
 
-    
+    @api.multi
     def _get_area_color(self):
         for self in self:
             self.area_color = self.area.color
@@ -585,7 +585,7 @@ class ScheduleTask(models.TransientModel):
     new_start_date = fields.Date(required=True, default=_default_start_date)
 
 
-    
+    @api.one
     def do_schedule(self):
         self.task.write({
             'schedule_start_date': self.new_start_date,
@@ -612,7 +612,7 @@ class WaitingTask(models.TransientModel):
     new_wait_till = fields.Date(required=False, default=_default_wait_till)
 
 
-    
+    @api.one
     def do_waiting(self):
         self.task.write({
             'wait_till': self.new_wait_till,

@@ -25,7 +25,7 @@ class Inbox(models.Model):
         for self in self:
             self.context_list = ', '.join([k.name for k in self.context])
 
-    
+    @api.multi
     def convert_to_project(self):
         self.ensure_one()
         project = self.env['nibbana.project'].create({
@@ -46,7 +46,7 @@ class Inbox(models.Model):
         }
 
 
-    
+    @api.multi
     def convert_to_task(self):
         self.ensure_one()
         task = self.env['nibbana.task'].create({
@@ -67,7 +67,7 @@ class Inbox(models.Model):
         }
 
 
-    
+    @api.multi
     def convert_to_reference(self):
         self.ensure_one()
         ref = self.env['nibbana.reference'].create({
@@ -87,7 +87,7 @@ class Inbox(models.Model):
         }
 
 
-    
+    @api.multi
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})

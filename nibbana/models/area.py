@@ -28,25 +28,25 @@ class Area(models.Model):
         ('uid_uniq', 'UNIQUE(uid)', _('The uid must be unique !')),
     ]
 
-    
+    @api.one
     def _get_project_count(self):
         self.project_count = self.env['nibbana.project'].search_count([
             ('area', '=', self.id)])
 
 
-    
+    @api.one
     def _get_task_count(self):
         self.task_count = self.env['nibbana.task'].search_count([
             ('area', '=', self.id),('state','not in',['Done','Cancelled'])])
 
 
-     
+    @api.one
     def _get_reference_count(self):
         self.reference_count = self.env['nibbana.reference'].search_count([
             ('area', '=', self.id)])
 
 
-    
+    @api.multi
     def toggle_active(self):
         for self in self:
             self.active = not self.active
@@ -60,7 +60,7 @@ class Area(models.Model):
                 raise ValidationError(_('Color must be in format of #AABBCC!'))
 
 
-    
+    @api.multi
     @api.returns('self', lambda value: value.id)
     def copy(self, default=None):        
         default = dict(default or {})

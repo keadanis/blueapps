@@ -41,7 +41,7 @@ class Act(models.Model):
             ORDER BY sequence;
     """
 
-    
+    @api.model_cr
     def init(self):
         self.env.cr.execute(self._sql)
 
@@ -62,20 +62,20 @@ class Act(models.Model):
     task_project = fields.Many2one('nibbana.project', string=_('Task Project'))   
 
 
-    
+    @api.multi
     def _get_context_list(self):
         for self in self:
             self.context_list = self.task_id.context_list if self.task_id else \
                 self.project_id.context_list
 
 
-    
+    @api.multi
     def _get_area(self):
         for self in self:
             self.area = self.task_id.area if self.task_id else self.project_id.area
 
 
-    
+    @api.multi
     def _get_context(self):
         for self in self:
             self.context = self.task_id.context if self.task_id else self.project_id.context
@@ -129,7 +129,7 @@ class Act(models.Model):
 
 
 
-    
+    @api.multi
     def _get_area_color(self):
         for self in self:
             self.area_color = self.area.color
@@ -217,7 +217,7 @@ class Act(models.Model):
         }
         return res
 
-    
+    @api.multi
     def set_inactive(self):
         self.ensure_one()
         self.project_id.set_inactive()
@@ -225,7 +225,7 @@ class Act(models.Model):
             self.env['bus.bus'].sendone('nibbana_tree_reload', 'reload')
 
 
-    
+    @api.multi
     def set_done(self):
         self.ensure_one()
         self.task_id.set_done()
@@ -234,7 +234,7 @@ class Act(models.Model):
 
 
 
-    
+    @api.multi
     def invert_focus(self):
         self.ensure_one()
         if self.open_type == 'task':
@@ -251,7 +251,7 @@ class Act(models.Model):
             raise ValidationError(_("You should keep focus on Today's tasks!"))
         
 
-     # Critical for returning a view!
+    @api.multi # Critical for returning a view!
     def open_project_form(self):
         res = {
             'type': 'ir.actions.act_window',
