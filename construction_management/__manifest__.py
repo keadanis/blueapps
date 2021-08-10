@@ -2,12 +2,12 @@
 # Part of BrowseInfo. See LICENSE file for full copyright and licensing details.
 
 {
-    "name": "Construction Management in Odoo",
+    "name": "BL Gerenciamento de Construção/Obras",
     "version": "14.0.0.2",
     "depends": ['base', 'project', 'stock',
                 'account', 'hr', 'purchase','sale','website_form_project','note','hr_timesheet',
                 ],
-    "author": "Browseinfo",
+    "author": "BlueConnect, Browseinfo",
     "summary": "Construction Project management Building Construction Projects Construction cost center construction job order construction Cost Header construction Work Package construction Budgets Contractors job work order Real Estate  property  Bill of Quantity BOQ",
     "description": """
     BrowseInfo developed a new odoo/OpenERP module apps.
@@ -58,7 +58,7 @@
     Bill of Quantity On Job Order
     Bill of Quantity construction
     """,
-    "website": "https://www.browseinfo.in",
+    "website": "https://www.blueconnect.com.br",
     "data": [
         "security/ir.model.access.csv",
         'view/project.xml',
@@ -77,7 +77,7 @@
         
     ],
     "images": 'static/main_screenshot.png',
-    "price": 49,
+    "price": 450,
     "currency": 'EUR',
     'live_test_url':'https://youtu.be/Jdhxf-UwQpY',
     "auto_install": False,

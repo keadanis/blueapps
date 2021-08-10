@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_task_type_view_tree" model="ir.ui.view">
+        <field name="name">project.task.type.view.tree</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree"/> 
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="abertas_count" optional="hide"/>
+                <field name="order_need_assign_count" optional="hide"/>
+                <field name="order_need_schedule_count" optional="hide"/>
+			    <field name="agendadas_count" optional="hide"/>
+			    <field name="reagendadas_count" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

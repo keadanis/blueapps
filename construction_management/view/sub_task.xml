@@ -6,7 +6,7 @@
             <field name="name">view.create.subtask.wizard.form</field>
             <field name="model">subtask.wizard</field>
             <field name="arch" type="xml">
-                <form string="Subtask Create">
+                <form string="Subtask Create" groups="project.group_subtask_project">
                     <group>
                         <field name="subtask_lines" nolabel="1">
                             <tree editable="bottom">
@@ -44,17 +44,17 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
                 <field name="user_id" position="after">
-                    <field name="task_parent_id"/>
+                    <field name="task_parent_id" groups="project.group_subtask_project"/>
                 </field>
                 <header>
                     <button name="%(action_create_subtask_wizard)d"
                             string="Create SubTask"
                             type="action"
                             class="oe_highlight"
-                            style="float:left;"/>
+                            style="float:left;" groups="project.group_subtask_project"/>
                 </header>
                 <notebook position='inside'>
-                    <page string="Subtask">
+                    <page string="Subtask" groups="project.group_subtask_project">
                         <group>
                             <field name="subtask_ids" nolabel="1" readonly="1">
                                 <tree>
