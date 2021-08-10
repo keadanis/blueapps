@@ -1,0 +1,13 @@
+
+Version: 14.0.0.1 | 10/05/2021:
+	- Their was wrong total amount of work package lines, solved that error. 
+
+Version 14.0.0.2 | 14/05/2021:
+	- Error in total of material cost, labour cost, subcontract cost, workpackage cost in biil of quantity from view, solved it.
+	- Error in total project cost calculated for total bill of quantity for that project solved that.
+	- Error in revision sequence, after creating first revision it is ok it will show revision number increamented by one, but when we create again new revision from original bill of quantity is it generate new revision with same revision number again.
+	- In project task report their is planned material and consumed material quantity is same but in backend it is different.
+	- Warning occurred when creating stock move from task solved it.
+	- Added purchase order page in project notebook.
+	- In material lines in bill of quantity on selecting work package the rate of that package is not setting according to cost of package solved that issue.
+	-  Changed all deprecated tags and removed all warnings.
